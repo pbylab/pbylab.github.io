@@ -4,10 +4,10 @@
   <title>Teerapong Panboonyuen — PBY Lab</title>
   
   <!-- Favicon with tree emoji -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2224%22 font-size=%2232%22>🌳</text></svg>" />
-  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2224%22 font-size=%2232%22>🐟</text></svg>" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  
+
   <style>
     body {
       margin: 0;
@@ -63,10 +63,22 @@
       text-align: center;
       margin-top: 3rem;
     }
+    .bio-en {
+      margin-top: 1.5rem;
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-left: 4px solid #2563eb;
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- TOP LEFT BACK BUTTON -->
+  <div class="back-top-left">
+    <a href="/" title="Back to main page">← Back to Home</a>
+  </div>
+  
   <header>
     <h1>ธีรพงศ์ ปานบุญยืน (ดร.เก้า)</h1>
     <p>Ph.D. in Computer Engineering, Chulalongkorn University</p>
@@ -74,65 +86,370 @@
 
   <img src="../img/KAO_PANBOONYUEN.jpg" alt="Dr. Teerapong Panboonyuen" class="profile-pic" />
 
-
-<section>
-  <h2>Biography</h2>
-  <p style="text-align: justify;">
-    ดร.ธีรพงศ์ ปานบุญยืน หรือที่รู้จักกันในชื่อ “ดร.เก้า” เป็นนักวิจัยผู้มีความเชี่ยวชาญด้านปัญญาประดิษฐ์ โดยปัจจุบันดำรงตำแหน่งนักวิจัยหลัก ณ MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory) ซึ่งเป็นห้องปฏิบัติการวิจัยแนวหน้าที่บูรณาการเทคโนโลยี AI กับอุตสาหกรรมยานยนต์<br /><br />
-
-    นอกจากนี้ ดร.เก้ายังได้รับการสนับสนุนทุนระดับสูงสุดจากโครงการ The Second Century Fund (C2F) ใน Track A สำหรับนักวิจัยหลังปริญญาเอกศักยภาพสูง ของจุฬาลงกรณ์มหาวิทยาลัย เพื่อสนับสนุนการวิจัยที่มีอิทธิพลและสร้างผลกระทบต่อวงการเทคโนโลยี AI/ML ในระดับโลก และเป็นหนึ่งในนักวิจัยไทยที่ได้รับพระมหากรุณาธิคุณรับพระราชทานทุน Global Young Scientists Summit (GYSS) ประจำปี 2025 จากสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ<br /><br />
-
-    <!-- งานวิจัยของ ดร.เก้า ครอบคลุมหลากหลายมิติของ AI โดยเฉพาะการเรียนรู้เชิงแทนความหมาย (Representation Learning), ทฤษฎีการหาค่าที่เหมาะสมที่สุด (Optimization Theory), และการเรียนรู้แบบไร้ผู้สอน (Self-Supervised Learning)<br /><br /> -->
-
-    ดร.เก้ามีความเชี่ยวชาญลึกซึ้งในสาขา Computer Vision ที่ประยุกต์ใช้กับการรู้จำวัตถุ ซีน และความเข้าใจเชิงความหมายของภาพ รวมถึง Geospatial Intelligence ที่วิเคราะห์ข้อมูลจากดาวเทียมและภาพถ่ายทางอากาศเพื่อสนับสนุนการตัดสินใจเชิงพื้นที่  
-    อีกทั้งยังให้ความสำคัญกับ Human-AI Interaction ซึ่งเป็นหัวใจสำคัญของการสร้างเทคโนโลยีที่เข้าใจและสื่อสารกับมนุษย์ได้อย่างมีประสิทธิภาพ ด้วยผลงานที่โดดเด่นและวิสัยทัศน์เชิงลึกในอนาคตของ AI ดร.เก้าจึงเป็นหนึ่งในนักวิจัยรุ่นใหม่ที่ได้รับการจับตามองอย่างยิ่งในวงการวิทยาการคอมพิวเตอร์ระดับสากล
-  </p>
-
-
-
-      <!-- GitHub-style link under profile -->
-      <div style="margin-top: 1rem;">
-        <a href="https://kaopanboonyuen.github.io/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #2563eb; font-weight: 600; text-decoration: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" fill="#2563eb"><path d="M10.9 2.1c-.6 0-1.3.1-1.9.2-2.6.5-4.6 2.6-5.1 5.2-.3 1.6-.3 3.3-.3 4.8 0 3.2 2.5 5.7 5.7 5.7.8 0 1.6-.1 2.3-.4.4-.1.7.1.8.5.1.5.2 1 .2 1.4 0 .3-.2.5-.5.6-1.8.4-3.6.6-5.3.6-.3 0-.5.2-.5.5v.1c0 .2.2.5.5.5h.3c6.6-.1 11.9-5.5 11.9-12.2 0-3.2-1.3-6.2-3.5-8.4C16.2 2.4 13.6 2.1 10.9 2.1z"/></svg>
-          Visit Personal Website
-        </a>
-      </div>
-
-  </section>
-
   <section>
-    <h2>Selected Publications</h2>
-    <ul>
-      <li><a href="https://arxiv.org/abs/2506.10528">SLICK: Selective Localization and Instance Calibration</a> (2025)</li>
-      <li><a href="https://arxiv.org/abs/2506.10524">ALBERT: Advanced Localization and Bidirectional Encoder Representations</a> (2025)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/11003320">SEA-ViT: Sea Surface Currents Forecasting Using ViT and GRU</a> (KST2025)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/11003314">REG: Refined Generalized Focal Loss for Road Asset Detection</a> (KST2025)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/10929005">SatDiff: A Stable Diffusion Framework for Satellite Imagery Inpainting</a> (IEEE Access 2025)</li>
-      <li><a href="https://kaopanboonyuen.github.io/GuidedBox">GuidedBox: Weakly Supervised Road Segmentation</a> (EJRS 2024)</li>
-      <li><a href="https://www.mdpi.com/2072-4292/15/21/5124">MeViT: Medium-Resolution ViT for Semantic Segmentation</a> (Remote Sensing 2023)</li>
-      <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-51023-6_3">MARS: Mask Attention Refinement with Quadtree Nodes</a> (ICIAP 2023)</li>
-      <li><a href="https://digital.car.chula.ac.th/chulaetd/8534/">Ph.D. Thesis: Semantic Segmentation on Remotely Sensed Images</a> (Chula 2019)</li>
-      <li><a href="https://www.car.chula.ac.th/display7.php?bib=2156287">M.Eng. Thesis: Semantic Road Segmentation</a> (Chula 2016)</li>
-      <li><a href="https://www.mdpi.com/2078-2489/13/1/5">Object Detection on Thai Highways with YOLOX</a> (Information 2022)</li>
-      <li><a href="https://www.mdpi.com/2072-4292/13/24/5100">Transformer-Based Decoder Designs for RS Images</a> (Remote Sensing 2021)</li>
-      <li><a href="https://www.mdpi.com/2072-4292/12/8/1233">Feature Fusion-Based Semantic Labeling</a> (Remote Sensing 2020)</li>
-      <li><a href="https://www.mdpi.com/2072-4292/11/1/83">Enhanced GCN for Semantic Segmentation with Attention</a> (Remote Sensing 2019)</li>
-      <li><a href="https://www.mdpi.com/2072-4292/9/7/680">CNN with Landscape Metrics for Road Segmentation</a> (Remote Sensing 2017)</li>
-      <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-78933-7_1">Enhanced Encoder-Decoder for Aerial Imagery</a> (IC2IT 2017)</li>
-      <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-73603-7_32">Real-Time Polyps Segmentation for Colonoscopy</a> (MMM 2018)</li>
-      <li><a href="https://tis.wu.ac.th/index.php/tis/article/view/2038">Flood Susceptibility Assessment with GIS vs NN</a> (Trends in Sciences 2022)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/8258330">Road Map Extraction from Satellite Imagery</a> (IEEE Big Data 2017)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/8457378">Semantic Segmentation Using Remote Sensing Indices</a> (JCSSE 2018)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/9018796">Transportation Mobility Factor Extraction</a> (STUD 2019)</li>
-      <li><a href="https://www.mdpi.com/2078-2489/13/5/259">Enhanced FPN ViT for Thailand Landsat-8</a> (Information 2022)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/9779212">Bangkok Urbanscapes Dataset</a> (IEEE Access 2022)</li>
-      <li><a href="https://www.mdpi.com/2071-1050/15/3/2847">Quality of Life Prediction in Driving Scenes</a> (Sustainability 2023)</li>
-      <li><a href="https://gis-ideas.org/2024">Landslide Susceptibility Mapping in Uttaradit</a> (GIS-IDEAS 2024)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/10456962">DOTA: Deformable Optimized Transformer Architecture</a> (KST 2025)</li>
-      <li><a href="https://ieeexplore.ieee.org/document/12345678">AI-Augmented Formal Verification with ENGRU</a> (IEEE Access 2025)</li>
-      <!-- Add more pubs as you want -->
-    </ul>
+    <h2>Biography</h2>
+    <p style="text-align: justify;">
+      ดร.ธีรพงศ์ ปานบุญยืน หรือที่รู้จักกันในชื่อ “ดร.เก้า” เป็นนักวิจัยผู้มีความเชี่ยวชาญด้านปัญญาประดิษฐ์ โดยปัจจุบันดำรงตำแหน่งนักวิจัยหลัก ณ MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory) ซึ่งเป็นห้องปฏิบัติการวิจัยแนวหน้าที่บูรณาการเทคโนโลยี AI กับอุตสาหกรรมประกันภัยรถยนต์<br /><br />
+      นอกจากนี้ ดร.เก้ายังได้รับการสนับสนุนทุนระดับสูงสุดจากโครงการ The Second Century Fund (C2F) ใน Track A สำหรับนักวิจัยหลังปริญญาเอกศักยภาพสูง ของจุฬาลงกรณ์มหาวิทยาลัย เพื่อสนับสนุนการวิจัยที่มีอิทธิพลและสร้างผลกระทบต่อวงการเทคโนโลยี AI/ML ในระดับโลก และเป็นหนึ่งในนักวิจัยไทยที่ได้รับพระมหากรุณาธิคุณรับพระราชทานทุน Global Young Scientists Summit (GYSS) ประจำปี 2025 จากสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ<br /><br />
+      ดร.เก้ามีความเชี่ยวชาญลึกซึ้งในสาขา Computer Vision ที่ประยุกต์ใช้กับการรู้จำวัตถุ ซีน และความเข้าใจเชิงความหมายของภาพ รวมถึง Geospatial Intelligence ที่วิเคราะห์ข้อมูลจากดาวเทียมและภาพถ่ายทางอากาศเพื่อสนับสนุนการตัดสินใจเชิงพื้นที่  
+      อีกทั้งยังให้ความสำคัญกับ Human-AI Interaction ซึ่งเป็นหัวใจสำคัญของการสร้างเทคโนโลยีที่เข้าใจและสื่อสารกับมนุษย์ได้อย่างมีประสิทธิภาพ ด้วยผลงานที่โดดเด่นและวิสัยทัศน์เชิงลึกในอนาคตของ AI ดร.เก้าจึงเป็นหนึ่งในนักวิจัยรุ่นใหม่ที่ได้รับการจับตามองอย่างยิ่งในวงการวิทยาการคอมพิวเตอร์ระดับสากล
+    </p>
+
+    <!-- ENGLISH TRANSLATION -->
+    <div class="bio-en">
+      <p style="text-align: justify;">
+        Dr. Teerapong Panboonyuen, also known as “Dr. Kao,” is a leading researcher in the field of Artificial Intelligence. He currently serves as the Principal Researcher at MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory), an advanced AI research lab integrating AI into the automotive industry and car insurance.<br /><br />
+        He has been awarded the highest-level postdoctoral research fellowship under the Second Century Fund (C2F Track A) from Chulalongkorn University, supporting high-impact research in AI/ML with global significance. He is also among the few Thai researchers to receive the prestigious Global Young Scientists Summit (GYSS) 2025 scholarship, graciously bestowed by Her Royal Highness Princess Maha Chakri Sirindhorn.<br /><br />
+        Dr. Kao's expertise lies in Computer Vision—covering object recognition, scene understanding, and semantic perception—and in Geospatial Intelligence for analyzing satellite and aerial imagery to support spatial decision-making. He also focuses on Human-AI Interaction, a vital component for developing AI technologies that can effectively understand and communicate with humans. With his outstanding contributions and forward-looking vision, Dr. Kao is recognized as a rising figure in the international AI research community.
+      </p>
+    </div>
+
+    <!-- Personal Website Button -->
+    <div style="margin-top: 1rem;">
+      <a href="https://kaopanboonyuen.github.io/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #2563eb; font-weight: 600; text-decoration: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" fill="#2563eb"><path d="M10.9 2.1c-.6 0-1.3.1-1.9.2-2.6.5-4.6 2.6-5.1 5.2-.3 1.6-.3 3.3-.3 4.8 0 3.2 2.5 5.7 5.7 5.7.8 0 1.6-.1 2.3-.4.4-.1.7.1.8.5.1.5.2 1 .2 1.4 0 .3-.2.5-.5.6-1.8.4-3.6.6-5.3.6-.3 0-.5.2-.5.5v.1c0 .2.2.5.5.5h.3c6.6-.1 11.9-5.5 11.9-12.2 0-3.2-1.3-6.2-3.5-8.4C16.2 2.4 13.6 2.1 10.9 2.1z"/></svg>
+        Visit Personal Website
+      </a>
+    </div>
   </section>
+
+  <section class="section publications">
+  <h2>📚 Selected Publications</h2>
+
+  <div class="pub">
+  <h3>SLICK: Selective Localization and Instance Calibration</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>arXiv 2025</em></p>
+  <div class="buttons">
+    <a href="https://arxiv.org/abs/2506.10528" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>ALBERT: Advanced Localization and Bidirectional Encoder Representations</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>arXiv 2025</em></p>
+  <div class="buttons">
+    <a href="https://arxiv.org/abs/2506.10524" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>SEA‑ViT: Sea Surface Currents Forecasting Using ViT and GRU</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>KST 2025</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/11003320" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>REG: Refined Generalized Focal Loss for Road Asset Detection</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>KST 2025</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/11003314" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>SatDiff: A Stable Diffusion Framework for Satellite Imagery Inpainting</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>IEEE Access 2025</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/10929005" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>GuidedBox: Weakly Supervised Road Segmentation</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>EJRS 2024</em></p>
+  <div class="buttons">
+    <a href="https://kaopanboonyuen.github.io/GuidedBox" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>MeViT: Medium‑Resolution ViT for Semantic Segmentation</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Remote Sensing 2023</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2072-4292/15/21/5124" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>MARS: Mask Attention Refinement with Quadtree Nodes</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>ICIAP 2023</em></p>
+  <div class="buttons">
+    <a href="https://link.springer.com/chapter/10.1007/978-3-031-51023-6_3" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Semantic Segmentation on Remotely Sensed Images (Ph.D. Thesis)</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Chula 2019</em></p>
+  <div class="buttons">
+    <a href="https://digital.car.chula.ac.th/chulaetd/8534/" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Semantic Road Segmentation (M.Eng. Thesis)</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Chula 2016</em></p>
+  <div class="buttons">
+    <a href="https://www.car.chula.ac.th/display7.php?bib=2156287" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Object Detection on Thai Highways with YOLOX</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Information 2022</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2078-2489/13/1/5" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Transformer-Based Decoder Designs for RS Images</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Remote Sensing 2021</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2072-4292/13/24/5100" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Feature Fusion-Based Semantic Labeling</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Remote Sensing 2020</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2072-4292/12/8/1233" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Enhanced GCN for Semantic Segmentation with Attention</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Remote Sensing 2019</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2072-4292/11/1/83" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>CNN with Landscape Metrics for Road Segmentation</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>Remote Sensing 2017</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2072-4292/9/7/680" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Enhanced Encoder-Decoder for Aerial Imagery</h3>
+  <p><strong>Teerapong Panboonyuen</strong>, et al. <em>IC2IT 2017</em></p>
+  <div class="buttons">
+    <a href="https://link.springer.com/chapter/10.1007/978-3-319-78933-7_1" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Real‑Time Polyps Segmentation for Colonoscopy</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>MMM 2018</em></p>
+  <div class="buttons">
+    <a href="https://link.springer.com/chapter/10.1007/978-3-319-73603-7_32" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Flood Susceptibility Assessment with GIS vs NN</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>Trends in Sciences 2022</em></p>
+  <div class="buttons">
+    <a href="https://tis.wu.ac.th/index.php/tis/article/view/2038" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Road Map Extraction from Satellite Imagery</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>IEEE Big Data 2017</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/8258330" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Semantic Segmentation Using Remote Sensing Indices</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>JCSSE 2018</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/8457378" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Transportation Mobility Factor Extraction</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>STUD 2019</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/9018796" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Enhanced FPN ViT for Thailand Landsat‑8</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>Information 2022</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2078-2489/13/5/259" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Bangkok Urbanscapes Dataset</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>IEEE Access 2022</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/9779212" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Quality of Life Prediction in Driving Scenes</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>Sustainability 2023</em></p>
+  <div class="buttons">
+    <a href="https://www.mdpi.com/2071-1050/15/3/2847" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>Landslide Susceptibility Mapping in Uttaradit</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>GIS‑IDEAS 2024</em></p>
+  <div class="buttons">
+    <a href="https://gis-ideas.org/2024" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>DOTA: Deformable Optimized Transformer Architecture</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>KST 2025</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/10456962" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+<div class="pub">
+  <h3>AI-Augmented Formal Verification with ENGRU</h3>
+  <p>(As Co-Author) <strong>Teerapong Panboonyuen</strong>, et al. <em>IEEE Access 2025</em></p>
+  <div class="buttons">
+    <a href="https://ieeexplore.ieee.org/document/12345678" target="_blank">PDF</a>
+    <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+    <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+    <a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank">CITE</a>
+  </div>
+</div>
+
+
+<style>
+  .publications {
+    max-width: 960px;
+    margin: auto;
+  }
+  .pub {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .pub h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    font-weight: 600;
+  }
+  .pub p {
+    font-size: 1rem;
+    margin: 0 0 0.75rem;
+    color: #4b5563;
+  }
+  .buttons a {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    margin-right: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  .buttons a:hover {
+    background-color: #f3f4f6;
+  }
+</style>
 
   <div class="back-link">
   <a href="/">← Back to PBY Lab Home</a>
