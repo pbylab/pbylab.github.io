@@ -44,8 +44,8 @@ Coming soon — Stay tuned for:
 Interested in contributing, collaborating, or co-authoring research?  
 Feel free to open an issue, submit a pull request, or reach out directly.
 
-📫 Contact: [Your Email]  
-🌐 Website: [Your Lab Website or Personal Site] *(optional)*
+📫 Contact: [pbylab@gmail.com]  
+🌐 Website: [https://pbylab.github.io/] *([optional](https://pbylab.github.io/))*
 
 ---
 
@@ -60,8 +60,7 @@ Please see the [LICENSE](./LICENSE) file for details.
 
 Follow our journey to build AI that *sees more* and *serves better*:
 
-- 🔗 [GitHub Profile](https://github.com/your-lab-org)  
-- 🧪 [LinkedIn / ResearchGate / Lab Page] *(add links here)*  
+- 🔗 [GitHub Profile](https://github.com/pbylab)  
 - 📄 [Publications & Papers – coming soon]*
 
 ---
