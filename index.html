@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PBY Lab - Perception-Based Yonder</title>
+
+  <!-- Favicon with tree emoji SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2224%22 font-size=%2232%22>🌳</text></svg>" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background-color: #f9fafb;
+    }
+    header {
+      background-color: #0f172a;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.25rem;
+      color: #cbd5e1;
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile img {
+      width: 320px;
+      max-width: 100%;
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+    .profile img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+    .profile-info {
+      flex: 1;
+      min-width: 280px;
+      max-width: 600px;
+    }
+    .profile-info h3 {
+      margin: 0 0 1rem;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #2563eb;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .profile-info h3:hover {
+      color: #1d4ed8;
+    }
+    .publications ul {
+      list-style: none;
+      padding: 0;
+    }
+    .publications li {
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌳 PBY Laboratory</h1>
+    <p>Perception-Based Yonder — Exploring AI for a Better World Beyond Today</p>
+  </header>
+
+<section class="section">
+  <h2>👤 Lab Head</h2>
+  <div class="profile">
+    <img src="img/Kao_v5_Colour.jpg" alt="Dr. Teerapong Panboonyuen" />
+    <div class="profile-info">
+      <h3 
+        style="color: black; cursor: pointer; text-decoration: none;" 
+        onclick="window.location.href='kao.html'" 
+        onmouseover="this.style.textDecoration='none'" 
+        onmouseout="this.style.textDecoration='none'">
+        ธีรพงศ์ ปานบุญยืน (ดร.เก้า)
+      </h3>
+      <p>Ph.D. in Computer Engineering, Chulalongkorn University</p>
+      <p style="text-align: justify;">
+        ดร.เก้า ปัจจุบันดำรงตำแหน่งนักวิจัยปัญญาประดิษฐ์ ณ MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory) 
+        และได้รับทุนปริญญาหลังปริญญาเอกระดับศักยภาพสูง (Track A) จากโครงการ The Second Century Fund (C2F) ของจุฬาลงกรณ์มหาวิทยาลัย  
+        ผลงานวิจัยของท่านมุ่งเน้นไปที่การเรียนรู้เชิงแทนความหมาย (Representation Learning), ทฤษฎีการหาค่าที่เหมาะสมที่สุด (Optimization Theory) 
+        และการเรียนรู้แบบไร้ผู้สอน (Self-Supervised Learning) โดยมีความเชี่ยวชาญพิเศษในสาขา Computer Vision, Geospatial Intelligence 
+        และ Human-AI Interaction ซึ่งกำลังเปลี่ยนโฉมหน้าของเทคโนโลยีสมัยใหม่
+      </p>
+
+      <!-- GitHub-style link under profile -->
+      <div style="margin-top: 1rem;">
+        <a href="https://kaopanboonyuen.github.io/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #2563eb; font-weight: 600; text-decoration: none;">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" fill="#2563eb"><path d="M10.9 2.1c-.6 0-1.3.1-1.9.2-2.6.5-4.6 2.6-5.1 5.2-.3 1.6-.3 3.3-.3 4.8 0 3.2 2.5 5.7 5.7 5.7.8 0 1.6-.1 2.3-.4.4-.1.7.1.8.5.1.5.2 1 .2 1.4 0 .3-.2.5-.5.6-1.8.4-3.6.6-5.3.6-.3 0-.5.2-.5.5v.1c0 .2.2.5.5.5h.3c6.6-.1 11.9-5.5 11.9-12.2 0-3.2-1.3-6.2-3.5-8.4C16.2 2.4 13.6 2.1 10.9 2.1z"/></svg>
+          Visit Personal Website
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="section publications">
+    <h2>📚 Selected Publications</h2>
+    <p><a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank"><strong>Google Scholar Profile</strong></a></p>
+    <ul>
+      <!-- Put your publication list here as before -->
+      <li><a href="https://arxiv.org/abs/2506.10528">SLICK: Selective Localization and Instance Calibration for Knowledge-Enhanced Car Damage Segmentation</a> (2025)</li>
+      <li><a href="https://arxiv.org/abs/2506.10524">ALBERT: Advanced Localization and Bidirectional Encoder Representations from Transformers</a> (2025)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/11003320">SEA-ViT: Sea Surface Currents Forecasting Using ViT and GRU</a> (KST2025)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/11003314">REG: Refined Generalized Focal Loss for Road Asset Detection</a> (KST2025)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/10929005">SatDiff: A Stable Diffusion Framework for Satellite Imagery Inpainting</a> (IEEE Access 2025)</li>
+      <li><a href="https://kaopanboonyuen.github.io/GuidedBox">GuidedBox: Weakly Supervised Road Segmentation</a> (EJRS 2024)</li>
+      <li><a href="https://www.mdpi.com/2072-4292/15/21/5124">MeViT: Medium-Resolution ViT for Semantic Segmentation</a> (Remote Sensing 2023)</li>
+      <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-51023-6_3">MARS: Mask Attention Refinement with Quadtree Nodes</a> (ICIAP 2023)</li>
+      <li><a href="https://digital.car.chula.ac.th/chulaetd/8534/">Ph.D. Thesis: Semantic Segmentation on Remotely Sensed Images</a> (Chula 2019)</li>
+      <li><a href="https://www.car.chula.ac.th/display7.php?bib=2156287">M.Eng. Thesis: Semantic Road Segmentation</a> (Chula 2016)</li>
+      <li><a href="https://www.mdpi.com/2078-2489/13/1/5">Object Detection on Thai Highways with YOLOX</a> (Information 2022)</li>
+      <li><a href="https://www.mdpi.com/2072-4292/13/24/5100">Transformer-Based Decoder Designs for RS Images</a> (Remote Sensing 2021)</li>
+      <li><a href="https://www.mdpi.com/2072-4292/12/8/1233">Feature Fusion-Based Semantic Labeling</a> (Remote Sensing 2020)</li>
+      <li><a href="https://www.mdpi.com/2072-4292/11/1/83">Enhanced GCN for Semantic Segmentation with Attention</a> (Remote Sensing 2019)</li>
+      <li><a href="https://www.mdpi.com/2072-4292/9/7/680">CNN with Landscape Metrics for Road Segmentation</a> (Remote Sensing 2017)</li>
+      <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-78933-7_1">Enhanced Encoder-Decoder for Aerial Imagery</a> (IC2IT 2017)</li>
+      <li><a href="https://link.springer.com/chapter/10.1007/978-3-319-73603-7_32">Real-Time Polyps Segmentation for Colonoscopy</a> (MMM 2018)</li>
+      <li><a href="https://tis.wu.ac.th/index.php/tis/article/view/2038">Flood Susceptibility Assessment with GIS vs NN</a> (Trends in Sciences 2022)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/8258330">Road Map Extraction from Satellite Imagery</a> (IEEE Big Data 2017)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/8457378">Semantic Segmentation Using Remote Sensing Indices</a> (JCSSE 2018)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/9018796">Transportation Mobility Factor Extraction</a> (STUD 2019)</li>
+      <li><a href="https://www.mdpi.com/2078-2489/13/5/259">Enhanced FPN ViT for Thailand Landsat-8</a> (Information 2022)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/9779212">Bangkok Urbanscapes Dataset</a> (IEEE Access 2022)</li>
+      <li><a href="https://www.mdpi.com/2071-1050/15/3/2847">Quality of Life Prediction in Driving Scenes</a> (Sustainability 2023)</li>
+      <li><a href="https://gis-ideas.org/2024">Landslide Susceptibility Mapping in Uttaradit</a> (GIS-IDEAS 2024)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/10456962">DOTA: Deformable Optimized Transformer Architecture</a> (KST 2025)</li>
+      <li><a href="https://ieeexplore.ieee.org/document/12345678">AI-Augmented Formal Verification with ENGRU</a> (IEEE Access 2025)</li>
+      <!-- add others here -->
+    </ul>
+  </section>
+
+  <footer class="section" style="text-align: center; font-size: 0.9rem; color: #6b7280">
+    &copy; 2025 PBY Lab — Perception-Based Yonder. All rights reserved.
+  </footer>
+</body>
+</html>
