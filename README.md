@@ -44,8 +44,8 @@ Coming soon — Stay tuned for:
 Interested in contributing, collaborating, or co-authoring research?  
 Feel free to open an issue, submit a pull request, or reach out directly.
 
-📫 Contact: [pbylab@gmail.com]  
-🌐 Website: [https://pbylab.github.io/] *([optional](https://pbylab.github.io/))*
+📫 Contact: pbylab@gmail.com
+🌐 Website: https://pbylab.github.io/
 
 ---
 
