@@ -1,80 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PBY Lab - Perception-Based Yonder</title>
-
-  <!-- Favicon with tree emoji SVG -->
+  <title>Teerapong Panboonyuen — PBY Lab</title>
+  
+  <!-- Favicon with tree emoji -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2224%22 font-size=%2232%22>🌳</text></svg>" />
-
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: #1f2937;
       background-color: #f9fafb;
+      color: #1f2937;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2rem;
     }
     header {
-      background-color: #0f172a;
-      color: white;
-      padding: 3rem 2rem;
       text-align: center;
+      margin-bottom: 2rem;
     }
     header h1 {
+      color: black;
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.2rem;
     }
     header p {
-      font-size: 1.25rem;
-      color: #cbd5e1;
+      font-size: 1.2rem;
+      color: #4b5563;
     }
-    .section {
-      padding: 3rem 2rem;
-      max-width: 960px;
-      margin: auto;
-    }
-    .profile {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-      justify-content: center;
-    }
-    .profile img {
+    .profile-pic {
+      display: block;
+      margin: 0 auto 2rem;
       width: 320px;
-      max-width: 100%;
       border-radius: 1.5rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
       transition: transform 0.3s ease;
     }
-    .profile img:hover {
+    .profile-pic:hover {
       transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     }
-    .profile-info {
-      flex: 1;
-      min-width: 280px;
-      max-width: 600px;
+    section {
+      margin-bottom: 2rem;
     }
-    .profile-info h3 {
-      margin: 0 0 1rem;
-      font-weight: 700;
-      font-size: 1.75rem;
-      color: #2563eb;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-    .profile-info h3:hover {
-      color: #1d4ed8;
-    }
-    .publications ul {
-      list-style: none;
-      padding: 0;
-    }
-    .publications li {
+    h2 {
+      color: #0f172a;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 0.5rem;
       margin-bottom: 1rem;
     }
     a {
@@ -84,34 +59,36 @@
     a:hover {
       text-decoration: underline;
     }
+    .back-link {
+      text-align: center;
+      margin-top: 3rem;
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>🌳 PBY Laboratory</h1>
-    <p>Perception-Based Yonder — Exploring AI for a Better World Beyond Today</p>
+    <h1>ธีรพงศ์ ปานบุญยืน (ดร.เก้า)</h1>
+    <p>Ph.D. in Computer Engineering, Chulalongkorn University</p>
   </header>
 
-<section class="section">
-  <h2>👤 Lab Head</h2>
-  <div class="profile">
-    <img src="img/Kao_v5_Colour.jpg" alt="Dr. Teerapong Panboonyuen" />
-    <div class="profile-info">
-      <h3 
-        style="color: black; cursor: pointer; text-decoration: none;" 
-        onclick="window.location.href='KAO/'" 
-        onmouseover="this.style.textDecoration='none'" 
-        onmouseout="this.style.textDecoration='none'">
-        ธีรพงศ์ ปานบุญยืน (ดร.เก้า)
-      </h3>
-      <p>Ph.D. in Computer Engineering, Chulalongkorn University</p>
-      <p style="text-align: justify;">
-        ดร.เก้า ปัจจุบันดำรงตำแหน่งนักวิจัยปัญญาประดิษฐ์ ณ MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory) 
-        และได้รับทุนปริญญาหลังปริญญาเอกระดับศักยภาพสูง (Track A) จากโครงการ The Second Century Fund (C2F) ของจุฬาลงกรณ์มหาวิทยาลัย  
-        ผลงานวิจัยของท่านมุ่งเน้นไปที่การเรียนรู้เชิงแทนความหมาย (Representation Learning), ทฤษฎีการหาค่าที่เหมาะสมที่สุด (Optimization Theory) 
-        และการเรียนรู้แบบไร้ผู้สอน (Self-Supervised Learning) โดยมีความเชี่ยวชาญพิเศษในสาขา Computer Vision, Geospatial Intelligence 
-        และ Human-AI Interaction ซึ่งกำลังเปลี่ยนโฉมหน้าของเทคโนโลยีสมัยใหม่
-      </p>
+  <img src="../img/Kao_v5_Colour.jpg" alt="Dr. Teerapong Panboonyuen" class="profile-pic" />
+
+
+<section>
+  <h2>Biography</h2>
+  <p style="text-align: justify;">
+    ดร.ธีรพงศ์ ปานบุญยืน หรือที่รู้จักกันในชื่อ “ดร.เก้า” เป็นนักวิจัยผู้มีความเชี่ยวชาญด้านปัญญาประดิษฐ์ โดยปัจจุบันดำรงตำแหน่งนักวิจัยหลัก ณ MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory) ซึ่งเป็นห้องปฏิบัติการวิจัยแนวหน้าที่บูรณาการเทคโนโลยี AI กับอุตสาหกรรมยานยนต์<br /><br />
+
+    นอกจากนี้ ดร.เก้ายังได้รับการสนับสนุนทุนระดับสูงสุดจากโครงการ The Second Century Fund (C2F) ใน Track A สำหรับนักวิจัยหลังปริญญาเอกศักยภาพสูง ของจุฬาลงกรณ์มหาวิทยาลัย เพื่อสนับสนุนการวิจัยที่มีอิทธิพลและสร้างผลกระทบต่อวงการเทคโนโลยี AI/ML ในระดับโลก และเป็นหนึ่งในนักวิจัยไทยที่ได้รับพระมหากรุณาธิคุณรับพระราชทานทุน Global Young Scientists Summit (GYSS) ประจำปี 2025 จากสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ<br /><br />
+
+    <!-- งานวิจัยของ ดร.เก้า ครอบคลุมหลากหลายมิติของ AI โดยเฉพาะการเรียนรู้เชิงแทนความหมาย (Representation Learning), ทฤษฎีการหาค่าที่เหมาะสมที่สุด (Optimization Theory), และการเรียนรู้แบบไร้ผู้สอน (Self-Supervised Learning)<br /><br /> -->
+
+    ดร.เก้ามีความเชี่ยวชาญลึกซึ้งในสาขา Computer Vision ที่ประยุกต์ใช้กับการรู้จำวัตถุ ซีน และความเข้าใจเชิงความหมายของภาพ รวมถึง Geospatial Intelligence ที่วิเคราะห์ข้อมูลจากดาวเทียมและภาพถ่ายทางอากาศเพื่อสนับสนุนการตัดสินใจเชิงพื้นที่  
+    อีกทั้งยังให้ความสำคัญกับ Human-AI Interaction ซึ่งเป็นหัวใจสำคัญของการสร้างเทคโนโลยีที่เข้าใจและสื่อสารกับมนุษย์ได้อย่างมีประสิทธิภาพ ด้วยผลงานที่โดดเด่นและวิสัยทัศน์เชิงลึกในอนาคตของ AI ดร.เก้าจึงเป็นหนึ่งในนักวิจัยรุ่นใหม่ที่ได้รับการจับตามองอย่างยิ่งในวงการวิทยาการคอมพิวเตอร์ระดับสากล
+  </p>
+
+
 
       <!-- GitHub-style link under profile -->
       <div style="margin-top: 1rem;">
@@ -121,19 +98,13 @@
         </a>
       </div>
 
-    </div>
-  </div>
-</section>
+  </section>
 
-
-
-  <section class="section publications">
-    <h2>📚 Selected Publications</h2>
-    <p><a href="https://scholar.google.co.th/citations?user=myy0qDgAAAAJ&hl=en" target="_blank"><strong>Google Scholar Profile</strong></a></p>
+  <section>
+    <h2>Selected Publications</h2>
     <ul>
-      <!-- Put your publication list here as before -->
-      <li><a href="https://arxiv.org/abs/2506.10528">SLICK: Selective Localization and Instance Calibration for Knowledge-Enhanced Car Damage Segmentation</a> (2025)</li>
-      <li><a href="https://arxiv.org/abs/2506.10524">ALBERT: Advanced Localization and Bidirectional Encoder Representations from Transformers</a> (2025)</li>
+      <li><a href="https://arxiv.org/abs/2506.10528">SLICK: Selective Localization and Instance Calibration</a> (2025)</li>
+      <li><a href="https://arxiv.org/abs/2506.10524">ALBERT: Advanced Localization and Bidirectional Encoder Representations</a> (2025)</li>
       <li><a href="https://ieeexplore.ieee.org/document/11003320">SEA-ViT: Sea Surface Currents Forecasting Using ViT and GRU</a> (KST2025)</li>
       <li><a href="https://ieeexplore.ieee.org/document/11003314">REG: Refined Generalized Focal Loss for Road Asset Detection</a> (KST2025)</li>
       <li><a href="https://ieeexplore.ieee.org/document/10929005">SatDiff: A Stable Diffusion Framework for Satellite Imagery Inpainting</a> (IEEE Access 2025)</li>
@@ -159,12 +130,13 @@
       <li><a href="https://gis-ideas.org/2024">Landslide Susceptibility Mapping in Uttaradit</a> (GIS-IDEAS 2024)</li>
       <li><a href="https://ieeexplore.ieee.org/document/10456962">DOTA: Deformable Optimized Transformer Architecture</a> (KST 2025)</li>
       <li><a href="https://ieeexplore.ieee.org/document/12345678">AI-Augmented Formal Verification with ENGRU</a> (IEEE Access 2025)</li>
-      <!-- add others here -->
+      <!-- Add more pubs as you want -->
     </ul>
   </section>
 
-  <footer class="section" style="text-align: center; font-size: 0.9rem; color: #6b7280">
-    &copy; 2025 PBY Lab — Perception-Based Yonder. All rights reserved.
-  </footer>
+  <div class="back-link">
+  <a href="/">← Back to PBY Lab Home</a>
+</div>
+
 </body>
 </html>
