@@ -96,7 +96,8 @@
 
 
 
-<section class="section" style="max-width: 900px; margin: 2rem auto; padding: 1rem;">
+
+  <section class="section" style="max-width: 900px; margin: 2rem auto; padding: 1rem;">
   <!-- Language toggle button -->
   <div style="text-align: right; margin-bottom: 1.5rem;">
     <button 
@@ -122,25 +123,24 @@
 
   <h2 style="font-weight: 800; font-size: 2.2rem; margin-bottom: 2rem; color: #111;">👤 Lab Head</h2>
 
-  <div style="display: flex; gap: 3rem; align-items: center;">
+  <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;">
     <!-- Fixed size image on left -->
     <img 
-  src="img/KAO_PANBOONYUEN.jpg" 
-  alt="Dr. Teerapong Panboonyuen" 
-  style="
-    width: 320px; 
-    height: 320px; 
-    object-fit: cover; 
-    border-radius: 20px; 
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-    flex-shrink: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
-  "
-  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 18px 36px rgba(0, 0, 0, 0.18)';"
-  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.12)';"
-/>
-
+      src="img/KAO_PANBOONYUEN.jpg" 
+      alt="Dr. Teerapong Panboonyuen" 
+      style="
+        width: 320px; 
+        height: 320px; 
+        object-fit: cover; 
+        border-radius: 20px; 
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        flex-shrink: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: default;
+      "
+      onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 18px 36px rgba(0, 0, 0, 0.18)';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 12px 24px rgba(0, 0, 0, 0.12)';"
+    />
 
     <!-- Text container -->
     <div style="flex: 1; min-width: 0;">
@@ -237,6 +237,51 @@
     }
   }
 </script>
+
+<style>
+  /* Responsive styles for small screens */
+  @media screen and (max-width: 768px) {
+    .section {
+      padding: 1rem;
+    }
+
+    /* Stack image above text on mobile */
+    .section > div {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    /* Adjust image size and margins for mobile */
+    .section img {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Adjust text container for mobile */
+    .section div {
+      padding: 0;
+    }
+
+    /* Reduce font sizes for mobile */
+    .section h2 {
+      font-size: 1.8rem;
+    }
+
+    .section h3 {
+      font-size: 1.4rem;
+    }
+
+    .section p {
+      font-size: 0.95rem;
+    }
+
+    .section a {
+      font-size: 1rem;
+    }
+  }
+</style>
+
 
 
 
