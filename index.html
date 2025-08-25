@@ -201,6 +201,8 @@
 }
 
 
+
+
 .spotlight {
   background: #fff;
   padding: 4rem 2rem;
@@ -216,16 +218,18 @@
   align-items: center;
 }
 
+/* Media (Image) styling */
 .spotlight-media img {
   width: 100%;
   border-radius: 0.8rem;
   border: 1px solid var(--border);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
+/* Title styling */
 .spotlight-info h2 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-bottom: 0.6rem;
   color: #111;
 }
@@ -236,6 +240,7 @@
   margin-bottom: 0.8rem;
 }
 
+/* Metadata (Author, Date, etc.) */
 .spotlight-info .meta {
   font-size: 0.9rem;
   color: var(--muted);
@@ -249,6 +254,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* CTA (Call to Action) Buttons */
 .cta a {
   display: inline-block;
   margin-right: 0.8rem;
@@ -260,12 +266,70 @@
   text-decoration: none;
   color: var(--text);
   transition: all 0.2s ease;
+  max-width: 100%; /* Prevent overflow */
+  width: auto; /* Let the button resize dynamically */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .cta a:hover {
   background: var(--text);
   color: #fff;
 }
+
+/* Mobile-first: Make adjustments for smaller screens (mobile/tablet) */
+@media (max-width: 768px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr; /* Stack the content for mobile */
+    padding: 2rem 1rem; /* Reduce padding for mobile */
+  }
+
+  .spotlight-media img {
+    max-width: 100%;
+  }
+
+  .spotlight-info h2 {
+    font-size: 1.5rem; /* Smaller title for mobile */
+  }
+
+  .spotlight-info h3 {
+    font-size: 1.1rem; /* Adjust heading size */
+  }
+
+  .spotlight-info .meta {
+    font-size: 0.85rem; /* Adjust metadata size */
+  }
+
+  .spotlight-info .abstract {
+    font-size: 0.95rem; /* Adjust abstract font size */
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column; /* Stack buttons for mobile */
+    gap: 1rem;
+  }
+
+  .cta a {
+    width: 100%; /* Make buttons full-width on mobile */
+    padding: 0.8rem 1.5rem; /* Larger buttons on mobile */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+    margin: 0 auto; /* Center the buttons */
+  }
+}
+
+/* Desktop-specific adjustments for better view */
+@media (min-width: 769px) {
+  .cta a {
+    width: auto; /* Buttons back to default width for desktop */
+    margin-bottom: 0.6rem;
+  }
+}
+
+
+
+
+
+
 
 
 .hero {
@@ -336,68 +400,105 @@
   transform: scale(1.05);
 } */
 
-.bio-header h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+
+/* Bio Section - Adjusted Padding and Margin */
+.bio-section {
+  padding: 2rem;
 }
 
-.bio-header .title {
-  font-size: 1rem;
-  color: #666;
-  margin: 0.2rem 0;
+/* Bio Header - Adjust the spacing around the header */
+.bio-header {
+  margin-bottom: 2rem; /* Extra space below the bio header */
 }
 
-.bio-content h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: #222;
-  font-weight: 600;
+/* Bio Content Section - Removed Shadow */
+.bio-content {
+  background-color: #fff; /* White background */
+  border-radius: 10px;
+  padding: 2rem; /* Padding inside bio content */
+  border: 1px solid #e0e0e0; /* Light border */
+  max-width: 100%; /* Prevent overflow */
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-bottom: 3rem; /* Added margin at the bottom for spacing */
 }
 
-.bio-content p {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: #333;
-  margin-bottom: 1.2rem;
-}
-
-.bio-content p {
-  text-align: justify; /* Justify the biography text */
-}
-
-.bio-content hr {
-  margin: 2.5rem 0;
-  border: none;
-  border-top: 1px solid #eee;
-}
-
+/* Add extra margin-top for button wrapper to create space */
 .button-wrapper {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem; /* More space between button and bio content */
 }
 
+/* Adjust bio-button appearance */
 .bio-button {
   display: inline-block;
   padding: 0.9rem 2rem;
-  background: #111; /* deep black */
+  background: #111; /* Deep background color */
   color: #fff;
   border: 2px solid #111;
   border-radius: 40px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
+/* Hover effect for bio button */
 .bio-button:hover {
   background: #fff;
   color: #111;
   border-color: #111;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
+
+/* Add space after bio text */
+.bio-content p:last-child {
+  margin-bottom: 3rem; /* Adjust this value for more space before the button */
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust bio content padding and margin */
+  .bio-content {
+    padding: 1rem; /* Decrease padding for mobile */
+  }
+
+  /* Heading sizes for mobile */
+  .bio-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .bio-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .bio-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Button size adjustments for mobile */
+  .bio-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Ensure hr does not break layout on mobile */
+  .bio-content hr {
+    margin: 2rem 0;
+  }
+}
+
+/* Prevent Horizontal Scrolling */
+body {
+  overflow-x: hidden;
+}
+
+
+
 
 
 .game-section {
@@ -470,6 +571,20 @@
   .game-card h2 {
     font-size: 1.35rem;
   }
+
+  .separator {
+  border: 0;
+  border-top: 2px solid var(--border); /* You can customize the thickness and color */
+  margin: 1.5rem 0; /* Adds space around the separator */
+}
+
+  
+.button-wrapper a {
+  display: block; /* Makes each button take up a full line */
+  margin-bottom: 1rem; /* Adds space between buttons */
+}
+
+
 }
 
 
@@ -479,10 +594,14 @@
 
 <header class="hero">
   <h1 style="font-size: 4rem;">🦒 PBY.LAB</h1>
-  <p class="tagline">Perception-Based Yonder Laboratory — Research in AI, Vision & Human-AI Collaboration</p>
-  <p class="founder">Lead Researcher & Founder — <strong>Teerapong Panboonyuen</strong></p>
+  <p class="tagline">
+    <strong style="color: black;">P</strong>AN<strong style="color: black;">B</strong>OON<strong style="color: black;">Y</strong>UEN Laboratory <br />
+    <!-- Research in AI, Vision & Human-AI Collaboration -->
+  </p>
+  <p class="founder"><strong>Teerapong Panboonyuen</strong></p>
   <img src="img/GuidedBox_featured.png" alt="PBY Lab Showcase" class="hero-img" />
 </header>
+
 
 
 
@@ -498,12 +617,20 @@
     <!-- Right: Metadata + Abstract -->
     <div class="spotlight-info">
       <h2>🚀 Spotlight Highlight</h2>
+
+      <hr class="separator">
+
       <h3>GuidedBox: a segmentation-guided box teacher-student approach for weakly supervised road segmentation</h3>
       
+      <hr class="separator">
+
       <p class="meta">
         <strong>Teerapong Panboonyuen</strong><br>
-        Published in <strong>European Journal of Remote Sensing 2025</strong>
+        Published in <strong>European Journal of Remote Sensing 2025</strong><br>
+        <span class="publisher">Published by <strong>Taylor & Francis</strong></span>
       </p>
+      
+      <hr class="separator">
       
       <p class="abstract">
         Road segmentation in remote sensing is vital for urban planning, traffic monitoring, and autonomous driving. 
@@ -526,6 +653,7 @@
 
 
 
+
 <section class="bio-section">
 
   <div class="bio-header">
@@ -536,15 +664,6 @@
     <p class="title">Lead Researcher & Founder, <strong>PBY.LAB</strong></p>
   </div>
 
-  <!-- Website + CV Buttons -->
-  <div class="button-wrapper">
-    <a href="https://kaopanboonyuen.github.io/" target="_blank" class="bio-button">
-      Visit Personal Website
-    </a>
-    <a href="https://kaopanboonyuen.github.io/files/panboonyuen_cv.pdf" target="_blank" class="bio-button">
-      View CV
-    </a>
-  </div>
 
 
   <div class="bio-content">
@@ -608,7 +727,23 @@
       Dr. Kao is recognized as a <strong>rising figure in the international AI research community</strong>.
     </p>
   </div>
+
+
+    <!-- Website + CV Buttons -->
+  <div class="button-wrapper">
+    <a href="https://kaopanboonyuen.github.io/" target="_blank" class="bio-button">
+      Visit Personal Website
+    </a>
+    <a href="https://kaopanboonyuen.github.io/files/panboonyuen_cv.pdf" target="_blank" class="bio-button">
+      View CV
+    </a>
+  </div>
+
+
+
 </section>
+
+
 
 
 <!-- Game Invite Section -->
@@ -656,7 +791,7 @@
 
 
   <footer>
-    <p>© 2025 PBY.LAB — Teerapong Panboonyuen (Kao) | ธีรพงศ์ ปานบุญยืน (เก้า)</p>
+    <p>© 2025 PBY.LAB — Kao Panboonyuen</p>
   </footer>
 
 </body>
