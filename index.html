@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <title>PBY.LAB @ CVPR 2025</title> -->
+    <title>PBY.LAB</title>
+
+  <!-- Emoji favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2224%22 font-size=%2232%22>🦒</text></svg>" />
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PBY.LAB",
+  "url": "https://pbylab.github.io/",
+  "logo": "https://pbylab.github.io/img/pbylab_logo.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "ธีรพงศ์ ปานบุญยืน (Teerapong Panboonyuen)",
+  "alternateName": "ดร.เก้า",
+  "jobTitle": "Lead Researcher & Founder",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "PBY.LAB",
+    "url": "https://pbylab.github.io/"
+  },
+  "url": "https://pbylab.github.io/",
+  "image": "https://pbylab.github.io/img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน_ITALY.jpg",
+  "sameAs": [
+    "https://kaopanboonyuen.github.io/",
+    "https://scholar.google.com/citations?user=myy0qDgAAAAJ",
+    "https://github.com/kaopanboonyuen",
+    "https://www.linkedin.com/in/teerapong-panboonyuen/"
+  ]
+}
+</script>
+
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e5e7eb;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      margin-top: 0.6rem;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-img {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .pub-list {
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      overflow: hidden;
+    }
+
+    .pub {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub:last-child {
+      border-bottom: none;
+    }
+
+    .pub strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub a {
+      margin-right: 1rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid transparent;
+    }
+
+    .pub a:hover {
+      border-color: var(--text);
+    }
+
+    .team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+.member {
+  text-align: center;
+  max-width: 300px;   /* กรอบกว้างขึ้น */
+  padding: 1rem;
+}
+
+.member img {
+  width: 200px;       /* รูปใหญ่ขึ้นตามกรอบ */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  margin-bottom: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.member img:hover {
+  transform: scale(1.07);
+}
+
+.member h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.member p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0.25rem 0;
+}
+
+
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .member-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.member {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-color: #ccc;
+}
+
+
+.spotlight {
+  background: #fff;
+  padding: 4rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.spotlight-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.spotlight-media img {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.spotlight-info h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  color: #111;
+}
+
+.spotlight-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.spotlight-info .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.spotlight-info .abstract {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.cta a {
+  display: inline-block;
+  margin-right: 0.8rem;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--text);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.cta a:hover {
+  background: var(--text);
+  color: #fff;
+}
+
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 2.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.hero .founder {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1.8rem;
+}
+
+/* .hero-img {
+  max-width: 780px;
+  width: 90%;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+} */
+.bio-section {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: #fff;
+  border-radius: 1.8rem;
+  /* box-shadow: 0 10px 28px rgba(0,0,0,0.08); */
+}
+
+.bio-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bio-photo {
+  width: 300px;       /* size tweakable */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%; /* circular */
+  display: block;
+  margin: 0 auto 1rem;
+  border: none;
+  box-shadow: none;
+  transition: none;   /* no hover transition */
+  transform: none;    /* disable hover transform */
+  cursor: default;    /* no pointer hand */
+}
+
+
+
+/* .bio-photo:hover {
+  transform: scale(1.05);
+} */
+
+.bio-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.bio-header .title {
+  font-size: 1rem;
+  color: #666;
+  margin: 0.2rem 0;
+}
+
+.bio-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.bio-content p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+
+.bio-content p {
+  text-align: justify; /* Justify the biography text */
+}
+
+.bio-content hr {
+  margin: 2.5rem 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.button-wrapper {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.bio-button {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: #111; /* deep black */
+  color: #fff;
+  border: 2px solid #111;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.bio-button:hover {
+  background: #fff;
+  color: #111;
+  border-color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+
+.game-section {
+  max-width: 880px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.game-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.game-emoji {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-card h2 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.game-subtitle {
+  margin: 0.25rem 0 1.25rem;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.game-button {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  background: #111;
+  color: #fff;
+  border: 2px solid #111;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+.game-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17,17,17,0.15);
+}
+
+.game-note {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.game-noscript {
+  margin-top: 1rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .game-card {
+    padding: 1.5rem;
+  }
+  .game-card h2 {
+    font-size: 1.35rem;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 style="font-size: 4rem;">🦒 PBY.LAB</h1>
+  <p class="tagline">Perception-Based Yonder Laboratory — Research in AI, Vision & Human-AI Collaboration</p>
+  <p class="founder">Lead Researcher & Founder — <strong>Teerapong Panboonyuen</strong></p>
+  <img src="img/GuidedBox_featured.png" alt="PBY Lab Showcase" class="hero-img" />
+</header>
+
+
+
+
+<section class="spotlight">
+  <div class="spotlight-grid">
+    
+    <!-- Left: Graphical Abstract -->
+    <div class="spotlight-media">
+      <img src="img/GuidedBox_compact.png" alt="GuidedBox Graphical Abstract">
+    </div>
+
+    <!-- Right: Metadata + Abstract -->
+    <div class="spotlight-info">
+      <h2>🚀 Spotlight Highlight</h2>
+      <h3>GuidedBox: a segmentation-guided box teacher-student approach for weakly supervised road segmentation</h3>
+      
+      <p class="meta">
+        <strong>Teerapong Panboonyuen</strong><br>
+        Article: <code>2540963</code> | Received: 13 May 2024 | Accepted: 24 Jul 2025 | Published Online: 01 Aug 2025
+      </p>
+      
+      <p class="abstract">
+        Road segmentation in remote sensing is vital for urban planning, traffic monitoring, and autonomous driving. 
+        GuidedBox introduces an end-to-end framework leveraging a teacher model to generate pseudo-labels, 
+        with novel noise-aware confidence scoring and pixel loss. 
+        It outperforms state-of-the-art methods on the Massachusetts Roads Dataset (AP50 = <strong>0.9231</strong>) 
+        and shows robustness across SpaceNet and DeepGlobe datasets.
+      </p>
+
+      <div class="cta">
+        <a href="https://www.tandfonline.com/doi/full/10.1080/22797254.2025.2540963" target="_blank">📖 View Article</a>
+        <a href="https://doi.org/10.1080/22797254.2025.2540963" target="_blank">🔗 Cite</a>
+        <!-- <a href="https://www.tandfonline.com/doi/pdf/10.1080/22797254.2025.2540963" target="_blank">📄 PDF</a> -->
+        <a href="https://github.com/kaopanboonyuen/GuidedBox" target="_blank">💻 Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- <section>
+    <h2>📚 Featured Publications</h2>
+    <div class="pub-list">
+<div class="pub">
+  <strong>GuidedBox: A Teacher-Student Approach for Weakly Supervised Segmentation</strong>
+  <span>Teerapong Panboonyuen, et al. <em>European Journal of Remote Sensing 2025</em></span><br>
+  <a href="https://www.tandfonline.com/doi/full/10.1080/22797254.2025.2540963" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen/GuidedBox" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/GuidedBox/" target="_blank">PROJECT</a>
+</div> -->
+
+      <!-- <div class="pub">
+      <strong>CU-ICU: Customizing Instruction-Tuned Language Models for Critical Care</strong>
+      <span>Teerapong Panboonyuen, et al. <em>The 14th Critical Care Conference</em></span><br>
+      <a href="http://arxiv.org/abs/2507.13655" target="_blank">PDF</a>
+      <a href="https://kaopanboonyuen.github.io/blog/2025-07-17-cuicu-customizing-unsupervised-instruction-finetuned-language-models/" target="_blank">BLOG</a>
+      <a href="https://kaopanboonyuen.github.io/files/slides/Panboonyuen_CUICU_TSCCM2025_Slide.pdf" target="_blank">SLIDE</a>
+    </div>
+
+    <div class="pub">
+      <strong>SatDiff: A Stable Diffusion Framework for Satellite Imagery Inpainting</strong>
+      <span>Teerapong Panboonyuen, et al. <em>IEEE Access 2025</em></span><br>
+      <a href="https://ieeexplore.ieee.org/document/10929005" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/SatDiff" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/SatDiff/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>SEA‑ViT: Sea Surface Currents Forecasting Using ViT and GRU</strong>
+      <span>Teerapong Panboonyuen, et al. <em>KST 2025</em></span><br>
+      <a href="https://ieeexplore.ieee.org/document/11003320" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/gistda-ai-sea-surface-currents" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/gistda-ai-sea-surface-currents/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>REG: Refined Generalized Focal Loss for Road Asset Detection</strong>
+      <span>Teerapong Panboonyuen, et al. <em>KST 2025</em></span><br>
+      <a href="https://ieeexplore.ieee.org/document/11003314" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/REG" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/REG/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>SLICK: Selective Localization and Instance Calibration in Automotive Insurance</strong>
+      <span>Teerapong Panboonyuen, et al. <em>arXiv 2025</em></span><br>
+      <a href="https://arxiv.org/abs/2506.10528" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/MARS" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>ALBERT: Advanced Localization and Bidirectional Encoder Representations</strong>
+      <span>Teerapong Panboonyuen, et al. <em>arXiv 2025</em></span><br>
+      <a href="https://arxiv.org/abs/2506.10524" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/MARS" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>MeViT: Medium‑Resolution ViT for Semantic Segmentation</strong>
+      <span>Teerapong Panboonyuen, et al. <em>Remote Sensing 2023</em></span><br>
+      <a href="https://www.mdpi.com/2072-4292/15/21/5124" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/MeViT" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/MeViT/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>MARS: Mask Attention Refinement with Quadtree Nodes</strong>
+      <span>Teerapong Panboonyuen, et al. <em>ICIAP 2023</em></span><br>
+      <a href="https://link.springer.com/chapter/10.1007/978-3-031-51023-6_3" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/MARS" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>Semantic Segmentation on Remotely Sensed Images (Ph.D. Thesis)</strong>
+      <span>Teerapong Panboonyuen, et al. <em>Chula 2019</em></span><br>
+      <a href="https://digital.car.chula.ac.th/chulaetd/8534/" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/files/panboonyuen_phd_defense_2020.pdf" target="_blank">SLIDE</a>
+    </div>
+
+    <div class="pub">
+      <strong>Semantic Road Segmentation (M.Eng. Thesis)</strong>
+      <span>Teerapong Panboonyuen, et al. <em>Chula 2016</em></span><br>
+      <a href="https://www.car.chula.ac.th/display7.php?bib=2156287" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/files/panboonyuen_IC2IT2017_BestPaperAward.pdf" target="_blank">SLIDE</a>
+    </div>
+
+    <div class="pub">
+      <strong>Object Detection on Thai Highways with YOLOX</strong>
+      <span>Teerapong Panboonyuen, et al. <em>Information 2022</em></span><br>
+      <a href="https://www.mdpi.com/2078-2489/13/1/5" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/REG" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/blog/2024-09-07-refined-generalized-focal-loss-for-road-asset-detection-on-thai-highways-using-vision-models/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>Transformer-Based Decoder Designs for RS Images</strong>
+      <span>Teerapong Panboonyuen, et al. <em>Remote Sensing 2021</em></span><br>
+      <a href="https://www.mdpi.com/2072-4292/13/24/5100" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/FusionNetGeoLabel/" target="_blank">PROJECT</a>
+    </div>
+
+    <div class="pub">
+      <strong>Feature Fusion-Based Semantic Labeling</strong>
+      <span>Teerapong Panboonyuen, et al. <em>Remote Sensing 2020</em></span><br>
+      <a href="https://www.mdpi.com/2072-4292/12/8/1233" target="_blank">PDF</a>
+      <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+      <a href="https://kaopanboonyuen.github.io/files/panboonyuen_IC2IT2017_BestPaperAward.pdf" target="_blank">SLIDE</a>
+    </div>
+
+    <div class="pub">
+  <strong>Enhanced GCN for Semantic Segmentation with Attention</strong>
+  <span>Teerapong Panboonyuen, et al. <em>Remote Sensing 2019</em></span><br>
+  <a href="https://www.mdpi.com/2072-4292/11/1/83" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/FusionNetGeoLabel/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>CNN with Landscape Metrics for Road Segmentation</strong>
+  <span>Teerapong Panboonyuen, et al. <em>Remote Sensing 2017</em></span><br>
+  <a href="https://www.mdpi.com/2072-4292/9/7/680" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/FusionNetGeoLabel/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Enhanced Encoder-Decoder for Aerial Imagery</strong>
+  <span>Teerapong Panboonyuen, et al. <em>IC2IT 2017</em></span><br>
+  <a href="https://link.springer.com/chapter/10.1007/978-3-319-78933-7_1" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen/FusionNetGeoLabel" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/FusionNetGeoLabel/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Real‑Time Polyps Segmentation for Colonoscopy</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>MMM 2018</em></span><br>
+  <a href="https://link.springer.com/chapter/10.1007/978-3-319-73603-7_32" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Flood Susceptibility Assessment with GIS vs NN</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>Trends in Sciences 2022</em></span><br>
+  <a href="https://tis.wu.ac.th/index.php/tis/article/view/2038" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Road Map Extraction from Satellite Imagery</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>IEEE Big Data 2017</em></span><br>
+  <a href="https://ieeexplore.ieee.org/document/8258330" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Semantic Segmentation Using Remote Sensing Indices</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>JCSSE 2018</em></span><br>
+  <a href="https://ieeexplore.ieee.org/document/8457378" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Transportation Mobility Factor Extraction</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>STUD 2019</em></span><br>
+  <a href="https://ieeexplore.ieee.org/document/9018796" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Enhanced FPN ViT for Thailand Landsat‑8</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>Information 2022</em></span><br>
+  <a href="https://www.mdpi.com/2078-2489/13/5/259" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Bangkok Urbanscapes Dataset</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>IEEE Access 2022</em></span><br>
+  <a href="https://ieeexplore.ieee.org/document/9779212" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Quality of Life Prediction in Driving Scenes</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>Sustainability 2023</em></span><br>
+  <a href="https://www.mdpi.com/2071-1050/15/3/2847" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Landslide Susceptibility Mapping in Uttaradit</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>GIS‑IDEAS 2024</em></span><br>
+  <a href="https://gis-ideas.org/2024" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>DOTA: Deformable Optimized Transformer Architecture</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>KST 2025</em></span><br>
+  <a href="https://ieeexplore.ieee.org/document/10456962" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>AI-Augmented Formal Verification with ENGRU</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>IEEE Access 2025</em></span><br>
+  <a href="https://ieeexplore.ieee.org/document/12345678" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+<div class="pub">
+  <strong>Investigating the use of AI-derived weighted mean temperature for GPS-PWVs estimation</strong>
+  <span>(As Co-Author) Teerapong Panboonyuen, et al. <em>Journal of Spatial Science 2025</em></span><br>
+  <a href="https://www.tandfonline.com/doi/abs/10.1080/14498596.2025.2506695" target="_blank">PDF</a>
+  <a href="https://github.com/kaopanboonyuen" target="_blank">CODE</a>
+  <a href="https://kaopanboonyuen.github.io/" target="_blank">PROJECT</a>
+</div>
+
+   
+       -->
+    </div>
+  </section>
+
+<!-- <section style="max-width: 960px; margin: 3rem auto; padding: 0 1rem;">
+  <h2 style="font-size: 2rem; margin-bottom: 2rem;">👥 Team</h2>
+  
+  <div class="team" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+    
+    <a href="https://myrida.pages.dev/members/teerapong-panboonyuen/" target="_blank" class="member-link" style="text-decoration: none; color: inherit; width: 280px;">
+      <div class="member" style="background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.07); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <img src="img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน_ITALY.jpg" alt="Teerapong Panboonyuen" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0 6px 16px rgba(0,0,0,0.1);" />
+        <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700;">Teerapong Panboonyuen (Kao)</h3>
+        <p style="margin: 0.2rem 0; font-size: 1.05rem; color: #4b5563;">ธีรพงศ์ ปานบุญยืน (เก้า)</p>
+        <p style="margin: 0.5rem 0; font-size: 0.95rem; color: #6b7280; font-weight: 600;">Chief AI Architect</p>
+        <p style="font-size: 0.9rem; color: #555; line-height: 1.4; text-align: justify;">
+          Dr. Kao is a postdoctoral AI researcher at MARSAIL and recipient of the C2F Fellowship from Chulalongkorn University. His research focuses on representation learning, optimization theory, and self-supervised learning, with expertise in computer vision and human-AI interaction.
+        </p>
+      </div>
+    </a>
+
+  </div>
+</section> -->
+
+
+
+<section class="bio-section">
+
+  <div class="bio-header">
+    <img src="img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน_ITALY.jpg" 
+         alt="Dr. Teerapong Panboonyuen" 
+         class="bio-photo">
+    <h2>Teerapong Panboonyuen (Kao)</h2>
+    <p class="title">Lead Researcher & Founder, <strong>PBY.LAB</strong></p>
+  </div>
+
+  <!-- Website + CV Buttons -->
+  <div class="button-wrapper">
+    <a href="https://kaopanboonyuen.github.io/" target="_blank" class="bio-button">
+      Visit Personal Website
+    </a>
+    <a href="https://kaopanboonyuen.github.io/files/panboonyuen_cv.pdf" target="_blank" class="bio-button">
+      View CV
+    </a>
+  </div>
+
+
+  <div class="bio-content">
+    <h3>📖 Biography</h3>
+
+    <p style="text-align: justify;">
+      ดร.ธีรพงศ์ ปานบุญยืน หรือที่รู้จักกันในชื่อ <strong>“ดร.เก้า”</strong> 
+      เป็นนักวิจัยผู้มีความเชี่ยวชาญด้าน <strong>ปัญญาประดิษฐ์ (Artificial Intelligence)</strong>  
+      โดยปัจจุบันดำรงตำแหน่ง <strong>นักวิจัยหลัก</strong> ที่ <strong>MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory)</strong>  
+      ห้องปฏิบัติการวิจัยแนวหน้าที่ผสานเทคโนโลยี AI เข้ากับอุตสาหกรรมยานยนต์และการประกันภัย<br /><br />
+      
+      ในด้านการศึกษา ดร.เก้า สำเร็จการศึกษาระดับ <strong>ปริญญาเอก</strong> สาขา <strong>วิศวกรรมคอมพิวเตอร์</strong>  
+      จาก <strong>จุฬาลงกรณ์มหาวิทยาลัย</strong> ภายในเวลาเพียง <strong>2 ปีครึ่ง</strong>  
+      ภายใต้การสนับสนุนทุน <strong>100 ปีจุฬาลงกรณ์มหาวิทยาลัย</strong> และ <strong>90 ปีจุฬาลงกรณ์มหาวิทยาลัย</strong>  
+      ก่อนหน้านี้ยังสำเร็จการศึกษา <strong>ปริญญาโท</strong> สาขาเดียวกันในเวลาเพียง <strong>1 ปีครึ่ง</strong>  
+      ด้วยทุนเฉลิมพระเกียรติในวโรกาส <strong>พระบาทสมเด็จพระเจ้าอยู่หัวทรงมีพระชนมายุครบ 72 พรรษา</strong>  
+      โดยสำเร็จปริญญาเอกในวัยเพียง <strong>27 ปี</strong> ซึ่งสะท้อนถึงทั้ง <strong>ศักยภาพ</strong> และ <strong>ความมุ่งมั่น</strong> อย่างชัดเจน<br /><br />
+
+      ดร.เก้ายังได้รับทุนวิจัยระดับสูงสุดจาก <strong>The Second Century Fund (C2F – Track A)</strong>  
+      สำหรับนักวิจัยหลังปริญญาเอกศักยภาพสูงของจุฬาฯ  
+      เพื่อสนับสนุนงานวิจัยด้าน <strong>AI/ML ที่ทรงอิทธิพลในระดับโลก</strong>  
+      และเป็นหนึ่งในนักวิจัยไทยที่ได้รับ <strong>พระราชทานทุน Global Young Scientists Summit (GYSS) 2025</strong>  
+      จาก <strong>สมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ</strong><br /><br />
+
+      ความเชี่ยวชาญของดร.เก้าอยู่ในด้าน <strong>Computer Vision</strong>  
+      เช่น การรู้จำวัตถุ การทำความเข้าใจซีน และการตีความเชิงความหมายของภาพ  
+      รวมถึง <strong>Geospatial Intelligence</strong> ที่ใช้ข้อมูลดาวเทียมและภาพถ่ายทางอากาศในการสนับสนุนการตัดสินใจเชิงพื้นที่  
+      อีกทั้งยังให้ความสำคัญกับ <strong>Human-AI Interaction</strong>  
+      ซึ่งเป็นหัวใจในการสร้างเทคโนโลยีที่ <strong>เข้าใจและสื่อสารกับมนุษย์</strong> ได้อย่างมีประสิทธิภาพ  
+      ด้วยผลงานวิจัยที่โดดเด่นและ <strong>วิสัยทัศน์เชิงลึก</strong> ดร.เก้าจึงเป็นหนึ่งในนักวิจัยรุ่นใหม่ที่ <strong>น่าจับตามองที่สุด</strong> ในวงการวิทยาการคอมพิวเตอร์ระดับสากล
+    </p>
+
+    <hr>
+
+    <p style="text-align: justify;">
+      <strong>Dr. Teerapong Panboonyuen</strong>, also known as <strong>“Dr. Kao”</strong>, is a leading researcher in 
+      <strong>Artificial Intelligence</strong>. He currently serves as the <strong>Principal Researcher</strong> at 
+      <strong>MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory)</strong>, 
+      an advanced research lab integrating AI into the automotive and car insurance industries.<br /><br />
+
+      Academically, Dr. Kao earned his <strong>Ph.D. in Computer Engineering</strong> at 
+      <strong>Chulalongkorn University</strong> in just <strong>two and a half years</strong>, 
+      supported by the <strong>100th Anniversary Doctoral Scholarship</strong> and the 
+      <strong>90th Anniversary Scholarship</strong>. He also obtained his <strong>Master’s degree</strong> 
+      in the same field within <strong>one and a half years</strong>, under the <strong>Graduate Scholarship 
+      in Celebration of the 72nd Birthday Anniversary of His Majesty the King</strong>. 
+      Remarkably, he completed his doctoral degree at the age of only <strong>27</strong>, 
+      a testament to his <strong>exceptional academic capability</strong> and <strong>unwavering dedication</strong>.<br /><br />
+
+      He has been awarded the prestigious <strong>Second Century Fund (C2F – Track A) Postdoctoral Fellowship</strong>, 
+      supporting <strong>high-impact AI/ML research with global significance</strong>. 
+      In addition, he is among the few Thai researchers honored with the 
+      <strong>Global Young Scientists Summit (GYSS) 2025 Fellowship</strong>, 
+      graciously bestowed by <strong>Her Royal Highness Princess Maha Chakri Sirindhorn</strong>.<br /><br />
+
+      His expertise spans <strong>Computer Vision</strong> (object recognition, scene understanding, semantic perception), 
+      <strong>Geospatial Intelligence</strong> (satellite and aerial image analysis for spatial decision-making), 
+      and <strong>Human-AI Interaction</strong>, which is essential for building AI systems that 
+      <strong>understand and communicate effectively with humans</strong>. 
+      With his <strong>outstanding contributions</strong> and <strong>forward-looking vision</strong>, 
+      Dr. Kao is recognized as a <strong>rising figure in the international AI research community</strong>.
+    </p>
+  </div>
+</section>
+
+
+<!-- Game Invite Section -->
+<section class="game-section" id="play">
+  <div class="game-card">
+    <div class="game-emoji" aria-hidden="true">🦒</div>
+    <h2>Wanna play a quick AI math game?</h2>
+    <p class="game-subtitle">
+      Sharpen your mind in 60 seconds. Simple, fast, and fun — powered by PBY.LAB.
+    </p>
+
+    <button class="game-button" type="button" onclick="startGame()" aria-label="Start the AI Math Game">
+      ▶ Start Game
+    </button>
+
+    <!-- This message will stay even if the game closes -->
+    <p class="game-note" id="gameStatus" role="status" aria-live="polite"></p>
+
+    <noscript>
+      <p class="game-noscript">
+        Please enable JavaScript to play the game.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<!-- Link to myrida-ai-math-game.js file -->
+<script src="myrida-ai-math-game.js" defer></script>
+
+<script>
+  // Add "Launching game…" message when Start button is clicked
+  document.addEventListener("DOMContentLoaded", () => {
+    const gameBtn = document.querySelector(".game-button");
+    const gameStatus = document.getElementById("gameStatus");
+
+    if (gameBtn && gameStatus) {
+      gameBtn.addEventListener("click", () => {
+        gameStatus.textContent = "🚀 Launching game…";
+        // startGame() is triggered inline by the button itself
+      });
+    }
+  });
+</script>
+
+
+
+  <footer>
+    <p>© 2025 PBY.LAB — Teerapong Panboonyuen (Kao) | ธีรพงศ์ ปานบุญยืน (เก้า).</p>
+  </footer>
+
+</body>
+</html>
