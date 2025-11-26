@@ -214,6 +214,77 @@
 
 
 
+<!-- Fun Fact of Our Lab -->
+<section class="py-20 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">
+    Fun Fact of Our Lab — PBYAIL / PBYLAB
+  </h2>
+
+  <div class="spotlight bg-white p-10 rounded-2xl shadow-lg mb-16">
+    <div class="flex flex-col items-center space-y-8">
+
+      <!-- Header Label -->
+      <div class="text-center">
+        <p class="text-lg font-semibold tracking-wide text-gray-700">
+          PBYAIL • PBYLAB
+        </p>
+        <h3 class="text-2xl font-extrabold mt-1">
+          PBY Artificial Intelligence Laboratory
+        </h3>
+        <p class="text-gray-600 mt-2 max-w-2xl mx-auto">
+          Ethical AI research at global scale — leveraging Earth-observation data,
+          Human-AI interaction, and responsible AI to protect our planet.
+        </p>
+      </div>
+
+      <!-- English Version -->
+      <div class="bg-gray-50 p-8 rounded-2xl shadow-lg max-w-3xl w-full">
+        <h4 class="text-xl font-bold mb-4">✨ Fun Fact (English)</h4>
+        <p class="text-gray-700 leading-relaxed">
+          The abbreviation <strong>PBY</strong> in <strong>PBYAIL</strong> or
+          <strong>PBYLAB</strong> comes from the founder’s family name
+          <strong>Panboonyuen</strong>, which is composed of three parts:
+          <strong>P — Pan</strong>, <strong>B — Boon</strong>, and <strong>Y — Yuen</strong>.
+          This naming preserves the identity and heritage of
+          <strong>Dr. Teerapong Panboonyuen</strong>, the founder of the laboratory.
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mt-4">
+          PBYAIL was established with a clear mission: to train, advance, and teach AI systems
+          that deeply understand <strong>Earth-observation data</strong>,
+          interact safely and intelligently with humans,
+          and contribute to <strong>responsible AI research that protects our planet</strong>.
+        </p>
+      </div>
+
+      <!-- Thai Version -->
+      <div class="bg-gray-50 p-8 rounded-2xl shadow-lg max-w-3xl w-full">
+        <h4 class="text-xl font-bold mb-4">🇹🇭 เรื่องเล่าจากห้องแลป (ภาษาไทย)</h4>
+        <p class="text-gray-700 leading-relaxed">
+          ชื่อย่อ <strong>PBY</strong> ใน <strong>PBYAIL</strong> หรือ <strong>PBYLAB</strong>
+          มาจากนามสกุลของผู้ก่อตั้งแลป
+          <strong>ปานบุญยืน (Pan-Boon-Yuen)</strong> โดยแยกเป็น
+          <strong>P — ปาน</strong>, <strong>B — บุญ</strong>, และ <strong>Y — ยืน</strong>
+          ซึ่งเป็นการคงเอกลักษณ์ของผู้ก่อตั้ง
+          <strong>ดร.ธีรพงศ์ ปานบุญยืน</strong>
+          ให้โลโก้และชื่อแลปสะท้อนความหมายและที่มาที่แท้จริงของแบรนด์นี้
+        </p>
+
+        <p class="text-gray-700 leading-relaxed mt-4">
+          ห้องปฏิบัติการ PBYAIL ถูกก่อตั้งขึ้นด้วยเป้าหมายชัดเจน:
+          เพื่อพัฒนาและสอนระบบปัญญาประดิษฐ์ให้เข้าใจ
+          <strong>ข้อมูล Earth-observation</strong> อย่างลึกซึ้ง
+          สามารถโต้ตอบกับมนุษย์อย่างปลอดภัยและมีประสิทธิภาพ
+          และผลักดันงานวิจัยด้าน <strong>Responsible AI</strong>
+          เพื่อช่วยปกป้องโลกของเราอย่างยั่งยืน
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
 <!-- <footer class="w-full py-6">
   <p class="text-sm text-center text-gray-600 dark:text-gray-400">
@@ -268,12 +339,26 @@ scrollBtn.addEventListener('click', () => {
   }, 2000); // 2 seconds after page load
 
   // Cycle through messages
+  // const messages = [
+  //   "Hi! 👋 Welcome to PBYAIL. Want to explore our AI projects?",
+  //   "We focus on Earth Observation 🌍 and Responsible AI 🤖.",
+  //   "Check out our KAO and GuidedBox projects 🚀.",
+  //   "Don't forget to meet our team! 👨‍💻"
+  // ];
+
   const messages = [
-    "Hi! 👋 Welcome to PBYAIL. Want to explore our AI projects?",
-    "We focus on Earth Observation 🌍 and Responsible AI 🤖.",
-    "Check out our KAO and GuidedBox projects 🚀.",
-    "Don't forget to meet our team! 👨‍💻"
-  ];
+  "Hi! 👋 Welcome to PBYAIL — where ethical AI meets real impact.",
+  "We build frontier AI models for Earth observation and geospatial intelligence 🌍.",
+  "Our research focuses on Responsible AI, multimodal learning, and robust vision systems 🤖.",
+  "Curious about our latest breakthroughs? Explore our flagship projects 🚀.",
+  "KAO: A next-generation geospatial foundation model — built for global-scale understanding.",
+  "GuidedBox: Smarter object detection through human-aligned guidance 📦✨.",
+  "We're committed to AI that protects people and the planet — not just performance metrics.",
+  "Want to know who’s behind our work? Meet the researchers shaping the lab 👨‍💻👩‍💻.",
+  "Every model we build is trained with responsibility, transparency, and scientific rigor.",
+  "Thanks for visiting PBYAIL — let’s push the boundaries of AI together 🌟."
+];
+
   let idx = 0;
   setInterval(() => {
     idx = (idx + 1) % messages.length;
@@ -285,8 +370,19 @@ scrollBtn.addEventListener('click', () => {
     chatBot.classList.add('translate-y-20', 'opacity-0');
     chatBot.classList.remove('translate-y-0', 'opacity-100');
   });
-</script>
 
+  // Scroll to top when clicking chatbot (but not when clicking the close button)
+chatBot.addEventListener("click", (e) => {
+  if (e.target === closeBtn) return;  // do nothing if clicking the X button
+
+  window.scrollTo({ 
+    top: 0, 
+    behavior: "smooth" 
+  });
+});
+
+
+</script>
 
 
 
