@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html lang="en" translate="no">
+<head>
+  <meta name="google" content="notranslate" />
+</head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <title>PBY.LAB @ CVPR 2025</title> -->
+    <title>PBY.LAB</title>
+
+  <!-- Emoji favicon -->
+  <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><text y=%2224%22 font-size=%2232%22>🦒</text></svg>" /> -->
+
+
+<!-- Put these in <head> -->
+<link rel="icon" type="image/png" href="/img/PBY_GIRAFFE.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PBY.LAB",
+  "url": "https://pbylab.github.io/",
+  "logo": "https://pbylab.github.io/img/pbylab_logo.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "ธีรพงศ์ ปานบุญยืน (Teerapong Panboonyuen)",
+  "alternateName": "ดร.เก้า",
+  "jobTitle": "Lead Researcher & Founder",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "PBY.LAB",
+    "url": "https://pbylab.github.io/"
+  },
+  "url": "https://pbylab.github.io/",
+  "image": "https://pbylab.github.io/img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC.png",
+  "sameAs": [
+    "https://kaopanboonyuen.github.io/",
+    "https://scholar.google.com/citations?user=myy0qDgAAAAJ",
+    "https://github.com/kaopanboonyuen",
+    "https://www.linkedin.com/in/teerapong-panboonyuen/"
+  ]
+}
+</script>
+
+  
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e5e7eb;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      margin-top: 0.6rem;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-img {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .pub-list {
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      overflow: hidden;
+    }
+
+    .pub {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub:last-child {
+      border-bottom: none;
+    }
+
+    .pub strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub a {
+      margin-right: 1rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid transparent;
+    }
+
+    .pub a:hover {
+      border-color: var(--text);
+    }
+
+    .team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+}
+
+.member {
+  text-align: center;
+  max-width: 300px;   /* กรอบกว้างขึ้น */
+  padding: 1rem;
+}
+
+.member img {
+  width: 200px;       /* รูปใหญ่ขึ้นตามกรอบ */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  margin-bottom: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.member img:hover {
+  transform: scale(1.07);
+}
+
+.member h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.member p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0.25rem 0;
+}
+
+
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .member-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.member {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-color: #ccc;
+}
+
+
+
+
+.spotlight {
+  background: #fff;
+  padding: 4rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.spotlight-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Media (Image) styling */
+.spotlight-media img {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Title styling */
+.spotlight-info h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+  color: #111;
+}
+
+.spotlight-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+/* Metadata (Author, Date, etc.) */
+.spotlight-info .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.spotlight-info .abstract {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* CTA (Call to Action) Buttons */
+.cta a {
+  display: inline-block;
+  margin-right: 0.8rem;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--text);
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s ease;
+  max-width: 100%; /* Prevent overflow */
+  width: auto; /* Let the button resize dynamically */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.cta a:hover {
+  background: var(--text);
+  color: #fff;
+}
+
+/* Mobile-first: Make adjustments for smaller screens (mobile/tablet) */
+@media (max-width: 768px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr; /* Stack the content for mobile */
+    padding: 2rem 1rem; /* Reduce padding for mobile */
+  }
+
+  .spotlight-media img {
+    max-width: 100%;
+  }
+
+  .spotlight-info h2 {
+    font-size: 1.5rem; /* Smaller title for mobile */
+  }
+
+  .spotlight-info h3 {
+    font-size: 1.1rem; /* Adjust heading size */
+  }
+
+  .spotlight-info .meta {
+    font-size: 0.85rem; /* Adjust metadata size */
+  }
+
+  .spotlight-info .abstract {
+    font-size: 0.95rem; /* Adjust abstract font size */
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column; /* Stack buttons for mobile */
+    gap: 1rem;
+  }
+
+  .cta a {
+    width: 100%; /* Make buttons full-width on mobile */
+    padding: 0.8rem 1.5rem; /* Larger buttons on mobile */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+    margin: 0 auto; /* Center the buttons */
+  }
+}
+
+/* Desktop-specific adjustments for better view */
+@media (min-width: 769px) {
+  .cta a {
+    width: auto; /* Buttons back to default width for desktop */
+    margin-bottom: 0.6rem;
+  }
+}
+
+
+
+
+
+
+
+
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 2.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero .tagline {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.hero .founder {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1.8rem;
+}
+
+/* .hero-img {
+  max-width: 780px;
+  width: 90%;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+} */
+.bio-section {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: #fff;
+  border-radius: 1.8rem;
+  /* box-shadow: 0 10px 28px rgba(0,0,0,0.08); */
+}
+
+.bio-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bio-photo {
+  width: 300px;       /* size tweakable */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%; /* circular */
+  display: block;
+  margin: 0 auto 1rem;
+  border: none;
+  box-shadow: none;
+  transition: none;   /* no hover transition */
+  transform: none;    /* disable hover transform */
+  cursor: default;    /* no pointer hand */
+}
+
+
+
+/* .bio-photo:hover {
+  transform: scale(1.05);
+} */
+
+
+/* Bio Section - Adjusted Padding and Margin */
+.bio-section {
+  padding: 2rem;
+}
+
+/* Bio Header - Adjust the spacing around the header */
+.bio-header {
+  margin-bottom: 2rem; /* Extra space below the bio header */
+}
+
+/* Bio Content Section - Removed Shadow */
+.bio-content {
+  background-color: #fff; /* White background */
+  border-radius: 10px;
+  padding: 2rem; /* Padding inside bio content */
+  border: 1px solid #e0e0e0; /* Light border */
+  max-width: 100%; /* Prevent overflow */
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-bottom: 3rem; /* Added margin at the bottom for spacing */
+}
+
+/* Add extra margin-top for button wrapper to create space */
+.button-wrapper {
+  text-align: center;
+  margin-top: 2rem; /* More space between button and bio content */
+}
+
+/* Adjust bio-button appearance */
+.bio-button {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: #111; /* Deep background color */
+  color: #fff;
+  border: 2px solid #111;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for bio button */
+.bio-button:hover {
+  background: #fff;
+  color: #111;
+  border-color: #111;
+  transform: translateY(-2px);
+}
+
+/* Add space after bio text */
+.bio-content p:last-child {
+  margin-bottom: 3rem; /* Adjust this value for more space before the button */
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  /* Adjust bio content padding and margin */
+  .bio-content {
+    padding: 1rem; /* Decrease padding for mobile */
+  }
+
+  /* Heading sizes for mobile */
+  .bio-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .bio-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .bio-content p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Button size adjustments for mobile */
+  .bio-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Ensure hr does not break layout on mobile */
+  .bio-content hr {
+    margin: 2rem 0;
+  }
+}
+
+/* Prevent Horizontal Scrolling */
+body {
+  overflow-x: hidden;
+}
+
+
+
+
+
+.game-section {
+  max-width: 880px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.game-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.game-emoji {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-card h2 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.game-subtitle {
+  margin: 0.25rem 0 1.25rem;
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.game-button {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  background: #111;
+  color: #fff;
+  border: 2px solid #111;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Add smooth transition */
+}
+
+.game-button:hover {
+  background: #fff;
+  color: #111;
+}
+
+.game-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17,17,17,0.15);
+}
+
+.game-note {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.game-noscript {
+  margin-top: 1rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .game-card {
+    padding: 1.5rem;
+  }
+  .game-card h2 {
+    font-size: 1.35rem;
+  }
+
+  .separator {
+  border: 0;
+  border-top: 2px solid var(--border); /* You can customize the thickness and color */
+  margin: 1.5rem 0; /* Adds space around the separator */
+}
+
+  
+.button-wrapper a {
+  display: block; /* Makes each button take up a full line */
+  margin-bottom: 1rem; /* Adds space between buttons */
+}
+
+
+}
+
+
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 style="font-size: 4rem;">🦒 PBY.LAB</h1>
+  <p class="tagline">
+    <strong style="color: black;">P</strong>AN<strong style="color: black;">B</strong>OON<strong style="color: black;">Y</strong>UEN Laboratory <br />
+    <!-- Research in AI, Vision & Human-AI Collaboration -->
+  </p>
+  <p class="founder"><strong>Teerapong Panboonyuen</strong></p>
+  <img src="img/GuidedBox_featured.png" alt="PBY Lab Showcase" class="hero-img" />
+</header>
+
+
+
+
+<section class="spotlight">
+  <div class="spotlight-grid">
+    
+    <!-- Left: Graphical Abstract -->
+    <div class="spotlight-media">
+      <img src="img/KAO_graphical_abstract.png" alt="KAO Graphical Abstract">
+    </div>
+
+    <!-- Right: Metadata + Abstract -->
+    <div class="spotlight-info">
+      <h2>🚀 Spotlight Highlight (1/2)</h2>
+
+      <hr class="separator">
+
+      <h3>KAO: Kernel-Adaptive Optimization in Diffusion for Satellite Image Inpainting</h3>
+      
+      <hr class="separator">
+
+      <p class="meta">
+        <strong>Teerapong Panboonyuen</strong><br>
+        Published in <strong>IEEE Transactions on Geoscience and Remote Sensing (TGRS)</strong><br>
+        <span class="publisher">Published by <strong>IEEE Transactions</strong> | Impact Factor: <strong>8.6</strong></span>
+      </p>
+      
+      <hr class="separator">
+      
+      <p class="abstract">
+        <strong>KAO</strong> introduces a novel AI-math framework for restoring satellite imagery using diffusion models, 
+        specifically optimized for very high-resolution (VHR) datasets such as DeepGlobe and Massachusetts Roads. 
+        It features two key innovations: <em>Latent Space Conditioning</em> for efficient optimization without retraining, 
+        and <em>Explicit Propagation</em> to enhance stability through forward-backward fusion. 
+        KAO sets a new benchmark for image restoration by balancing performance, scalability, and computational efficiency.
+      </p>
+
+      <div class="cta">
+        <a href="https://ieeexplore.ieee.org/document/11204656" target="_blank" class="cta-button">📖 Read Paper</a>
+        <a href="https://doi.org/10.1109/TGRS.2025.3621738" target="_blank">🔗 Cite</a>
+        <a href="https://kaopanboonyuen.github.io/KAO/" target="_blank">💻 Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="spotlight">
+  <div class="spotlight-grid">
+    
+    <!-- Left: Graphical Abstract -->
+    <div class="spotlight-media">
+      <img src="img/GuidedBox_compact.png" alt="GuidedBox Graphical Abstract">
+    </div>
+
+    <!-- Right: Metadata + Abstract -->
+    <div class="spotlight-info">
+      <h2>🚀 Spotlight Highlight (2/2)</h2>
+
+      <hr class="separator">
+
+      <h3>GuidedBox: a segmentation-guided box teacher-student approach for weakly supervised road segmentation</h3>
+      
+      <hr class="separator">
+
+      <p class="meta">
+        <strong>Teerapong Panboonyuen</strong><br>
+        Published in <strong>European Journal of Remote Sensing</strong><br>
+        <span class="publisher">Published by <strong>Taylor & Francis | Impact Factor: 3.7</strong></span>
+      </p>
+      
+      <hr class="separator">
+      
+      <p class="abstract">
+        Road segmentation in remote sensing is vital for urban planning, traffic monitoring, and autonomous driving. 
+        GuidedBox introduces an end-to-end framework leveraging a teacher model to generate pseudo-labels, 
+        with novel noise-aware confidence scoring and pixel loss. 
+        It outperforms state-of-the-art methods on the Massachusetts Roads Dataset (AP50 = <strong>0.9231</strong>) 
+        and shows robustness across SpaceNet and DeepGlobe datasets.
+      </p>
+
+      <div class="cta">
+        <a href="https://www.tandfonline.com/doi/full/10.1080/22797254.2025.2540963" target="_blank" class="cta-button">📖 Read Paper</a>
+        <a href="https://doi.org/10.1080/22797254.2025.2540963" target="_blank">🔗 Cite</a>
+        <!-- <a href="https://www.tandfonline.com/doi/pdf/10.1080/22797254.2025.2540963" target="_blank">📄 PDF</a> -->
+        <a href="https://kaopanboonyuen.github.io/GuidedBox/" target="_blank">💻 Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="bio-section">
+
+  <div class="bio-header">
+    <img src="img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC.png" 
+         alt="Dr. Teerapong Panboonyuen" 
+         class="bio-photo">
+    <h2>Teerapong Panboonyuen</h2>
+    <p class="title">Lead Researcher & Founder, <strong>PBY.LAB</strong></p>
+  </div>
+
+
+
+  <div class="bio-content">
+    <h3>📖 Biography</h3>
+
+    <p style="text-align: justify;">
+      ดร.ธีรพงศ์ ปานบุญยืน หรือที่รู้จักกันในชื่อ <strong>“ดร.เก้า”</strong> 
+      เป็นนักวิจัยผู้มีความเชี่ยวชาญด้าน <strong>ปัญญาประดิษฐ์ (Artificial Intelligence)</strong>  
+      โดยปัจจุบันดำรงตำแหน่ง <strong>นักวิจัยหลัก</strong> ที่ <strong>MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory)</strong>  
+      ห้องปฏิบัติการวิจัยแนวหน้าที่ผสานเทคโนโลยี AI เข้ากับอุตสาหกรรมยานยนต์และการประกันภัย<br /><br />
+      
+      ในด้านการศึกษา ดร.เก้า สำเร็จการศึกษาระดับ <strong>ปริญญาเอก</strong> สาขา <strong>วิศวกรรมคอมพิวเตอร์</strong>  
+      จาก <strong>จุฬาลงกรณ์มหาวิทยาลัย</strong> ภายในเวลาเพียง <strong>2 ปีครึ่ง</strong>  
+      ภายใต้การสนับสนุนทุน <strong>100 ปีจุฬาลงกรณ์มหาวิทยาลัย</strong> และ <strong>90 ปีจุฬาลงกรณ์มหาวิทยาลัย</strong>  
+      ก่อนหน้านี้ยังสำเร็จการศึกษา <strong>ปริญญาโท</strong> สาขาเดียวกันในเวลาเพียง <strong>1 ปีครึ่ง</strong>  
+      ด้วยทุนเฉลิมพระเกียรติในวโรกาส <strong>พระบาทสมเด็จพระเจ้าอยู่หัวทรงมีพระชนมายุครบ 72 พรรษา</strong>  
+      โดยสำเร็จปริญญาเอกในวัยเพียง <strong>27 ปี</strong> ซึ่งสะท้อนถึงทั้ง <strong>ศักยภาพ</strong> และ <strong>ความมุ่งมั่น</strong> อย่างชัดเจน<br /><br />
+
+      ดร.เก้ายังได้รับทุนวิจัยระดับสูงสุดจาก <strong>The Second Century Fund (C2F – Track A)</strong>  
+      สำหรับนักวิจัยหลังปริญญาเอกศักยภาพสูงของจุฬาฯ  
+      เพื่อสนับสนุนงานวิจัยด้าน <strong>AI ที่ทรงอิทธิพลในระดับโลก</strong>  
+      และเป็นหนึ่งในนักวิจัยไทยที่ได้รับ <strong>พระราชทานทุน Global Young Scientists Summit (GYSS) 2025</strong>  
+      จาก <strong>สมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ</strong><br /><br />
+
+      ความเชี่ยวชาญของดร.เก้าอยู่ในด้าน <strong>Computer Vision</strong>  
+      เช่น การรู้จำวัตถุ การทำความเข้าใจซีน และการตีความเชิงความหมายของภาพ  
+      รวมถึง <strong>Geospatial Intelligence</strong> ที่ใช้ข้อมูลดาวเทียมและภาพถ่ายทางอากาศในการสนับสนุนการตัดสินใจเชิงพื้นที่  
+      อีกทั้งยังให้ความสำคัญกับ <strong>Human-AI Interaction</strong>  
+      ซึ่งเป็นหัวใจในการสร้างเทคโนโลยีที่ <strong>เข้าใจและสื่อสารกับมนุษย์</strong> ได้อย่างมีประสิทธิภาพ  
+      ด้วยผลงานวิจัยที่โดดเด่นและ <strong>วิสัยทัศน์เชิงลึก</strong> ดร.เก้าจึงเป็นหนึ่งในนักวิจัยรุ่นใหม่ที่ <strong>น่าจับตามองที่สุด</strong> ในวงการวิทยาการคอมพิวเตอร์ระดับสากล
+    </p>
+
+    <hr>
+
+    <p style="text-align: justify;">
+      <strong>Dr. Teerapong Panboonyuen</strong>, also known as <strong>“Dr. Kao”</strong>, is a leading researcher in 
+      <strong>Artificial Intelligence</strong>. He currently serves as the <strong>Principal Researcher</strong> at 
+      <strong>MARSAIL (Motor AI Recognition Solution Artificial Intelligence Laboratory)</strong>, 
+      an advanced research lab integrating AI into the automotive and car insurance industries.<br /><br />
+
+      Academically, Dr. Kao earned his <strong>Ph.D. in Computer Engineering</strong> at 
+      <strong>Chulalongkorn University</strong> in just <strong>two and a half years</strong>, 
+      supported by the <strong>100th Anniversary Doctoral Scholarship</strong> and the 
+      <strong>90th Anniversary Scholarship</strong>. He also obtained his <strong>Master’s degree</strong> 
+      in the same field within <strong>one and a half years</strong>, under the <strong>Graduate Scholarship 
+      in Celebration of the 72nd Birthday Anniversary of His Majesty the King</strong>. 
+      Remarkably, he completed his doctoral degree at the age of only <strong>27</strong>, 
+      a testament to his <strong>exceptional academic capability</strong> and <strong>unwavering dedication</strong>.<br /><br />
+
+      He has been awarded the prestigious <strong>Second Century Fund (C2F – Track A) Postdoctoral Fellowship</strong>, 
+      supporting <strong>high-impact AI research with global significance</strong>. 
+      In addition, he is among the few Thai researchers honored with the 
+      <strong>Global Young Scientists Summit (GYSS) 2025 Fellowship</strong>, 
+      graciously bestowed by <strong>Her Royal Highness Princess Maha Chakri Sirindhorn</strong>.<br /><br />
+
+      His expertise spans <strong>Computer Vision</strong> (object recognition, scene understanding, semantic perception), 
+      <strong>Geospatial Intelligence</strong> (satellite and aerial image analysis for spatial decision-making), 
+      and <strong>Human-AI Interaction</strong>, which is essential for building AI systems that 
+      <strong>understand and communicate effectively with humans</strong>. 
+      With his <strong>outstanding contributions</strong> and <strong>forward-looking vision</strong>, 
+      Dr. Kao is recognized as a <strong>rising figure in the international AI research community</strong>.
+    </p>
+  </div>
+
+
+    <!-- Website + CV Buttons -->
+  <div class="button-wrapper">
+    <a href="https://kaopanboonyuen.github.io/" target="_blank" class="bio-button">
+      Visit Personal Website
+    </a>
+    <a href="https://kaopanboonyuen.github.io/files/panboonyuen_cv.pdf" target="_blank" class="bio-button">
+      View CV
+    </a>
+  </div>
+
+
+
+</section>
+
+
+
+
+<!-- Game Invite Section -->
+<section class="game-section" id="play">
+  <div class="game-card">
+    <div class="game-emoji" aria-hidden="true">🦒</div>
+    <h2>Wanna play a quick AI math game?</h2>
+    <p class="game-subtitle">
+      Sharpen your mind in 60 seconds. Simple, fast, and fun — powered by PBY.LAB.
+    </p>
+
+    <button class="game-button" type="button" onclick="startGame()" aria-label="Start the AI Math Game">
+      ▶ Start Game
+    </button>
+
+    <!-- This message will stay even if the game closes -->
+    <p class="game-note" id="gameStatus" role="status" aria-live="polite"></p>
+
+    <noscript>
+      <p class="game-noscript">
+        Please enable JavaScript to play the game.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<!-- Link to myrida-ai-math-game.js file -->
+<script src="myrida-ai-math-game.js" defer></script>
+
+<script>
+  // Add "Launching game…" message when Start button is clicked
+  document.addEventListener("DOMContentLoaded", () => {
+    const gameBtn = document.querySelector(".game-button");
+    const gameStatus = document.getElementById("gameStatus");
+
+    if (gameBtn && gameStatus) {
+      gameBtn.addEventListener("click", () => {
+        gameStatus.textContent = "🚀 Launching game…";
+        // startGame() is triggered inline by the button itself
+      });
+    }
+  });
+</script>
+
+
+
+  <footer>
+    <p>© 2026 PBY.LAB — Kao Panboonyuen</p>
+  </footer>
+
+</body>
+</html>
