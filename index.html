@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="google" content="notranslate">
   <title>PBY Artificial Intelligence Laboratory</title>
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="img/pby_logo_01.png" />
@@ -14,15 +15,62 @@
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100" class="bg-gray-50 text-gray-900">
   <!-- Hero Section -->
+
+
+  <!-- Sticky Mini Header / Lab Abbreviations -->
+<div id="miniHeader"
+     class="fixed top-0 left-0 w-full z-50 transition-all duration-300
+            bg-black bg-opacity-50 backdrop-blur-md
+            flex justify-center space-x-4 text-gray-300
+            uppercase tracking-widest font-semibold text-sm py-3">
+  
+  <a href="/" class="hover:text-white cursor-pointer">PBYAIL</a>
+  <span class="text-gray-500">•</span>
+  <a href="/" class="hover:text-white cursor-pointer">PBYLAB</a>
+
+</div>
+
+<script>
+  // Scroll to top on click
+  document.querySelectorAll('#miniHeader a').forEach(link => {
+    link.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Shrink-on-scroll effect
+  const header = document.getElementById('miniHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('py-1', 'text-xs', 'bg-opacity-80');
+      header.classList.remove('py-3');
+    } else {
+      header.classList.remove('py-1', 'text-xs', 'bg-opacity-80');
+      header.classList.add('py-3');
+    }
+  });
+</script>
+
+
 <!-- Hero Section (modern AI lab style) -->
 <section class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-28 px-6 text-center shadow-xl">
   
-  <!-- Mini Header / Lab Abbreviations -->
-  <div class="mb-4 flex justify-center space-x-4 text-gray-300 uppercase tracking-widest font-semibold text-sm">
-    <span>PBYAIL</span>
-    <span class="text-gray-500">•</span>
-    <span>PBYLAB</span>
-  </div>
+<!-- Mini Header / Lab Abbreviations -->
+<div class="mb-4 flex justify-center space-x-4 text-gray-300 uppercase tracking-widest font-semibold text-sm">
+  <a href="/" class="hover:text-white cursor-pointer">PBYAIL</a>
+  <span class="text-gray-500">•</span>
+  <a href="/" class="hover:text-white cursor-pointer">PBYLAB</a>
+</div>
+
+<script>
+  // Ensure page always scrolls to top when clicking links
+  document.querySelectorAll('a[href="/"]').forEach(link => {
+    link.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+
   
   <!-- Main Title -->
   <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
