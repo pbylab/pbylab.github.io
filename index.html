@@ -1,856 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google" content="notranslate" />
-  <title>PBY Artificial Intelligence Laboratory</title>
-  <link rel="icon" type="image/png" href="img/pby_logo_01.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --white: #ffffff;
-      --off-white: #f8f8f6;
-      --light: #f2f1ef;
-      --muted: #e8e6e2;
-      --border: #d4d0c8;
-      --text-primary: #0e0e0c;
-      --text-secondary: #4a4a44;
-      --text-muted: #8a8a80;
-      --accent: #1a1a18;
-      --blue: #2563eb;
-      --blue-light: #eff6ff;
-      --green: #059669;
-      --amber: #d97706;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="google" content="notranslate" />
+<title>PBY Artificial Intelligence Laboratory</title>
+<meta name="description" content="PBY AI Lab, a GeoAI lab based in Bangkok, Thailand: geospatial AI, Earth observation, diffusion models and responsible AI. Home of KAO-TerraMind." />
+<link rel="icon" type="image/png" href="img/pby_logo_01.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Caveat:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--accent:#2340ff;--hl:#ffe45c;--grid:#dde4ff;--ink:#000;--paper:#fff;--g1:#f5f5f5;--g2:#e4e4e4;--g3:#9b9b9b;--g4:#595959;
+  --sans:'Archivo',system-ui,sans-serif;--hand:'Caveat','Bradley Hand',cursive;--mono:'IBM Plex Mono',ui-monospace,monospace}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{max-width:100%;display:block}
+.hand{font-family:var(--hand);font-weight:700;line-height:1.1}
+.mono{font-family:var(--mono);font-size:.72rem;color:var(--g4);letter-spacing:.02em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(40px,env(safe-area-inset-right)) 0 max(40px,env(safe-area-inset-left))}
+section{padding:120px 0;border-top:1px solid var(--ink)}
+h2{font-family:var(--sans);font-stretch:75%;font-weight:800;font-size:clamp(2.4rem,5.5vw,4.4rem);line-height:.98;letter-spacing:-.02em}
+.lead{font-size:1.08rem;color:var(--g4);max-width:62ch;margin-top:20px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:56px}
+.head .hand{font-size:1.7rem;transform:rotate(-3deg);padding:0 10px 4px;background:linear-gradient(transparent 55%,var(--hl) 55%)}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:50;height:64px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--ink)}
+nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-stretch:80%;letter-spacing:.1em;text-decoration:none;font-size:1.05rem}
+.brand i{width:14px;height:14px;border:2px solid var(--ink);border-radius:50%;position:relative}
+.brand i::after{content:'';position:absolute;inset:3px;background:var(--accent);border-radius:50%}
+.links{display:flex;gap:30px;align-items:center}
+.links a{font-size:.86rem;font-weight:500;text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+.links a:hover{border-color:var(--ink)}
+.links .cta{background:var(--accent);color:var(--paper);padding:8px 18px;border:1px solid var(--accent)}
+.links .cta:hover{background:var(--paper);color:var(--accent)}
 
-    html { scroll-behavior: smooth; }
+/* HERO */
+.hero{padding:112px 0 56px;border-top:0;min-height:100vh;min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:80px 80px;opacity:.55;mask-image:radial-gradient(ellipse at 70% 45%,#000 0,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 70% 45%,#000 0,transparent 70%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;width:100%}
+.hero .hand.where{font-size:1.8rem;margin-bottom:18px;display:inline-block;padding:0 10px;background:linear-gradient(transparent 55%,var(--hl) 55%)}
+h1{font-family:var(--sans);font-stretch:62%;font-weight:900;font-size:clamp(3.6rem,9.2vw,8.2rem);line-height:.88;letter-spacing:-.025em}
+h1 span{display:block}
+.hero p.sub{margin-top:30px;font-size:1.15rem;max-width:46ch;color:var(--g4)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 26px;border:1px solid var(--ink);font-weight:600;font-size:.92rem;text-decoration:none;transition:background .15s,color .15s}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.btn.solid:hover{background:var(--paper);color:var(--accent)}
+.stats{display:flex;margin-top:56px;border-top:1px solid var(--ink)}
+.stats div{flex:1;padding:14px 16px 0 0}
+.stats div+div{padding-left:16px;border-left:1px solid var(--g2)}
+.stats b{display:block;font-stretch:75%;font-weight:800;font-size:1.9rem;line-height:1.1}
+.stats span{font-size:.78rem;color:var(--g4)}
+.globe{position:relative;aspect-ratio:1;width:100%;max-width:600px;justify-self:center}
+.globe canvas,.globe .fb{width:100%;height:100%;border-radius:50%;display:block;cursor:grab;touch-action:pan-y}
+.globe canvas:active{cursor:grabbing}
+.globe canvas,.globe .fb{box-shadow:0 0 0 1px var(--ink),0 0 70px 4px rgba(35,64,255,.38)}.globe .fb{object-fit:cover;object-position:68% 38%}
+.globe [hidden]{display:none}
+.globe .note{position:absolute;right:-6px;bottom:-4px;font-size:1.5rem;transform:rotate(-4deg)}
+.cap{position:absolute;left:0;bottom:-34px}
+.orbit{position:absolute;inset:-10%;width:120%;height:120%;pointer-events:none;overflow:visible}
+.hud{position:absolute;left:0;top:-6px;background:var(--hl);color:var(--ink);padding:1px 8px;border:1px solid var(--ink)}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--text-primary);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:start}
+.about-fig{position:relative}
+.about-fig img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--ink)}
+.about-fig .hand{position:absolute;left:-18px;top:-26px;background:var(--hl);padding:2px 12px;font-size:1.6rem;transform:rotate(-4deg);border:1px solid var(--ink)}
+.pillars{display:grid;grid-template-columns:1fr 1fr;margin-top:44px;border-top:1px solid var(--ink)}
+.pillars div{padding:18px 20px 22px 0;border-bottom:1px solid var(--g2)}
+.pillars div:nth-child(even){padding-left:20px;border-left:1px solid var(--g2)}
+.pillars h3{font-size:1rem;font-weight:700}
+.pillars p{font-size:.86rem;color:var(--g4);margin-top:4px}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
-    .nav-brand {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800; font-size: 1rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-primary); text-decoration: none;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .nav-brand-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a {
-      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.03em;
-      color: var(--text-secondary); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text-primary); }
-    .nav-cta {
-      padding: 8px 20px; background: var(--text-primary); color: white !important;
-      border-radius: 6px; font-size: 0.82rem !important;
-      transition: opacity 0.2s !important;
-    }
-    .nav-cta:hover { opacity: 0.8; }
+/* RESEARCH */
+.rows{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:minmax(220px,.8fr) 1.4fr;gap:40px;padding:30px 20px;border-bottom:1px solid var(--ink);transition:background .2s,color .2s}
+.row h3{font-stretch:75%;font-weight:800;font-size:1.7rem;line-height:1.1;letter-spacing:-.01em}
+.row{position:relative}.row i{position:absolute;right:24px;top:8px;font-style:normal;font-family:var(--hand);font-weight:700;font-size:1.55rem;color:var(--hl);transform:rotate(-4deg);opacity:0;transition:opacity .2s}.row:hover i{opacity:1}
+.row p{color:var(--g4);max-width:62ch;transition:color .2s}
+.row:hover{background:var(--accent);color:var(--paper)}
+.row:hover p{color:#e3e8ff}
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      background: var(--white);
-      padding-top: 64px;
-    }
-    .hero-canvas {
-      position: absolute; inset: 0; z-index: 0;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridShift 20s linear infinite;
-    }
-    @keyframes gridShift {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(60px); }
-    }
-    .hero-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      animation: glowPulse 6s ease-in-out infinite alternate;
-    }
-    .hero-glow-1 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
-      top: 10%; left: 5%;
-    }
-    .hero-glow-2 {
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(5,150,105,0.06) 0%, transparent 70%);
-      bottom: 10%; right: 5%;
-      animation-delay: -3s;
-    }
-    @keyframes glowPulse {
-      0% { transform: scale(1) translate(0,0); opacity: 0.7; }
-      100% { transform: scale(1.15) translate(20px,-20px); opacity: 1; }
-    }
-    .hero-content {
-      position: relative; z-index: 1;
-      max-width: 900px; margin: 0 auto;
-      padding: 0 32px;
-      text-align: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--blue);
-      background: var(--blue-light); border: 1px solid rgba(37,99,235,0.15);
-      padding: 6px 14px; border-radius: 100px;
-      margin-bottom: 32px;
-      opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--blue); border-radius: 50%;
-    }
-    .hero-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      font-weight: 800; line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
-      margin-bottom: 24px;
-      opacity: 0; animation: fadeUp 0.8s 0.35s ease forwards;
-    }
-    .hero-title span { color: var(--blue); }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 620px; margin: 0 auto 48px;
-      font-weight: 300;
-      opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
-    }
-    .hero-actions {
-      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.8s 0.65s ease forwards;
-    }
-    .btn-primary {
-      padding: 14px 32px;
-      background: var(--text-primary); color: white;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem; font-weight: 500;
-      border-radius: 8px; text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-    .btn-secondary {
-      padding: 14px 32px;
-      background: transparent; color: var(--text-primary);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem; font-weight: 500;
-      border-radius: 8px; text-decoration: none;
-      border: 1px solid var(--border);
-      transition: border-color 0.2s, background 0.2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-secondary:hover { border-color: var(--text-primary); background: var(--off-white); }
-    .hero-stats {
-      display: flex; gap: 48px; justify-content: center;
-      margin-top: 80px; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.8s 0.8s ease forwards;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.2rem; font-weight: 800;
-      color: var(--text-primary); line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.78rem; color: var(--text-muted);
-      letter-spacing: 0.05em; margin-top: 4px;
-    }
-    .stat-divider {
-      width: 1px; background: var(--border);
-      height: 40px; align-self: center;
-    }
+/* PBY */
+.pby{padding:96px 0}
+.pby .wrap{display:grid;grid-template-columns:auto 1fr;gap:72px;align-items:center}
+.letters{display:flex;gap:22px}
+.letters div{text-align:center}
+.letters .hand{font-size:clamp(5rem,11vw,9rem);line-height:.9;color:var(--accent)}
+.letters small{display:block;font-size:1rem;color:var(--g4);margin-top:6px}
+.letters small u{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px;color:var(--ink);font-weight:600}
+.pby p{font-size:1.15rem;max-width:40ch}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* KAO */
+.kao-top{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.kao-top h2{font-size:clamp(3rem,8vw,6.6rem)}
+.tag{display:inline-block;background:var(--hl);border:1px solid var(--ink);padding:4px 12px;font-size:.8rem;font-weight:600;margin-bottom:22px}
+.figs{display:grid;grid-template-columns:1fr 1fr;margin-top:40px;border-top:1px solid var(--ink)}
+.figs div{padding:16px 16px 0 0}
+.figs div:nth-child(even){padding-left:16px;border-left:1px solid var(--g2)}
+.figs b{color:var(--accent);display:block;font-stretch:70%;font-weight:800;font-size:2.8rem;line-height:1}
+.figs span{font-size:.82rem;color:var(--g4);display:block;margin-top:4px}
+.cmp{--p:50%;position:relative;aspect-ratio:1;border:1px solid var(--ink);overflow:hidden;user-select:none;background:#000}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp .top{position:absolute;inset:0;clip-path:inset(0 0 0 var(--p))}
+.cmp .top img{image-rendering:pixelated}
+.cmp .bar{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:#fff;box-shadow:0 0 0 1px #000;transform:translateX(-1px)}
+.cmp .bar::after{content:'';position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px;border-radius:50%;background:#fff;border:1px solid #000}
+.cmp input{touch-action:pan-y;position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cmp:focus-within{outline:2px solid var(--ink);outline-offset:3px}
+.cmp .l{position:absolute;bottom:12px;background:var(--hl);padding:0 10px;font-size:1.25rem;border:1px solid #000;pointer-events:none}
+.cmp .l.a{left:12px}.cmp .l.b{right:12px}
+.sub-h{font-stretch:75%;font-weight:800;font-size:1.9rem;margin:88px 0 8px;letter-spacing:-.01em}
+.variants{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink);margin-top:40px}
+.variants article{padding:28px 26px 30px}
+.variants article+article{border-left:1px solid var(--ink)}
+.variants .hand{font-size:3.6rem;line-height:1}
+.variants h4{font-size:1rem;font-weight:700;margin:8px 0 6px}
+.variants p{font-size:.88rem;color:var(--g4)}
+.variants code{display:block;margin-top:14px;font-family:var(--mono);font-size:.74rem;padding-top:12px;border-top:1px solid var(--g2)}
+.variants .best{background:var(--accent);color:var(--paper)}
+.variants .best p{color:#e3e8ff}.variants .best code{border-color:rgba(255,255,255,.4)}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:24px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:720px}
+th,td{padding:12px 14px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:600;border-bottom:1px solid var(--ink);font-size:.8rem}
+tbody tr{border-bottom:1px solid var(--g2)}
+td{font-variant-numeric:tabular-nums}
+tr.sep td{border-top:1px solid var(--ink)}
+tr.win{background:var(--accent);color:var(--paper);font-weight:700}
+.note-p{font-size:.92rem;color:var(--g4);max-width:78ch;margin-top:18px}
+.fig{margin-top:40px}
+.fig img{width:100%;border:1px solid var(--ink)}
+.fig figcaption{margin-top:10px;font-size:.84rem;color:var(--g4);max-width:90ch}
+.fig figcaption .hand{font-size:1.3rem;color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.links-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.cite{position:relative;margin-top:56px;border:1px solid var(--ink);background:var(--g1);padding:24px 26px}
+.cite pre{font-family:var(--mono);font-size:.76rem;line-height:1.65;white-space:pre-wrap;word-break:break-word;margin-top:6px}
+.cite button{position:absolute;top:14px;right:14px;font:600 .78rem var(--sans);background:var(--paper);border:1px solid var(--ink);padding:6px 14px;cursor:pointer}
+.cite button:hover{background:var(--ink);color:var(--paper)}
 
-    /* ── SECTION BASE ── */
-    section { padding: 100px 48px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 16px;
-    }
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 800; line-height: 1.15;
-      color: var(--text-primary); margin-bottom: 20px;
-    }
-    .section-body {
-      font-size: 1.05rem; color: var(--text-secondary);
-      line-height: 1.75; max-width: 680px;
-    }
+/* PEOPLE */
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.card{border:1px solid var(--ink);padding:28px;display:flex;gap:22px;align-items:center}
+.card img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:1px solid var(--ink);flex:none}
+.card h3{font-size:1.1rem;font-weight:700}
+.card .role{font-size:.86rem;font-weight:600;margin-top:2px}
+.card .aff{font-size:.8rem;color:var(--g4);margin-top:4px}
+.card a.go{display:inline-block;margin-top:12px;font-size:.82rem;font-weight:600;border-bottom:1px solid var(--ink);text-decoration:none}
+.card.join{border-style:dashed;flex-direction:column;align-items:flex-start;justify-content:center}
+.card.join .hand{font-size:2rem}
 
-    /* ── ABOUT ── */
-    .about { background: var(--off-white); border-top: 1px solid var(--muted); border-bottom: 1px solid var(--muted); }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    .about-pillars {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
-    }
-    .pillar {
-      background: var(--white); border: 1px solid var(--muted);
-      border-radius: 12px; padding: 20px;
-      transition: box-shadow 0.2s;
-    }
-    .pillar:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-    .pillar-icon { font-size: 1.4rem; margin-bottom: 8px; }
-    .pillar-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.85rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 4px;
-    }
-    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
-    .about-visual {
-      position: relative; display: flex; justify-content: center; align-items: center;
-    }
-    .about-ring {
-      width: 320px; height: 320px;
-      border-radius: 50%;
-      border: 1px solid var(--muted);
-      position: relative;
-      animation: rotateSlow 20s linear infinite;
-    }
-    .about-ring::before {
-      content: '';
-      position: absolute; inset: 20px; border-radius: 50%;
-      border: 1px dashed var(--border);
-    }
-    .about-ring-node {
-      position: absolute; width: 10px; height: 10px;
-      background: var(--blue); border-radius: 50%;
-      border: 2px solid white;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-    }
-    .about-ring-node:nth-child(1) { top: -5px; left: 50%; transform: translateX(-50%); }
-    .about-ring-node:nth-child(2) { right: -5px; top: 50%; transform: translateY(-50%); }
-    .about-ring-node:nth-child(3) { bottom: -5px; left: 50%; transform: translateX(-50%); }
-    .about-ring-node:nth-child(4) { left: -5px; top: 50%; transform: translateY(-50%); }
-    @keyframes rotateSlow { to { transform: rotate(360deg); } }
-    .about-ring-center {
-      position: absolute; inset: 40px;
-      border-radius: 50%;
-      background: white;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; border: 1px solid var(--muted);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
-    }
-    .about-ring-center h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem; font-weight: 800;
-      color: var(--text-primary); line-height: 1.2;
-    }
-    .about-ring-center p { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+/* PUBS */
+.pubs{border-top:1px solid var(--ink)}
+.pub{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--g2)}
+.pub .v{font-size:.8rem;font-weight:700}
+.pub .v em{display:block;font-style:normal;font-weight:400;color:var(--g4);margin-top:2px}
+.pub h3{font-size:1.08rem;font-weight:600;line-height:1.35}
+.pub p{font-size:.84rem;color:var(--g4);margin-top:4px}
+.pub p a{text-decoration-thickness:1px;text-underline-offset:3px}
 
-    /* ── RESEARCH ── */
-    .research-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
-    }
-    .research-card {
-      border: 1px solid var(--muted); border-radius: 16px;
-      padding: 32px; background: var(--white);
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .research-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: var(--blue); transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .research-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-    .research-card:hover::before { transform: scaleX(1); }
-    .research-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
-      color: var(--text-muted); margin-bottom: 20px;
-    }
-    .research-icon { font-size: 1.8rem; margin-bottom: 16px; }
-    .research-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 10px;
-    }
-    .research-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+/* CONTACT */
+.contact h2{font-size:clamp(3rem,9vw,7.6rem)}
+.contact .hand{font-size:1.9rem;margin-bottom:12px;display:inline-block;padding:0 10px;background:linear-gradient(transparent 55%,var(--hl) 55%)}
+footer{background:var(--ink);color:#bdbdbd;padding:30px 0 max(30px,env(safe-area-inset-bottom));font-size:.8rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none;color:#fff}
 
-    /* ── PEOPLE ── */
-    .people { background: var(--off-white); border-top: 1px solid var(--muted); border-bottom: 1px solid var(--muted); }
-    .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-top: 48px; }
-    .person-card {
-      background: var(--white); border: 1px solid var(--muted);
-      border-radius: 16px; padding: 32px; text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .person-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
-    .person-avatar {
-      width: 80px; height: 80px;
-      border-radius: 50%; margin: 0 auto 16px;
-      object-fit: cover;
-      border: 2px solid var(--muted);
-    }
-    .person-avatar-placeholder {
-      width: 80px; height: 80px;
-      border-radius: 50%; margin: 0 auto 16px;
-      background: linear-gradient(135deg, var(--blue-light), var(--muted));
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800;
-      color: var(--blue); border: 2px solid var(--muted);
-    }
-    .person-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 4px;
-    }
-    .person-role { font-size: 0.8rem; color: var(--blue); font-weight: 500; margin-bottom: 8px; }
-    .person-affil { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
-    .person-link {
-      display: inline-flex; align-items: center; gap: 5px;
-      margin-top: 16px; font-size: 0.78rem; font-weight: 500;
-      color: var(--text-secondary); text-decoration: none;
-      border: 1px solid var(--border); border-radius: 6px;
-      padding: 6px 14px; transition: border-color 0.2s, color 0.2s;
-    }
-    .person-link:hover { border-color: var(--text-primary); color: var(--text-primary); }
+/* marker sweep */
+.mk{background-repeat:no-repeat!important;background-size:100% 100%!important}
+html.js .mk:not(.on){background-size:0 100%!important}
+html.js .mk{transition:background-size .7s .15s ease-out}
+@media (prefers-reduced-motion:reduce){html.js .mk{transition:none}}
+/* HERO LOAD: the one orchestrated moment */
+.in{opacity:0;transform:translateY(18px);animation:in .9s cubic-bezier(.2,.7,.2,1) forwards}
+.in.d1{animation-delay:.1s}.in.d2{animation-delay:.22s}.in.d3{animation-delay:.34s}.in.d4{animation-delay:.5s}.in.g{animation-delay:.3s}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
 
-    /* ── PUBLICATIONS ── */
-    .pub-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
-    .pub-item {
-      border: 1px solid var(--muted); border-radius: 12px;
-      padding: 24px 28px; background: var(--white);
-      display: flex; gap: 20px; align-items: flex-start;
-      transition: box-shadow 0.2s;
-    }
-    .pub-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-    .pub-badge {
-      flex-shrink: 0;
-      font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 4px;
-      background: var(--blue-light); color: var(--blue);
-      margin-top: 2px;
-    }
-    .pub-badge.conf { background: #f0fdf4; color: var(--green); }
-    .pub-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 6px; line-height: 1.4;
-    }
-    .pub-meta { font-size: 0.8rem; color: var(--text-muted); }
-    .pub-authors { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 4px; }
-
-    /* ── CONTACT ── */
-    .contact { background: var(--text-primary); color: white; text-align: center; }
-    .contact .section-label { color: rgba(255,255,255,0.5); }
-    .contact .section-title { color: white; }
-    .contact-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; margin: 0 auto 40px; }
-    .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .contact-link {
-      padding: 12px 24px; border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px; text-decoration: none; color: white;
-      font-size: 0.85rem; font-weight: 500;
-      transition: background 0.2s, border-color 0.2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .contact-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
-    .contact-link.primary { background: white; color: var(--text-primary); border-color: white; }
-    .contact-link.primary:hover { opacity: 0.9; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #080806; color: rgba(255,255,255,0.4);
-      text-align: center; padding: 28px 48px;
-      font-size: 0.78rem; letter-spacing: 0.03em;
-    }
-    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-
-    /* ── FLOATING PARTICLES ── */
-    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .particle {
-      position: absolute; border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
-      animation: floatParticle linear infinite;
-    }
-
-    @keyframes floatParticle {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 0.5; }
-      100% { transform: translateY(-20px) scale(1.2); opacity: 0; }
-    }
-
-    /* ── REVEAL ANIMATION ── */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      section { padding: 64px 20px; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-visual { display: none; }
-      .research-grid { grid-template-columns: 1fr; }
-      .hero-stats { gap: 24px; }
-      .stat-divider { display: none; }
-      .hero-title { font-size: 2.2rem; }
-    }
-    @media (max-width: 480px) {
-      .about-pillars { grid-template-columns: 1fr; }
-    }
-  </style>
+@media(max-width:900px){
+  .wrap{padding:0 max(22px,env(safe-area-inset-right)) 0 max(22px,env(safe-area-inset-left))}section{padding:72px 0}
+  .links{display:none}
+  .menu{display:inline-block}
+  nav.open .links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:64px;left:0;right:0;background:var(--paper);padding:6px max(22px,env(safe-area-inset-right)) 22px max(22px,env(safe-area-inset-left));border-bottom:1px solid var(--ink)}
+  nav.open .links a{padding:15px 0;font-size:1.1rem;border-bottom:1px solid var(--g2)}
+  nav.open .links .cta{margin-top:16px;text-align:center;border:1px solid var(--accent)}
+  .hero .wrap,.about-grid,.kao-top,.pby .wrap{grid-template-columns:1fr;gap:44px}
+  .hero{padding-top:96px}.globe{max-width:440px;width:84%}.cap{display:none}.swipe{display:block}
+  .letters{gap:12px}.letters small{font-size:.85rem}.card img{width:84px;height:84px}.card{padding:22px;gap:16px}
+  .btn{flex:1 1 100%;justify-content:center}.cite button{position:static;margin:10px 0 4px}
+  .row i{display:none}
+  .row{grid-template-columns:1fr;gap:10px;padding:24px 8px}
+  .variants{grid-template-columns:1fr}.variants article+article{border-left:0;border-top:1px solid var(--ink)}
+  .two{grid-template-columns:1fr}.pub{grid-template-columns:1fr;gap:6px}
+  .stats{flex-wrap:wrap}.stats div{flex:1 1 40%;padding-bottom:12px}
+  .pillars{grid-template-columns:1fr}.pillars div:nth-child(even){padding-left:0;border-left:0}
+}
+@media(max-width:480px){h1{font-size:13.2vw}.figs b{font-size:2.3rem}.kao-top h2{font-size:clamp(2.6rem,14vw,3.4rem)}.row h3{font-size:1.45rem}.hud{font-size:.66rem}}
+.menu{font:600 .9rem var(--sans);border:1px solid var(--ink);background:var(--paper);padding:10px 18px;min-height:44px;cursor:pointer}
+.swipe{display:none;margin-top:10px}
+@media(min-width:901px){.menu{display:none}}
+@media (hover:none){.row:hover{background:transparent;color:var(--ink)}.row:hover p{color:var(--g4)}.btn:hover{background:var(--paper);border-color:var(--ink);color:var(--ink)}.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}.links .cta:hover{background:var(--accent);color:var(--paper)}}
+</style>
 </head>
 <body>
 
-<!-- Floating Particles -->
-<div id="particles"></div>
-
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="/" class="nav-brand">
-    <div class="nav-brand-dot"></div>
-    PBYAIL
-  </a>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#people">People</a>
-    <a href="#publications">Publications</a>
-    <a href="#contact" class="nav-cta">Contact</a>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><i></i>PBYAIL</a>
+  <div class="links" id="links">
+    <a href="#about">About</a><a href="#research">Research</a><a href="#kao-terramind">KAO-TerraMind</a>
+    <a href="#people">People</a><a href="#publications">Publications</a><a class="cta" href="#contact">Contact</a>
   </div>
-</nav>
+  <button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="links">Menu</button>
+</div></nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-canvas">
-    <div class="hero-grid"></div>
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Chulalongkorn University · Bangkok, Thailand</div>
-    <h1 class="hero-title">
-      PBY Artificial<br><span>Intelligence</span> Laboratory
-    </h1>
-    <p class="hero-sub">
-      Ethical AI research at global scale — leveraging Earth‑observation data
-      and responsible AI to protect our planet.
-    </p>
-    <div class="hero-actions">
-      <a href="#research" class="btn-primary">
-        Explore Research
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#people" class="btn-secondary">Meet the Team</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">40+</div>
-        <div class="stat-label">Publications</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num">C2F</div>
-        <div class="stat-label">PostDoc Fellow</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num">GYSS</div>
-        <div class="stat-label">2025 Awardee</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-num">IEEE</div>
-        <div class="stat-label">Published</div>
-      </div>
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <p class="hand mk where in d1">GeoAI lab based in Bangkok, Thailand</p>
+    <h1 class="in d2"><span>PBY Artificial</span><span>Intelligence</span><span>Laboratory</span></h1>
+    <p class="sub in d3">Ethical AI research at global scale. We use Earth-observation data and responsible AI to protect our planet.</p>
+    <div class="btns in d3">
+      <a class="btn solid" href="#kao-terramind">See KAO-TerraMind</a>
+      <a class="btn" href="#research">Explore research</a>
     </div>
   </div>
-</section>
+  <div class="globe in g" role="img" aria-label="Rotating globe centered on Thailand">
+    <canvas id="globe" width="640" height="640"></canvas>
+    <img class="fb" src="img/geo/earth.jpg" alt="Satellite view of Earth" hidden />
+    <svg class="orbit" id="orbit" viewBox="0 0 120 120" aria-hidden="true"><g transform="rotate(-24 60 60)"><ellipse cx="60" cy="60" rx="58" ry="17" fill="none" stroke="#2340ff" stroke-width=".5" stroke-dasharray="2 2.5"/><g><rect x="-2.6" y="-1.8" width="5.2" height="3.6" fill="#2340ff" stroke="#000" stroke-width=".5"/><rect x="-8.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/><rect x="3.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/><animateMotion dur="16s" repeatCount="indefinite" path="M2,60 a58,17 0 1,0 116,0 a58,17 0 1,0 -116,0"/></g></g></svg>
+    <span class="hud mono" id="hud"></span>
+    <span class="note hand">drag to spin the Earth</span>
+    <span class="cap mono">Fig. 0. NASA Blue Marble. Drag the globe.</span>
+  </div>
+</div></header>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div>
-        <div class="section-label reveal">About the Lab</div>
-        <h2 class="section-title reveal">Where Geospatial Data<br>Meets Deep Intelligence</h2>
-        <p class="section-body reveal">
-          PBYAIL is a research group at Chulalongkorn University dedicated to advancing AI methods
-          for Earth observation, cadastral systems, and geospatial intelligence. We build systems
-          that are autonomy-driven, interpretable, and designed for real-world impact at national scale.
-        </p>
-        <div class="about-pillars reveal">
-          <div class="pillar">
-            <div class="pillar-icon">🛰️</div>
-            <div class="pillar-name">Earth Observation</div>
-            <div class="pillar-desc">Satellite & aerial imagery analysis for spatial decision-making</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">🧠</div>
-            <div class="pillar-name">Deep Learning</div>
-            <div class="pillar-desc">Novel architectures for vision and segmentation tasks</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">🗺️</div>
-            <div class="pillar-name">Geo-AI</div>
-            <div class="pillar-desc">AI-powered land administration & cadastral digitization</div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon">⚖️</div>
-            <div class="pillar-name">Responsible AI</div>
-            <div class="pillar-desc">Ethical, interpretable systems with societal benefit</div>
-          </div>
-        </div>
+<section id="about"><div class="wrap">
+  <div class="head"><h2>Where geospatial data<br>meets deep intelligence</h2></div>
+  <div class="about-grid">
+    <div>
+      <p class="lead" style="margin-top:0;font-size:1.25rem;color:var(--ink)">PBYAIL is a GeoAI research lab in Bangkok that advances AI for Earth observation, cadastral systems and geospatial intelligence.</p>
+      <p class="lead">We build systems that are autonomy-driven, interpretable and designed for real-world impact at national scale.</p>
+      <div class="pillars">
+        <div><h3>Earth observation</h3><p>Satellite and aerial imagery analysis for spatial decision-making.</p></div>
+        <div><h3>Deep learning</h3><p>Novel architectures for vision and segmentation tasks.</p></div>
+        <div><h3>Geo-AI</h3><p>AI-powered land administration and cadastral digitization.</p></div>
+        <div><h3>Responsible AI</h3><p>Ethical, interpretable systems with societal benefit.</p></div>
       </div>
-      <div class="about-visual reveal">
-        <div class="about-ring">
-          <div class="about-ring-node"></div>
-          <div class="about-ring-node"></div>
-          <div class="about-ring-node"></div>
-          <div class="about-ring-node"></div>
-          <div class="about-ring-center">
-            <h3>PBY<br>AI Lab</h3>
-            <p>Est. Chulalongkorn<br>University</p>
-          </div>
-        </div>
+    </div>
+    <figure class="about-fig">
+      <img src="img/geo/s2-thailand-rgb.jpg" alt="Sentinel-2 image chip over Thailand" loading="lazy" />
+      <span class="hand">a 2.2 km patch of Thailand</span>
+      <figcaption class="mono" style="margin-top:10px">Sentinel-2 L2A, 224 × 224 px at 10 m. Example from the GISTDA-supported dataset.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section id="research"><div class="wrap">
+  <div class="head"><h2>Research areas</h2><span class="hand mk">what we obsess over</span></div>
+  <div class="rows">
+    <div class="row"><h3>AI for Earth observation</h3><p>Deep learning systems for satellite and aerial image interpretation at national scale, enabling precise land-use mapping and environmental monitoring.</p><i>pixels to meaning</i></div>
+    <div class="row"><h3>Multimodal machine learning</h3><p>Fusing heterogeneous data sources (imagery, text, geospatial signals) into unified representations for richer environmental understanding.</p><i>images + text + maps</i></div>
+    <div class="row"><h3>Diffusion models</h3><p>Generative diffusion models for remote sensing synthesis, data augmentation and uncertainty-guided segmentation in high-stakes applications.</p><i>noise to pictures</i></div>
+    <div class="row"><h3>Geospatial intelligence</h3><p>Turning raw geographic data into actionable intelligence for land administration, urban planning and infrastructure decisions.</p><i>maps that act</i></div>
+    <div class="row"><h3>Responsible and ethical AI</h3><p>AI deployed in government and civic contexts that is fair, transparent and aligned with human values. AI for social good.</p><i>AI with manners</i></div>
+    <div class="row"><h3>Human–AI interaction</h3><p>Interfaces and models for natural, intuitive collaboration between people and intelligent systems in professional workflows.</p><i>humans in the loop</i></div>
+  </div>
+</div></section>
+
+<section class="pby"><div class="wrap">
+  <div class="letters" aria-label="P, B, Y">
+    <div><div class="hand">P</div><small><u>Pan</u>boonyuen<br>ปาน</small></div>
+    <div><div class="hand">B</div><small>Pan<u>boon</u>yuen<br>บุญ</small></div>
+    <div><div class="hand">Y</div><small>Panboon<u>yuen</u><br>ยืน</small></div>
+  </div>
+  <div>
+    <p class="hand" style="font-size:1.8rem;margin-bottom:8px">fun fact</p>
+    <p>The lab is named after the family name of its founder, <b>Dr. Teerapong Panboonyuen</b>.</p>
+  </div>
+</div></section>
+
+<section id="kao-terramind"><div class="wrap">
+  <div class="kao-top">
+    <div>
+      <span class="tag">New project · Manuscript in preparation for CVPR 2027</span>
+      <h2>KAO-TerraMind</h2>
+      <p class="lead" style="font-size:1.2rem;color:var(--ink)">Targeted adaptation of geospatial foundation models for dense prediction.</p>
+      <p class="lead">Three variants of TerraMind-1.0-base, each changing exactly one factor (optimisation, objective or decoder), benchmarked against TerraMind tiny, small, base and large on 10-class crop and land-cover mapping over Thailand.</p>
+      <div class="figs">
+        <div><b>41.13%</b><span>mIoU of KAO-TerraMind-C, best of 7 models</span></div>
+        <div><b>38%</b><span>of TerraMind-large’s parameters (121.7M vs 320.2M)</span></div>
+        <div><b>13,974</b><span>test chips on a single Tesla T4</span></div>
+        <div><b>3</b><span>open checkpoints on Hugging Face</span></div>
       </div>
+      <div class="btns">
+        <a class="btn solid" href="https://kaopanboonyuen.github.io/KAO-TerraMind/" target="_blank" rel="noopener">Project page</a>
+        <a class="btn" href="https://github.com/kaopanboonyuen/KAO-TerraMind" target="_blank" rel="noopener">Code on GitHub</a>
+      </div>
+    </div>
+    <div>
+      <div class="cmp" id="cmp">
+        <img src="img/geo/s2-thailand-rgb.jpg" alt="Sentinel-2 input chip" />
+        <div class="top"><img src="img/geo/s2-thailand-label.png" alt="Land-cover label, one colour per class" /></div>
+        <div class="bar"></div>
+        <span class="l a hand">satellite in</span><span class="l b hand">land cover out</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the satellite image with its land-cover map" />
+      </div>
+      <p class="mono" style="margin-top:10px">Drag to compare. Sentinel-2 chip (left) and its 10-class label (right); each class has its own colour.</p>
     </div>
   </div>
-</section>
 
-<!-- FUN FACT SECTION -->
-<style>
-  .funfact-section { background: var(--off-white); padding: 80px 48px; border-top: 1px solid var(--muted); border-bottom: 1px solid var(--muted); }
-  .funfact-cards { display: flex; gap: 16px; justify-content: center; margin-bottom: 36px; }
-  .funfact-card {
-    flex: 1; max-width: 200px;
-    background: var(--white);
-    border: 1px solid var(--muted);
-    border-radius: 20px;
-    padding: 28px 20px 22px;
-    display: flex; flex-direction: column; align-items: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .funfact-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(37,99,235,0.10); }
-  .funfact-letter {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 8vw, 4.5rem);
-    font-weight: 800; line-height: 1;
-    color: var(--blue); letter-spacing: -0.02em;
-    margin-bottom: 14px;
-  }
-  .funfact-word {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(0.68rem, 1.5vw, 0.85rem);
-    font-weight: 700; color: var(--text-primary);
-    letter-spacing: 0.01em; margin-bottom: 8px;
-    text-align: center; line-height: 1.4;
-  }
-  .funfact-word .hl { color: var(--blue); border-bottom: 2px solid var(--blue); padding-bottom: 1px; }
-  .funfact-thai {
-    font-size: 1rem; font-weight: 600;
-    color: var(--text-secondary); letter-spacing: 0.03em;
-  }
-  @media (max-width: 480px) {
-    .funfact-section { padding: 56px 20px; }
-    .funfact-cards { gap: 10px; }
-    .funfact-card { padding: 22px 12px 18px; border-radius: 16px; }
-  }
-</style>
+  <h3 class="sub-h">One pipeline, three controlled changes</h3>
+  <p class="lead" style="margin-top:0">A 12-band Sentinel-2 L2A chip is tokenised and encoded by TerraMind-1.0-base. Features from four transformer blocks form a pyramid that a UperNet decoder turns into a 10-class map. Every other setting (data, seed, schedule, sampler) is identical, so each gain is attributable.</p>
+  <figure class="fig"><a href="img/geo/kao-terramind-architecture.jpg" target="_blank" rel="noopener"><img src="img/geo/kao-terramind-architecture.jpg" alt="KAO-TerraMind architecture diagram" loading="lazy" /></a>
+    <figcaption><span class="hand">Fig. 1</span> KAO-TerraMind pipeline. Badges A, B and C mark the single component each variant changes. Tap the image to enlarge.</figcaption></figure>
 
-<section class="funfact-section">
-  <div class="section-inner">
-    <div style="max-width:680px; margin:0 auto; text-align:center;" class="reveal">
+  <div class="variants">
+    <article><div class="hand">A</div><h4>Optimisation</h4><p>Adapts the pre-trained encoder more strongly to the target domain.</p><code>backbone lr ×0.1 → ×0.3<br>weight decay 0.01 → 0.05</code></article>
+    <article><div class="hand">B</div><h4>Objective</h4><p>Emphasises overlap for rare crop classes.</p><code>Dice weight 0.5 → 1.0<br>CE with √inverse-frequency weights</code></article>
+    <article class="best"><div class="hand">C</div><h4>Decoder · best accuracy</h4><p>A wider UperNet with deeper-biased features.</p><code>channels 256 → 512 · dropout 0.1 → 0.2<br>taps 3·6·9·12 → 4·7·10·12</code></article>
+  </div>
 
-      <div style="
-        display:inline-flex; align-items:center; gap:8px;
-        font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700;
-        letter-spacing:0.18em; text-transform:uppercase;
-        color:var(--blue); margin-bottom:28px;
-      ">💡 Fun Fact</div>
+  <h3 class="sub-h">Results</h3>
+  <p class="lead" style="margin-top:0">All models fine-tuned and tested on the same 13,974 chips (Tesla T4, fp16 autocast).</p>
+  <p class="mono swipe">Swipe the table sideways to see every column.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Model</th><th>Params (M)</th><th>GFLOPs</th><th>OA (%)</th><th>mIoU (%)</th><th>F1 macro (%)</th><th>Kappa</th><th>img/s</th></tr></thead>
+    <tbody>
+      <tr><td>TerraMind-1.0-tiny</td><td>13.31</td><td>22.84</td><td>75.00</td><td>37.18</td><td>48.61</td><td>0.6534</td><td>538.8</td></tr>
+      <tr><td>TerraMind-1.0-small</td><td>31.08</td><td>30.11</td><td>77.75</td><td>39.05</td><td>50.58</td><td>0.6861</td><td>415.5</td></tr>
+      <tr><td>TerraMind-1.0-base</td><td>99.37</td><td>57.66</td><td>78.44</td><td>40.82</td><td>52.57</td><td>0.6982</td><td>245.8</td></tr>
+      <tr><td>TerraMind-1.0-large</td><td>320.22</td><td>146.71</td><td>76.34</td><td>40.13</td><td>52.04</td><td>0.6753</td><td>92.2</td></tr>
+      <tr class="sep"><td>KAO-TerraMind-A</td><td>99.37</td><td>57.66</td><td>78.61</td><td>40.81</td><td>52.48</td><td>0.6996</td><td>245.6</td></tr>
+      <tr><td>KAO-TerraMind-B</td><td>99.37</td><td>57.66</td><td>78.31</td><td>40.97</td><td>52.74</td><td>0.6965</td><td>246.0</td></tr>
+      <tr class="win"><td>KAO-TerraMind-C</td><td>121.74</td><td>118.06</td><td>78.90</td><td>41.13</td><td>52.80</td><td>0.7036</td><td>132.5</td></tr>
+    </tbody></table></div>
+  <p class="note-p">The gains over TerraMind-base are modest (C: +0.31 mIoU, +0.46 OA) and come with a trade-off: the wider decoder roughly doubles GFLOPs and lowers throughput. Variant A is on par with the base model in mIoU.</p>
 
-      <!-- 3 Cards -->
-      <div class="funfact-cards">
-        <div class="funfact-card">
-          <div class="funfact-letter">P</div>
-          <div class="funfact-word"><span class="hl">Pan</span>boonyuen</div>
-          <div class="funfact-thai">ปาน</div>
-        </div>
-        <div class="funfact-card">
-          <div class="funfact-letter">B</div>
-          <div class="funfact-word">Pan<span class="hl">boon</span>yuen</div>
-          <div class="funfact-thai">บุญ</div>
-        </div>
-        <div class="funfact-card">
-          <div class="funfact-letter">Y</div>
-          <div class="funfact-word">Panboon<span class="hl">yuen</span></div>
-          <div class="funfact-thai">ยืน</div>
-        </div>
-      </div>
+  <figure class="fig"><a href="img/geo/kao-terramind-qualitative.jpg" target="_blank" rel="noopener"><img src="img/geo/kao-terramind-qualitative.jpg" alt="Qualitative predictions of TerraMind and KAO-TerraMind models" loading="lazy" /></a>
+    <figcaption><span class="hand">Fig. 2</span> Qualitative predictions: input RGB, ground truth, TerraMind-1.0 (tiny, small, base, large) and KAO-TerraMind (A, B, C). Tap the image to enlarge.</figcaption></figure>
 
-      <p style="font-size:clamp(0.88rem,2vw,1rem); color:var(--text-secondary); line-height:1.75; margin-bottom:8px;">
-        The lab name honors the family name of its founder —
-        <strong style="color:var(--text-primary);">Dr. Teerapong Panboonyuen</strong>.
-      </p>
-      <p style="font-size:clamp(0.8rem,1.8vw,0.88rem); color:var(--text-muted); line-height:1.7;">
-        ชื่อย่อ <strong style="color:var(--text-primary); font-family:'Syne',sans-serif;">PBY</strong>
-        ย่อมาจากนามสกุล <strong style="color:var(--text-primary);">ปานบุญยืน</strong>
-        ของผู้ก่อตั้งห้องปฏิบัติการ ดร.ธีรพงศ์ ปานบุญยืน
-      </p>
+  <div class="two" style="margin-top:56px">
+    <div><h3 style="font-size:1.1rem;font-weight:700">Dataset</h3><p class="note-p" style="margin-top:8px">A 10-class crop and land-cover dataset over Thailand: maize, sugarcane, cassava, rice, other crops, water, trees, flooded vegetation, built area and other. Sentinel-2 L2A, 12 bands, dry (January) and wet (August) scenes, split spatially.</p></div>
+    <div><h3 style="font-size:1.1rem;font-weight:700">Acknowledgement</h3><p class="note-p" style="margin-top:8px">We thank the Geo-Informatics and Space Technology Development Agency (GISTDA), Thailand, for supporting the dataset. It is private and not publicly released; code and checkpoints are shared, the data is not.</p></div>
+  </div>
 
+  <div class="links-row">
+    <a class="btn" href="https://huggingface.co/kaopanboonyuen/KAO-TerraMind-A" target="_blank" rel="noopener">Weights A</a>
+    <a class="btn" href="https://huggingface.co/kaopanboonyuen/KAO-TerraMind-B" target="_blank" rel="noopener">Weights B</a>
+    <a class="btn" href="https://huggingface.co/kaopanboonyuen/KAO-TerraMind-C" target="_blank" rel="noopener">Weights C</a>
+  </div>
+
+  <div class="cite">
+    <span class="hand" style="font-size:1.5rem">cite this work</span>
+    <button type="button" id="copy">Copy BibTeX</button>
+<pre id="bib">@article{panboonyuen2026kaoterramind,
+  title   = {KaoTerraMind: Targeted Adaptation of Geospatial Foundation Models for Dense Prediction},
+  author  = {Panboonyuen, Teerapong},
+  year    = {2026},
+  note    = {Manuscript in preparation for submission to CVPR 2027},
+  url     = {https://github.com/kaopanboonyuen/KAO-TerraMind}
+}</pre>
+  </div>
+</div></section>
+
+<section id="people"><div class="wrap">
+  <div class="head"><h2>People</h2><span class="hand mk">the humans behind the pixels</span></div>
+  <div class="people">
+    <div class="card">
+      <img src="img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC-V2.png" alt="Teerapong Panboonyuen" />
+      <div><h3>Teerapong Panboonyuen</h3><div class="role">Founder and lead researcher</div><div class="aff">Senior Research Scientist (Head of AI), PBYAIL</div><a class="go" href="members/teerapong-panboonyuen/">View profile</a></div>
+    </div>
+    <div class="card join">
+      <div class="hand">join the lab</div>
+      <p style="font-size:.9rem;color:var(--g4)">We are looking for passionate researchers and students.</p>
+      <a class="go" href="#contact">Get in touch</a>
     </div>
   </div>
-</section>
+</div></section>
 
-<!-- RESEARCH -->
-<section id="research">
-  <div class="section-inner">
-    <div class="section-label reveal">Research Areas</div>
-    <h2 class="section-title reveal">Our Focus Domains</h2>
-    <div class="research-grid">
-      <div class="research-card reveal">
-        <div class="research-num">01</div>
-        <div class="research-icon">🛰️</div>
-        <div class="research-name">AI for Earth Observation</div>
-        <div class="research-desc">Developing deep learning systems for satellite and aerial image interpretation at national scale, enabling precise land-use mapping and environmental monitoring.</div>
-      </div>
-      <div class="research-card reveal">
-        <div class="research-num">02</div>
-        <div class="research-icon">🔀</div>
-        <div class="research-name">Multimodal Machine Learning</div>
-        <div class="research-desc">Fusing heterogeneous data sources — imagery, text, geospatial signals — into unified representations that power richer environmental understanding.</div>
-      </div>
-      <div class="research-card reveal">
-        <div class="research-num">03</div>
-        <div class="research-icon">🌊</div>
-        <div class="research-name">Diffusion Models</div>
-        <div class="research-desc">Applying generative diffusion models to remote sensing synthesis, data augmentation, and uncertainty-guided segmentation for high-stakes applications.</div>
-      </div>
-      <div class="research-card reveal">
-        <div class="research-num">04</div>
-        <div class="research-icon">📍</div>
-        <div class="research-name">Geospatial Intelligence</div>
-        <div class="research-desc">Converting raw geographic data into actionable intelligence for land administration, urban planning, and infrastructure decision-making.</div>
-      </div>
-      <div class="research-card reveal">
-        <div class="research-num">05</div>
-        <div class="research-icon">⚖️</div>
-        <div class="research-name">Responsible & Ethical AI</div>
-        <div class="research-desc">Ensuring AI systems deployed in government and civic contexts are fair, transparent, and aligned with human values — AI for Social Good.</div>
-      </div>
-      <div class="research-card reveal">
-        <div class="research-num">06</div>
-        <div class="research-icon">🤝</div>
-        <div class="research-name">Human–AI Interaction</div>
-        <div class="research-desc">Building interfaces and models that enable natural, intuitive collaboration between humans and intelligent systems in professional workflows.</div>
-      </div>
-    </div>
+<section id="publications"><div class="wrap">
+  <div class="head"><h2>Publications</h2><span class="hand mk">selected works</span></div>
+  <div class="pubs">
+    <div class="pub"><div class="v">Preprint<em>CVPR 2027, in prep.</em></div><div><h3>KaoTerraMind: Targeted Adaptation of Geospatial Foundation Models for Dense Prediction</h3><p>Teerapong Panboonyuen · 2026 · <a href="https://github.com/kaopanboonyuen/KAO-TerraMind" target="_blank" rel="noopener">github.com/kaopanboonyuen/KAO-TerraMind</a></p></div></div>
+    <div class="pub"><div class="v">IEEE TGRS<em>2025</em></div><div><h3>KAO: Kernel-Adaptive Optimization in Diffusion for Satellite Image</h3><p>Teerapong Panboonyuen · IEEE Transactions on Geoscience and Remote Sensing · <a href="https://doi.org/10.1109/TGRS.2025.3621738" target="_blank" rel="noopener">DOI 10.1109/TGRS.2025.3621738</a></p></div></div>
+    <div class="pub"><div class="v">arXiv<em>2026</em></div><div><h3>Foundations and Architectures of Artificial Intelligence for Motor Insurance</h3><p>Teerapong Panboonyuen · arXiv:2603.18508 · 173 pages · <a href="https://doi.org/10.48550/arXiv.2603.18508" target="_blank" rel="noopener">DOI 10.48550/arXiv.2603.18508</a></p></div></div>
+    <div class="pub"><div class="v">EJRS<em>2025</em></div><div><h3>GuidedBox: A Segmentation-Guided Box Teacher-Student Approach for Weakly Supervised Road Segmentation</h3><p>Teerapong Panboonyuen · European Journal of Remote Sensing, Vol. 58, No. 1 · Taylor &amp; Francis</p></div></div>
+    <div class="pub"><div class="v">IEEE Access<em>2025</em></div><div><h3>SatDiff: A Stable Diffusion Framework for Inpainting Very High-Resolution Satellite Imagery</h3><p>Teerapong Panboonyuen · IEEE Access · IEEE</p></div></div>
+    <div class="pub"><div class="v">Remote Sensing<em>2023</em></div><div><h3>MeViT: A Medium-Resolution Vision Transformer for Semantic Segmentation on Landsat Satellite Imagery for Agriculture in Thailand</h3><p>Teerapong Panboonyuen · Remote Sensing, Vol. 15, No. 21, p. 5124 · MDPI</p></div></div>
   </div>
-</section>
+  <div class="btns"><a class="btn" href="https://kaopanboonyuen.github.io/" target="_blank" rel="noopener">View all publications</a></div>
+</div></section>
 
-<!-- PEOPLE -->
-<section class="people" id="people">
-  <div class="section-inner">
-    <div class="section-label reveal">The Team</div>
-    <h2 class="section-title reveal">People</h2>
-    <div class="people-grid">
-      <!-- Founder -->
-      <div class="person-card reveal">
-        <img
-          src="img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC-V2.png"
-          alt="Teerapong Panboonyuen"
-          class="person-avatar"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="person-avatar-placeholder" style="display:none;">TP</div>
-        <div class="person-name">Teerapong Panboonyuen</div>
-        <div class="person-role">Founder & Lead Researcher</div>
-        <div class="person-affil">Senior Research Scientist (Head of AI)<br>PBYAIL</div>
-        <a href="members/teerapong-panboonyuen/" class="person-link">
-          View Profile
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <!-- Placeholder for future members -->
-      <div class="person-card reveal" style="border-style: dashed; background: var(--off-white); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 260px;">
-        <div style="font-size: 2rem; margin-bottom: 12px; opacity: 0.3;">+</div>
-        <div class="person-name" style="opacity: 0.4;">Join Our Lab</div>
-        <div class="person-affil" style="margin-top: 8px;">We are looking for passionate<br>researchers and students</div>
-        <a href="#contact" class="person-link" style="margin-top: 16px;">Get in Touch</a>
-      </div>
-    </div>
+<section class="contact" id="contact"><div class="wrap">
+  <p class="hand mk">let’s work together</p>
+  <h2>Collaborate<br>with us</h2>
+  <p class="lead">We welcome collaborations with researchers, institutions and industry partners working at the intersection of AI and geospatial intelligence.</p>
+  <div class="btns">
+    <a class="btn solid" href="mailto:teerapong.panboonyuen@gmail.com">Email us</a>
+    <a class="btn" href="https://kaopanboonyuen.github.io/" target="_blank" rel="noopener">Personal website</a>
+    <a class="btn" href="https://kaopanboonyuen.github.io/MARS/" target="_blank" rel="noopener">MARSAIL Lab</a>
   </div>
-</section>
+</div></section>
 
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="section-inner">
-    <div class="section-label reveal">Selected Works</div>
-    <h2 class="section-title reveal">Publications</h2>
-    <div class="pub-list">
-
-      <div class="pub-item reveal">
-        <div class="pub-badge" style="width:100px; flex-shrink:0; text-align:center;">IEEE TGRS</div>
-        <div>
-          <div class="pub-title">KAO: Kernel-Adaptive Optimization in Diffusion for Satellite Image</div>
-          <div class="pub-authors">Teerapong Panboonyuen</div>
-          <div class="pub-meta">IEEE Transactions on Geoscience and Remote Sensing · 2025 · <a href="https://doi.org/10.1109/TGRS.2025.3621738" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:none;">DOI 10.1109/TGRS.2025.3621738</a></div>
-        </div>
-      </div>
-
-      <div class="pub-item reveal">
-        <div class="pub-badge" style="width:100px; flex-shrink:0; text-align:center; background:#fdf4ff;color:#7c3aed;border:1px solid rgba(124,58,237,0.15);">arXiv</div>
-        <div>
-          <div class="pub-title">Foundations and Architectures of Artificial Intelligence for Motor Insurance</div>
-          <div class="pub-authors">Teerapong Panboonyuen</div>
-          <div class="pub-meta">arXiv:2603.18508 · 2026 · 173 pages · <a href="https://doi.org/10.48550/arXiv.2603.18508" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:none;">DOI 10.48550/arXiv.2603.18508</a></div>
-        </div>
-      </div>
-
-      <div class="pub-item reveal">
-        <div class="pub-badge conf" style="width:100px; flex-shrink:0; text-align:center;">EJRS</div>
-        <div>
-          <div class="pub-title">GuidedBox: A Segmentation-Guided Box Teacher-Student Approach for Weakly Supervised Road Segmentation</div>
-          <div class="pub-authors">Teerapong Panboonyuen</div>
-          <div class="pub-meta">European Journal of Remote Sensing · Vol. 58, No. 1 · 2025 · Taylor &amp; Francis</div>
-        </div>
-      </div>
-
-      <div class="pub-item reveal">
-        <div class="pub-badge" style="width:100px; flex-shrink:0; text-align:center;">IEEE Access</div>
-        <div>
-          <div class="pub-title">SatDiff: A Stable Diffusion Framework for Inpainting Very High-Resolution Satellite Imagery</div>
-          <div class="pub-authors">Teerapong Panboonyuen</div>
-          <div class="pub-meta">IEEE Access · 2025 · IEEE</div>
-        </div>
-      </div>
-
-      <div class="pub-item reveal">
-        <div class="pub-badge conf" style="width:100px; flex-shrink:0; text-align:center;">Remote Sensing</div>
-        <div>
-          <div class="pub-title">MeViT: A Medium-Resolution Vision Transformer for Semantic Segmentation on Landsat Satellite Imagery for Agriculture in Thailand</div>
-          <div class="pub-authors">Teerapong Panboonyuen</div>
-          <div class="pub-meta">Remote Sensing · Vol. 15, No. 21, p. 5124 · 2023 · MDPI</div>
-        </div>
-      </div>
-
-    </div>
-    <div style="margin-top: 32px; text-align: center;" class="reveal">
-      <a href="https://kaopanboonyuen.github.io/" target="_blank" class="btn-secondary">
-        View All Publications
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-inner">
-    <div class="section-label">Get in Touch</div>
-    <h2 class="section-title">Collaborate With Us</h2>
-    <p class="contact-sub">
-      We welcome collaborations with researchers, institutions, and industry partners
-      working at the intersection of AI and geospatial intelligence.
-    </p>
-    <div class="contact-links">
-      <a href="https://kaopanboonyuen.github.io/" target="_blank" class="contact-link primary">
-        🌐 Personal Website
-      </a>
-      <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank" class="contact-link">
-        🤖 MARSAIL Lab
-      </a>
-      <a href="mailto:teerapong.panboonyuen@gmail.com" class="contact-link">
-        ✉️ Email Us
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 PBY Artificial Intelligence Laboratory — C2F, Chulalongkorn University, Bangkok, Thailand &nbsp;·&nbsp; <a href="/">PBYAIL</a> &nbsp;·&nbsp; Ethical AI for Earth</p>
-</footer>
+<footer><div class="wrap">
+  <span>© 2026 PBY Artificial Intelligence Laboratory, Bangkok, Thailand</span>
+  <span><a href="#top">PBYAIL</a> · Ethical AI for Earth</span>
+</div></footer>
 
 <script>
-  // Nav scroll effect
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
+(function(){
+  /* Marker sweep on handwritten notes */
+  document.documentElement.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});
+  document.querySelectorAll('.mk').forEach(function(el){io.observe(el)});
+  var orb=document.getElementById('orbit');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches&&orb&&orb.pauseAnimations)orb.pauseAnimations();
+
+  /* Mobile menu */
+  var nv=document.querySelector('nav'),mb=document.getElementById('menu');
+  mb.addEventListener('click',function(){var o=nv.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu'});
+  document.querySelectorAll('#links a').forEach(function(a){a.addEventListener('click',function(){nv.classList.remove('open');mb.setAttribute('aria-expanded',false);mb.textContent='Menu'})});
+
+  /* Compare slider */
+  var cmp=document.getElementById('cmp');
+  cmp.querySelector('input').addEventListener('input',function(e){cmp.style.setProperty('--p',e.target.value+'%')});
+
+  /* Copy BibTeX */
+  var cb=document.getElementById('copy');
+  cb.addEventListener('click',function(){
+    var t=document.getElementById('bib').textContent;
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){cb.textContent='Copied'}).catch(function(){
+      var r=document.createRange();r.selectNodeContents(document.getElementById('bib'));var s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='Selected, press copy';
+    });
+    setTimeout(function(){cb.textContent='Copy BibTeX'},2200);
   });
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Floating particles
-  function spawnParticle() {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 160 + 40;
-    p.style.cssText = `
-      width: ${size}px; height: ${size}px;
-      left: ${Math.random() * 100}vw;
-      animation-duration: ${Math.random() * 20 + 15}s;
-      animation-delay: ${Math.random() * -20}s;
-    `;
-    document.getElementById('particles').appendChild(p);
-    setTimeout(() => p.remove(), 35000);
+  /* Orthographic globe rendered from an equirectangular satellite texture */
+  var cv=document.getElementById('globe'),fb=document.querySelector('.globe .fb'),ctx=cv.getContext('2d');
+  function fallback(){cv.hidden=true;fb.hidden=false}
+  if(innerWidth<900){cv.width=cv.height=440}
+  var hud=document.getElementById('hud'),N=cv.width,SC=cv.width/640,R=N/2,D2R=Math.PI/180,TW=1024,TH=512,T=null;
+  var idx=[],PX=[],PY=[],PZ=[];
+  for(var y=0;y<N;y++)for(var x=0;x<N;x++){
+    var nx=(x+.5-R)/R,ny=-(y+.5-R)/R,d=nx*nx+ny*ny;
+    if(d<1){idx.push(y*N+x);PX.push(nx);PY.push(ny);PZ.push(Math.sqrt(1-d))}
   }
-  for (let i = 0; i < 8; i++) spawnParticle();
-  setInterval(spawnParticle, 4000);
+  var img=ctx.createImageData(N,N),buf=new Uint32Array(img.data.buffer);
+  var dragLon=0,dragLat=0,drag=null,last=0,visible=true;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function proj(lat,lon,l0,p0){
+    var f=lat*D2R,l=lon*D2R-l0,cf=Math.cos(f);
+    var c=Math.sin(p0)*Math.sin(f)+Math.cos(p0)*cf*Math.cos(l);
+    return [R+cf*Math.sin(l)*R,R-(Math.cos(p0)*Math.sin(f)-Math.sin(p0)*cf*Math.cos(l))*R,c];
+  }
+  function line(pts,l0,p0){
+    var on=false;ctx.beginPath();
+    for(var i=0;i<pts.length;i++){
+      var p=proj(pts[i][0],pts[i][1],l0,p0);
+      if(p[2]>0){on?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);on=true}else on=false;
+    }
+    ctx.stroke();
+  }
+  function draw(t){
+    var l0=(100.5+(reduce?0:30*Math.sin(t/7000))+dragLon)*D2R,p0=(16+dragLat)*D2R;
+    var sp=Math.sin(p0),cp=Math.cos(p0),k,n=idx.length;
+    if(hud){var tx2=(p0/D2R).toFixed(1)+'°N  '+(((l0/D2R+540)%360)-180).toFixed(1)+'°E';if(tx2!==hud.textContent)hud.textContent=tx2}
+    for(k=0;k<n;k++){
+      var x=PX[k],y=PY[k],z=PZ[k];
+      var s=z*sp+y*cp;s=s>1?1:s<-1?-1:s;
+      var phi=Math.asin(s),lam=l0+Math.atan2(x,z*cp-y*sp);
+      var u=lam/(2*Math.PI)+.5;u-=Math.floor(u);
+      var ty=((.5-phi/Math.PI)*TH)|0;if(ty>=TH)ty=TH-1;
+      var o=(ty*TW+((u*TW)|0))*4,f=.45+.55*z,rr=T[o]*f,gg=T[o+1]*f,bb=T[o+2]*f;
+      buf[idx[k]]=0xFF000000|((bb|0)<<16)|((gg|0)<<8)|(rr|0);
+    }
+    ctx.putImageData(img,0,0);
+    ctx.lineWidth=1;ctx.strokeStyle='rgba(255,255,255,.2)';
+    var a,b,pts;
+    for(a=-180;a<180;a+=30){pts=[];for(b=-90;b<=90;b+=3)pts.push([b,a]);line(pts,l0,p0)}
+    for(a=-60;a<=60;a+=30){pts=[];for(b=-180;b<=180;b+=3)pts.push([a,b]);line(pts,l0,p0)}
+    var m=proj(13.7563,100.5018,l0,p0);
+    if(m[2]>.05){
+      ctx.strokeStyle='#ffe45c';ctx.fillStyle='#ffe45c';ctx.lineWidth=2;
+      ctx.beginPath();ctx.arc(m[0],m[1],9,0,7);ctx.stroke();
+      ctx.beginPath();ctx.arc(m[0],m[1],2.5,0,7);ctx.fill();
+      ctx.beginPath();ctx.moveTo(m[0]-24,m[1]);ctx.lineTo(m[0]-14,m[1]);ctx.moveTo(m[0]+14,m[1]);ctx.lineTo(m[0]+24,m[1]);
+      ctx.moveTo(m[0],m[1]-24);ctx.lineTo(m[0],m[1]-14);ctx.moveTo(m[0],m[1]+14);ctx.lineTo(m[0],m[1]+24);ctx.stroke();
+      ctx.lineJoin='round';ctx.font='700 '+Math.round(38*SC)+'px Caveat,cursive';var tw=ctx.measureText('Bangkok, we are here').width,lx=Math.min(Math.max(m[0],tw/2+10),N-tw/2-10);ctx.textAlign='center';ctx.save();ctx.strokeStyle='rgba(0,0,0,.75)';ctx.lineWidth=6;ctx.strokeText('Bangkok, we are here',lx,m[1]-32*SC);ctx.restore();ctx.fillText('Bangkok, we are here',lx,m[1]-32*SC);
+      ctx.font='500 '+Math.round(15*SC)+'px "IBM Plex Mono",monospace';ctx.save();ctx.strokeStyle='rgba(0,0,0,.75)';ctx.lineWidth=4;ctx.strokeText('13.76°N  100.50°E',lx,m[1]+44*SC);ctx.restore();ctx.fillText('13.76°N  100.50°E',lx,m[1]+44*SC);
+    }
+    ctx.strokeStyle='#000';ctx.lineWidth=3;ctx.beginPath();ctx.arc(R,R,R-1.5,0,7);ctx.stroke();
+  }
+  function loop(t){
+    requestAnimationFrame(loop);
+    if(!visible||t-last<33)return;last=t;draw(t);
+  }
+  var tex=new Image();
+  tex.onerror=fallback;
+  tex.onload=function(){
+    try{
+      var c=document.createElement('canvas');c.width=TW;c.height=TH;
+      var cx=c.getContext('2d');cx.drawImage(tex,0,0,TW,TH);
+      T=cx.getImageData(0,0,TW,TH).data;
+    }catch(e){return fallback()}
+    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
+      draw(0);
+      if(!reduce)requestAnimationFrame(loop);
+    });
+  };
+  tex.src='img/geo/earth.jpg';
+
+  new IntersectionObserver(function(e){visible=e[0].isIntersecting}).observe(cv);
+  cv.addEventListener('pointerdown',function(e){drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});
+  cv.addEventListener('pointermove',function(e){
+    if(!drag)return;
+    dragLon-=(e.clientX-drag[0])*.35;dragLat=Math.max(-45,Math.min(45,dragLat+(e.clientY-drag[1])*.25));
+    drag=[e.clientX,e.clientY];if(reduce&&T)draw(0);
+  });
+  ['pointerup','pointercancel'].forEach(function(n){cv.addEventListener(n,function(){drag=null})});
+})();
 </script>
 </body>
 </html>

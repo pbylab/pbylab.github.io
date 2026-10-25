@@ -1,378 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google" content="notranslate" />
-  <title>Teerapong Panboonyuen — PBY Artificial Intelligence Laboratory</title>
-  <link rel="icon" type="image/png" href="../../img/pby_logo_01.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --white: #ffffff;
-      --off-white: #f8f8f6;
-      --light: #f2f1ef;
-      --muted: #e8e6e2;
-      --border: #d4d0c8;
-      --text-primary: #0e0e0c;
-      --text-secondary: #4a4a44;
-      --text-muted: #8a8a80;
-      --accent: #1a1a18;
-      --blue: #2563eb;
-      --blue-light: #eff6ff;
-      --green: #059669;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="google" content="notranslate" />
+<meta name="theme-color" content="#ffffff" />
+<title>Teerapong Panboonyuen — PBY Artificial Intelligence Laboratory</title>
+<meta name="description" content="Dr. Teerapong Panboonyuen (Dr. Kao), founder and lead researcher of PBY AI Lab, a GeoAI lab based in Bangkok, Thailand." />
+<link rel="icon" type="image/png" href="../../img/pby_logo_01.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Caveat:wght@500;700&family=Noto+Sans+Thai:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+:root{--accent:#2340ff;--hl:#ffe45c;--grid:#dde4ff;--ink:#000;--paper:#fff;--g1:#f5f5f5;--g2:#e4e4e4;--g4:#595959;
+  --sans:'Archivo',system-ui,sans-serif;--hand:'Caveat','Bradley Hand',cursive;--thai:'Noto Sans Thai','Thonburi',var(--sans)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{max-width:100%;display:block}
+.hand{font-family:var(--hand);font-weight:700;line-height:1.1}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(40px,env(safe-area-inset-right)) 0 max(40px,env(safe-area-inset-left))}
+section{padding:104px 0;border-top:1px solid var(--ink)}
+h2{font-stretch:75%;font-weight:800;font-size:clamp(2.4rem,5.5vw,4.4rem);line-height:.98;letter-spacing:-.02em}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--white);
-      color: var(--text-primary);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+nav{position:fixed;inset:0 0 auto;z-index:50;height:64px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--ink)}
+nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-stretch:80%;letter-spacing:.1em;text-decoration:none;font-size:1.05rem}
+.brand i{width:14px;height:14px;border:2px solid var(--ink);border-radius:50%;position:relative}
+.brand i::after{content:'';position:absolute;inset:3px;background:var(--accent);border-radius:50%}
+.back{font-size:.86rem;font-weight:600;text-decoration:none;border:1px solid var(--ink);padding:11px 18px;min-height:44px;display:inline-flex;align-items:center}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 26px;border:1px solid var(--ink);font-weight:600;font-size:.92rem;text-decoration:none;transition:background .15s,color .15s}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--paper)}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
-    .nav-brand {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-primary); text-decoration: none;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .nav-brand-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
-    .nav-back {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 0.82rem; font-weight: 500; color: var(--text-secondary);
-      text-decoration: none; border: 1px solid var(--border);
-      padding: 7px 16px; border-radius: 6px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .nav-back:hover { border-color: var(--text-primary); color: var(--text-primary); }
+.hero{padding:112px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:80px 80px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse at 75% 40%,#000 0,transparent 70%);mask-image:radial-gradient(ellipse at 75% 40%,#000 0,transparent 70%)}
+.hero .wrap>*{min-width:0}.hero .wrap{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}
+.where{display:inline-block;font-size:1.8rem;margin-bottom:18px;padding:0 10px;background:linear-gradient(transparent 55%,var(--hl) 55%)}
+h1{font-stretch:62%;font-weight:900;font-size:clamp(3.4rem,8.4vw,7rem);line-height:.88;letter-spacing:-.025em}
+h1 span{display:block}
+.thai{font-family:var(--thai);font-size:1.2rem;margin-top:22px;font-weight:600}
+.thai small{font-weight:400;color:var(--g4);font-size:1rem;margin-left:6px}
+.role{margin-top:6px;color:var(--g4);max-width:46ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips span{border:1px solid var(--ink);padding:5px 12px;font-size:.82rem;font-weight:500}
+.ph{position:relative;max-width:400px;width:100%;justify-self:center}
+.ph::before{content:'';position:absolute;inset:18px -18px -18px 18px;background:var(--accent)}
+.ph img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border:1px solid var(--ink);background:var(--paper)}
+.ph .hand{position:absolute;left:-16px;bottom:30px;background:var(--hl);border:1px solid var(--ink);padding:2px 14px;font-size:1.8rem;transform:rotate(-5deg)}
 
-    /* ── FLOATING PARTICLES ── */
-    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .particle {
-      position: absolute; border-radius: 50%;
-      background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
-      animation: floatParticle linear infinite;
-    }
-    @keyframes floatParticle {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 0.5; }
-      100% { transform: translateY(-20px) scale(1.2); opacity: 0; }
-    }
+.bio-grid>*{min-width:0}.bio-grid{display:grid;grid-template-columns:.8fr 1.6fr;gap:64px;align-items:start}
+.bio-side{position:sticky;top:96px}
+.note{font-size:1.7rem;display:inline-block;transform:rotate(-3deg);margin-top:18px;padding:0 10px;background:linear-gradient(transparent 55%,var(--hl) 55%)}
+.tabs{display:flex;margin-top:28px}
+.tabs button{font:600 .9rem var(--sans);min-height:46px;padding:10px 22px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.tabs button+button{border-left:0}
+.tabs button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.tabs button[aria-pressed=true]+button{border-left:1px solid var(--ink)}
+.bio p{font-size:1.06rem;line-height:1.85;max-width:68ch;margin-bottom:1.15em;color:#1b1b1b}
+.bio[lang=th] p{font-family:var(--thai);line-height:2.05;font-size:1rem}
+.bio a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+html.js .bio[hidden]{display:none}
 
-    /* ── HERO PROFILE ── */
-    .profile-hero {
-      padding-top: 64px;
-      background: var(--white);
-      position: relative; overflow: hidden;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-glow {
-      position: absolute; border-radius: 50%;
-      filter: blur(80px); pointer-events: none;
-    }
-    .hero-glow-1 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
-      top: -100px; right: -100px;
-    }
-    .profile-hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1000px; margin: 0 auto;
-      padding: 80px 48px 80px;
-      display: grid; grid-template-columns: auto 1fr; gap: 64px; align-items: center;
-    }
-    .profile-photo-wrap {
-      position: relative; flex-shrink: 0;
-    }
-    .profile-photo {
-      width: 200px; height: 200px;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 1px solid var(--muted);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-      display: block;
-    }
-    .profile-photo-placeholder {
-      width: 200px; height: 200px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, var(--blue-light), var(--muted));
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800;
-      color: var(--blue); border: 1px solid var(--muted);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-    }
-    .profile-photo-badge {
-      position: absolute; bottom: -10px; right: -10px;
-      background: var(--blue); color: white;
-      font-family: 'Syne', sans-serif; font-size: 0.6rem;
-      font-weight: 700; letter-spacing: 0.12em;
-      padding: 5px 10px; border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
-    }
-    .profile-info {}
-    .profile-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--blue);
-      background: var(--blue-light); border: 1px solid rgba(37,99,235,0.15);
-      padding: 5px 12px; border-radius: 100px;
-      margin-bottom: 20px;
-    }
-    .profile-name {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800; line-height: 1.1;
-      color: var(--text-primary); margin-bottom: 6px;
-      letter-spacing: -0.02em;
-    }
-    .profile-thai {
-      font-size: 1.1rem; color: var(--text-muted);
-      margin-bottom: 16px; font-weight: 300;
-    }
-    .profile-role {
-      font-size: 1rem; color: var(--text-secondary);
-      margin-bottom: 24px; font-weight: 400;
-    }
-    .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .tag {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
-      padding: 5px 12px; border-radius: 6px;
-      border: 1px solid var(--muted); color: var(--text-secondary);
-      background: var(--off-white);
-    }
-    .tag.blue { background: var(--blue-light); color: var(--blue); border-color: rgba(37,99,235,0.2); }
-    .profile-links { display: flex; flex-wrap: wrap; gap: 10px; }
-    .profile-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.82rem; font-weight: 500;
-      padding: 9px 18px; border-radius: 7px;
-      text-decoration: none; transition: all 0.2s;
-    }
-    .profile-link.primary {
-      background: var(--text-primary); color: white;
-    }
-    .profile-link.primary:hover { opacity: 0.82; }
-    .profile-link.ghost {
-      border: 1px solid var(--border); color: var(--text-secondary); background: white;
-    }
-    .profile-link.ghost:hover { border-color: var(--text-primary); color: var(--text-primary); }
+.ints{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);margin-top:48px}
+.ints div{padding:26px 20px;border-bottom:1px solid var(--ink);font-stretch:75%;font-weight:800;font-size:1.6rem;line-height:1.1;transition:background .2s,color .2s}
+.ints div:nth-child(even){border-left:1px solid var(--ink)}
 
-    /* ── REVEAL ── */
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+.tl{margin:48px 0 0 8px;border-left:1px solid var(--ink)}
+.ti{position:relative;padding:0 0 44px 32px}
+.ti::before{content:'';position:absolute;left:-7px;top:12px;width:13px;height:13px;border-radius:50%;background:var(--paper);border:2px solid var(--accent)}
+.ti:last-child{padding-bottom:0}
+.ti .d{font-size:1.8rem;color:var(--accent)}
+.ti h3{font-size:1.2rem;font-weight:700;line-height:1.3;margin-top:2px}
+.ti p{color:var(--g4);margin-top:6px;max-width:64ch}
+.ti a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
 
-    /* ── CONTENT SECTIONS ── */
-    .content-wrap { max-width: 1000px; margin: 0 auto; padding: 0 48px 100px; }
-    .content-section { margin-bottom: 64px; }
-    .section-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 20px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-label::after {
-      content: ''; flex: 1; height: 1px; background: var(--muted); max-width: 200px;
-    }
-    .section-heading {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.5rem; font-weight: 800;
-      color: var(--text-primary); margin-bottom: 24px;
-    }
+footer{background:var(--ink);color:#bdbdbd;padding:30px 0 max(30px,env(safe-area-inset-bottom));font-size:.8rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:none;color:#fff}
 
-    /* Bio card */
-    .bio-card {
-      background: var(--off-white); border: 1px solid var(--muted);
-      border-radius: 16px; padding: 36px; margin-bottom: 16px;
-    }
-    .bio-card p {
-      font-size: 1rem; line-height: 1.8;
-      color: var(--text-secondary);
-    }
-    .bio-card p + p { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
-    .bio-card a {
-      color: var(--text-primary); font-weight: 600;
-      text-decoration: none; border-bottom: 1px solid var(--border);
-      transition: border-color 0.2s;
-    }
-    .bio-card a:hover { border-color: var(--blue); color: var(--blue); }
+.mk{background-repeat:no-repeat!important;background-size:100% 100%!important}
+html.js .mk:not(.on){background-size:0 100%!important}
+html.js .mk{transition:background-size .7s .15s ease-out}
+.in{opacity:0;transform:translateY(18px);animation:in .9s cubic-bezier(.2,.7,.2,1) forwards}
+.in.d1{animation-delay:.1s}.in.d2{animation-delay:.22s}.in.d3{animation-delay:.34s}.in.g{animation-delay:.3s}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.in{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}html.js .mk{transition:none}}
+@media (hover:hover){.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}.btn.solid:hover{background:var(--paper);color:var(--accent)}.back:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}.ints div:hover{background:var(--accent);color:var(--paper)}}
 
-    /* Research interests */
-    .interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .interest-item {
-      background: var(--white); border: 1px solid var(--muted);
-      border-radius: 10px; padding: 16px 20px;
-      display: flex; align-items: center; gap: 12px;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .interest-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
-    .interest-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
-    .interest-name { font-size: 0.88rem; font-weight: 500; color: var(--text-primary); }
-
-    /* Credentials timeline */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
-      width: 1px; background: var(--muted);
-    }
-    .timeline-item { position: relative; margin-bottom: 28px; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -22px; top: 6px;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--white); border: 2px solid var(--blue);
-    }
-    .timeline-date {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--blue); margin-bottom: 4px;
-      text-transform: uppercase;
-    }
-    .timeline-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem; font-weight: 700;
-      color: var(--text-primary); margin-bottom: 4px;
-    }
-    .timeline-desc { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.55; }
-    .timeline-desc a {
-      color: var(--blue); text-decoration: none; font-weight: 500;
-    }
-    .timeline-desc a:hover { text-decoration: underline; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #080806; color: rgba(255,255,255,0.4);
-      text-align: center; padding: 28px 48px;
-      font-size: 0.78rem; letter-spacing: 0.03em;
-    }
-    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .profile-hero-inner {
-        grid-template-columns: 1fr; gap: 32px;
-        padding: 48px 20px 48px; text-align: center;
-      }
-      .profile-photo-wrap { margin: 0 auto; }
-      .profile-photo, .profile-photo-placeholder { width: 140px; height: 140px; }
-      .profile-tags { justify-content: center; }
-      .profile-links { justify-content: center; }
-      .content-wrap { padding: 0 20px 64px; }
-      .interests-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .interests-grid { grid-template-columns: 1fr; }
-      .profile-name { font-size: 1.8rem; }
-    }
-  </style>
+@media(max-width:900px){
+  .wrap{padding:0 max(22px,env(safe-area-inset-right)) 0 max(22px,env(safe-area-inset-left))}
+  section{padding:72px 0}
+  .hero{padding:92px 0 64px}
+  .hero .wrap,.bio-grid{grid-template-columns:1fr;gap:48px}
+  .ph{max-width:340px;margin:0 22px 18px 0;justify-self:start}
+  .bio-side{position:static}
+  h1{font-size:clamp(2.6rem,13.5vw,5rem)}
+  .btn{flex:1 1 100%;justify-content:center}
+}
+@media(max-width:560px){
+  .ints{grid-template-columns:1fr}.ints div:nth-child(even){border-left:0}.ints div{font-size:1.4rem;padding:22px 4px}
+  .ph{max-width:300px}.tabs button{flex:1}
+}
+</style>
 </head>
 <body>
+<nav><div class="wrap">
+  <a class="brand" href="../../"><i></i>PBYAIL</a>
+  <a class="back" href="../../">Back to lab</a>
+</div></nav>
 
-<!-- Floating Particles -->
-<div id="particles"></div>
-
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="../../" class="nav-brand">
-    <div class="nav-brand-dot"></div>
-    PBYAIL
-  </a>
-  <a href="../../" class="nav-back">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Back to Lab
-  </a>
-</nav>
-
-<!-- PROFILE HERO -->
-<div class="profile-hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow hero-glow-1"></div>
-  <div class="profile-hero-inner">
-    <div class="profile-photo-wrap">
-      <img
-        src="../../img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC-V2.png"
-        alt="Teerapong Panboonyuen"
-        class="profile-photo"
-        style="width:240px; height:240px; border-radius:24px;"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-      />
-      <div class="profile-photo-placeholder" style="display:none; width:240px; height:240px; border-radius:24px; font-size:3.5rem;">TP</div>
-      <div class="profile-photo-badge">FOUNDER</div>
-    </div>
-    <div class="profile-info">
-      <div class="profile-eyebrow">PBY Artificial Intelligence Laboratory</div>
-      <h1 class="profile-name">Teerapong Panboonyuen</h1>
-      <div class="profile-thai" style="
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  letter-spacing: 0.01em;
-  margin-bottom: 16px;
-">
-  ดร.ธีรพงศ์ ปานบุญยืน
-  <span style="
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin-left: 6px;
-  ">(ดร.เก้า)</span>
-</div>
-      <div class="profile-role">Founder & Lead Researcher — PBY Artificial Intelligence Laboratory</div>
-      <div class="profile-tags">
-        <span class="tag">Applied Earth Observations</span>
-        <span class="tag">Geoscience and Remote Sensing</span>
-        <span class="tag">Computer Vision</span>
-        <span class="tag">Semantic Distillation</span>
-        <span class="tag">Human-AI Interaction</span>
-        <span class="tag">Learning Representations</span>
-      </div>
-      <div class="profile-links">
-        <a href="https://kaopanboonyuen.github.io/" target="_blank" class="profile-link primary">
-          🌐 Personal Website
-        </a>
-        <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank" class="profile-link ghost">
-          🤖 MARSAIL Lab
-        </a>
-      </div>
+<header class="hero"><div class="wrap">
+  <div>
+    <p class="hand where mk in d1">founder and lead researcher</p>
+    <h1 class="in d2"><span>Teerapong</span><span>Panboonyuen</span></h1>
+    <p class="thai in d3">ดร.ธีรพงศ์ ปานบุญยืน<small>(ดร.เก้า)</small></p>
+    <p class="role in d3">Founder and lead researcher, PBY Artificial Intelligence Laboratory, a GeoAI lab based in Bangkok, Thailand.</p>
+    <div class="chips in d3"><span>Applied Earth Observations</span><span>Geoscience and Remote Sensing</span><span>Computer Vision</span><span>Semantic Distillation</span><span>Human-AI Interaction</span><span>Learning Representations</span></div>
+    <div class="btns in d3">
+      <a class="btn solid" href="https://kaopanboonyuen.github.io/" target="_blank" rel="noopener">Personal website</a>
+      <a class="btn" href="https://kaopanboonyuen.github.io/MARS/" target="_blank" rel="noopener">MARSAIL Lab</a>
     </div>
   </div>
-</div>
+  <div class="ph in g">
+    <img src="../../img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC-V2.png" alt="Portrait of Teerapong Panboonyuen" width="960" height="1088" />
+    <span class="hand">Dr. Kao</span>
+  </div>
+</div></header>
 
-<!-- CONTENT -->
-<div class="content-wrap">
-
-  <!-- Biography Thai -->
-  <div class="content-section reveal">
-    <div class="section-label">Biography</div>
-    <h2 class="section-heading">ชีวประวัติ (ภาษาไทย)</h2>
-    <div class="bio-card">
+<section id="biography"><div class="wrap bio-grid">
+  <div class="bio-side">
+    <h2>Biography</h2>
+    <span class="hand note mk">the short version of a long story</span>
+    <div class="tabs" role="group" aria-label="Biography language">
+      <button type="button" data-l="en" aria-pressed="true">English</button>
+      <button type="button" data-l="th" aria-pressed="false">ภาษาไทย</button>
+    </div>
+  </div>
+  <div>
+    <div class="bio" lang="en" id="bio-en">
+<p>
+        Dr. Teerapong Panboonyuen, widely known as "Dr. Kao," is an Artificial Intelligence researcher
+        focused on advancing Learning Representations as the foundation of next-generation AI.
+        His work integrates Compositional World Models to build large-scale systems that are autonomy-driven and interpretable.
+        He is the founder of
+        <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank" rel="noopener noreferrer">MARSAIL</a>,
+        an AI laboratory developing intelligent agents for the insurance ecosystem under the vision of AI for Social Good. His pioneering contributions to the field have earned him international recognition as an
+  <a href="https://kaopanboonyuen.github.io/blog/2026-07-02-ieee-grss-professional-member-spotlight/" target="_blank" rel="noopener noreferrer">IEEE GRSS Professional Member Spotlight</a>,
+  highlighting his impact as a global leader in next-generation AI.
+      </p>
       <p>
+        In terms of academic background, Dr. Kao earned his Ph.D. in Computer Engineering from Chulalongkorn University
+        in just two and a half years under the
+        <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_100years_2_2560.pdf" target="_blank" rel="noopener noreferrer">Chulalongkorn University 100th Anniversary Doctoral Scholarship</a>
+        and the
+        <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_90yearsfund_2_2563.pdf" target="_blank" rel="noopener noreferrer">90th Anniversary of Chulalongkorn University Scholarship</a>.
+        Prior to that, he completed his Master's degree in the same field within one and a half years under a graduate
+        scholarship granted in celebration of His Majesty the King's
+        <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_72_2_58-2.pdf" target="_blank" rel="noopener noreferrer">72nd Birthday Anniversary Scholarship</a>.
+        He obtained his doctoral degree at the age of only 27, reflecting his academic excellence and strong dedication to research.
+      </p>
+      <p>
+        In addition, Dr. Kao was awarded the highest-tier postdoctoral support under the
+        <a href="https://kaopanboonyuen.github.io/files/postdoc/panboonyuen_C2F_PostDoc_Experience_Certificate_2025_2026.pdf" target="_blank" rel="noopener noreferrer">Second Century Fund (C2F), Track A</a>
+        for high-potential postdoctoral researchers at Chulalongkorn University, supporting research with global impact
+        in Artificial Intelligence. He was also honored as one of the Thai researchers granted the prestigious opportunity
+        to attend the
+        <a href="https://kaopanboonyuen.github.io/blog/2025-01-11-where-science-meets-inspiration/" target="_blank" rel="noopener noreferrer">Global Young Scientists Summit (GYSS) 2025</a>,
+        graciously conferred under royal patronage by Her Royal Highness Princess Maha Chakri Sirindhorn.
+      </p>
+      <p>
+        His research expertise encompasses advanced areas of Computer Vision, including object recognition, scene
+        understanding, and semantic interpretation, as well as Geospatial Intelligence, employing satellite and aerial
+        imagery to support spatially informed decision-making. Additionally, he places strong emphasis on Human–AI
+        Interaction, forming the foundation for AI systems capable of understanding and interacting naturally with humans.
+        With his profound contributions and visionary approach, Dr. Kao is recognized as a rising figure in the global
+        AI research community.
+      </p>
+    </div>
+    <div class="bio" lang="th" id="bio-th">
+<p>
         ดร.ธีรพงศ์ ปานบุญยืน ("ดร.เก้า") เป็นนักวิจัยด้านปัญญาประดิษฐ์
         ผู้มุ่งพัฒนา Learning Representations เป็นรากฐานของ AI ยุคถัดไป
         ผ่านการผสาน Compositional World Models
@@ -417,168 +226,42 @@
       </p>
     </div>
   </div>
+</div></section>
 
-  <!-- Biography English -->
-  <div class="content-section reveal">
-    <div class="section-label">Biography</div>
-    <h2 class="section-heading">Biography (English)</h2>
-    <div class="bio-card">
-      <p>
-        Dr. Teerapong Panboonyuen, widely known as "Dr. Kao," is an Artificial Intelligence researcher
-        focused on advancing Learning Representations as the foundation of next-generation AI.
-        His work integrates Compositional World Models to build large-scale systems that are autonomy-driven and interpretable.
-        He is the founder of
-        <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank" rel="noopener noreferrer">MARSAIL</a>,
-        an AI laboratory developing intelligent agents for the insurance ecosystem under the vision of AI for Social Good. His pioneering contributions to the field have earned him international recognition as an
-  <a href="https://kaopanboonyuen.github.io/blog/2026-07-02-ieee-grss-professional-member-spotlight/" target="_blank" rel="noopener noreferrer">IEEE GRSS Professional Member Spotlight</a>,
-  highlighting his impact as a global leader in next-generation AI.
-      </p>
-      <p>
-        In terms of academic background, Dr. Kao earned his Ph.D. in Computer Engineering from Chulalongkorn University
-        in just two and a half years under the
-        <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_100years_2_2560.pdf" target="_blank" rel="noopener noreferrer">Chulalongkorn University 100th Anniversary Doctoral Scholarship</a>
-        and the
-        <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_90yearsfund_2_2563.pdf" target="_blank" rel="noopener noreferrer">90th Anniversary of Chulalongkorn University Scholarship</a>.
-        Prior to that, he completed his Master's degree in the same field within one and a half years under a graduate
-        scholarship granted in celebration of His Majesty the King's
-        <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_72_2_58-2.pdf" target="_blank" rel="noopener noreferrer">72nd Birthday Anniversary Scholarship</a>.
-        He obtained his doctoral degree at the age of only 27, reflecting his academic excellence and strong dedication to research.
-      </p>
-      <p>
-        In addition, Dr. Kao was awarded the highest-tier postdoctoral support under the
-        <a href="https://kaopanboonyuen.github.io/files/postdoc/panboonyuen_C2F_PostDoc_Experience_Certificate_2025_2026.pdf" target="_blank" rel="noopener noreferrer">Second Century Fund (C2F), Track A</a>
-        for high-potential postdoctoral researchers at Chulalongkorn University, supporting research with global impact
-        in Artificial Intelligence. He was also honored as one of the Thai researchers granted the prestigious opportunity
-        to attend the
-        <a href="https://kaopanboonyuen.github.io/blog/2025-01-11-where-science-meets-inspiration/" target="_blank" rel="noopener noreferrer">Global Young Scientists Summit (GYSS) 2025</a>,
-        graciously conferred under royal patronage by Her Royal Highness Princess Maha Chakri Sirindhorn.
-      </p>
-      <p>
-        His research expertise encompasses advanced areas of Computer Vision, including object recognition, scene
-        understanding, and semantic interpretation, as well as Geospatial Intelligence, employing satellite and aerial
-        imagery to support spatially informed decision-making. Additionally, he places strong emphasis on Human–AI
-        Interaction, forming the foundation for AI systems capable of understanding and interacting naturally with humans.
-        With his profound contributions and visionary approach, Dr. Kao is recognized as a rising figure in the global
-        AI research community.
-      </p>
-    </div>
+<section id="interests"><div class="wrap">
+  <h2>Research interests</h2>
+  <div class="ints"><div>AI for Earth Observation</div><div>Multimodal Machine Learning</div><div>Diffusion Models</div><div>Geospatial Intelligence</div><div>Responsible &amp; Ethical AI</div><div>Human–AI Interaction</div></div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education and credentials</h2>
+  <div class="tl">
+<div class="ti"><div class="hand d">2025–2027</div><h3>C2F PostDoctoral Fellowship — Track A</h3><p><a href="https://kaopanboonyuen.github.io/files/postdoc/panboonyuen_C2F_PostDoc_Experience_Certificate_2025_2026.pdf" target="_blank" rel="noopener noreferrer">Second Century Fund (C2F)</a>, Chulalongkorn University. Highest-tier postdoctoral support for high-potential researchers.</p></div>
+<div class="ti"><div class="hand d">2025</div><h3>Global Young Scientists Summit (GYSS) Awardee</h3><p>Honored under royal patronage by HRH Princess Maha Chakri Sirindhorn. <a href="https://kaopanboonyuen.github.io/blog/2025-01-11-where-science-meets-inspiration/" target="_blank" rel="noopener noreferrer">Read more</a></p></div>
+<div class="ti"><div class="hand d">Ph.D. — 2.5 Years</div><h3>Doctor of Philosophy in Computer Engineering</h3><p>Chulalongkorn University. Completed age 27 under the <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_100years_2_2560.pdf" target="_blank" rel="noopener noreferrer">100th Anniversary Doctoral Scholarship</a> and the <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_90yearsfund_2_2563.pdf" target="_blank" rel="noopener noreferrer">90th Anniversary Scholarship</a>.</p></div>
+<div class="ti"><div class="hand d">M.Eng. — 1.5 Years</div><h3>Master of Engineering in Computer Engineering</h3><p>Chulalongkorn University. Under a graduate scholarship celebrating <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_72_2_58-2.pdf" target="_blank" rel="noopener noreferrer">His Majesty the King's 72nd Birthday Anniversary</a>.</p></div>
   </div>
+</div></section>
 
-  <!-- Research Interests -->
-  <div class="content-section reveal">
-    <div class="section-label">Expertise</div>
-    <h2 class="section-heading">Research Interests</h2>
-    <div class="interests-grid">
-      <div class="interest-item">
-        <div class="interest-dot"></div>
-        <span class="interest-name">AI for Earth Observation</span>
-      </div>
-      <div class="interest-item">
-        <div class="interest-dot"></div>
-        <span class="interest-name">Multimodal Machine Learning</span>
-      </div>
-      <div class="interest-item">
-        <div class="interest-dot"></div>
-        <span class="interest-name">Diffusion Models</span>
-      </div>
-      <div class="interest-item">
-        <div class="interest-dot"></div>
-        <span class="interest-name">Geospatial Intelligence</span>
-      </div>
-      <div class="interest-item">
-        <div class="interest-dot"></div>
-        <span class="interest-name">Responsible & Ethical AI</span>
-      </div>
-      <div class="interest-item">
-        <div class="interest-dot"></div>
-        <span class="interest-name">Human–AI Interaction</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Education & Credentials -->
-  <div class="content-section reveal">
-    <div class="section-label">Academic Record</div>
-    <h2 class="section-heading">Education & Credentials</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2025–2027</div>
-        <div class="timeline-title">C2F PostDoctoral Fellowship — Track A</div>
-        <div class="timeline-desc">
-          <a href="https://kaopanboonyuen.github.io/files/postdoc/panboonyuen_C2F_PostDoc_Experience_Certificate_2025_2026.pdf" target="_blank" rel="noopener noreferrer">Second Century Fund (C2F)</a>, Chulalongkorn University.
-          Highest-tier postdoctoral support for high-potential researchers.
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Global Young Scientists Summit (GYSS) Awardee</div>
-        <div class="timeline-desc">
-          Honored under royal patronage by HRH Princess Maha Chakri Sirindhorn.
-          <a href="https://kaopanboonyuen.github.io/blog/2025-01-11-where-science-meets-inspiration/" target="_blank" rel="noopener noreferrer">Read more →</a>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Ph.D. — 2.5 Years</div>
-        <div class="timeline-title">Doctor of Philosophy in Computer Engineering</div>
-        <div class="timeline-desc">
-          Chulalongkorn University. Completed age 27 under the
-          <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_100years_2_2560.pdf" target="_blank" rel="noopener noreferrer">100th Anniversary Doctoral Scholarship</a>
-          and the
-          <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_90yearsfund_2_2563.pdf" target="_blank" rel="noopener noreferrer">90th Anniversary Scholarship</a>.
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">M.Eng. — 1.5 Years</div>
-        <div class="timeline-title">Master of Engineering in Computer Engineering</div>
-        <div class="timeline-desc">
-          Chulalongkorn University. Under a graduate scholarship celebrating
-          <a href="https://kaopanboonyuen.github.io/files/scholarship/Recipient_72_2_58-2.pdf" target="_blank" rel="noopener noreferrer">His Majesty the King's 72nd Birthday Anniversary</a>.
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 PBY Artificial Intelligence Laboratory — C2F, Chulalongkorn University, Bangkok, Thailand &nbsp;·&nbsp; <a href="../../">← Back to Lab</a></p>
-</footer>
+<footer><div class="wrap">
+  <span>© 2026 PBY Artificial Intelligence Laboratory, Bangkok, Thailand</span>
+  <a href="../../">Back to lab</a>
+</div></footer>
 
 <script>
-  // Nav scroll
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20);
-  });
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Particles
-  function spawnParticle() {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 160 + 40;
-    p.style.cssText = `
-      width: ${size}px; height: ${size}px;
-      left: ${Math.random() * 100}vw;
-      animation-duration: ${Math.random() * 20 + 15}s;
-      animation-delay: ${Math.random() * -20}s;
-    `;
-    document.getElementById('particles').appendChild(p);
-    setTimeout(() => p.remove(), 35000);
+(function(){
+  document.documentElement.classList.add('js');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});
+  document.querySelectorAll('.mk').forEach(function(el){io.observe(el)});
+  var tabs=document.querySelectorAll('.tabs button');
+  function show(l){
+    document.getElementById('bio-en').hidden=l!=='en';
+    document.getElementById('bio-th').hidden=l!=='th';
+    tabs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
   }
-  for (let i = 0; i < 6; i++) spawnParticle();
-  setInterval(spawnParticle, 5000);
+  tabs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.l)})});
+  show('en');
+})();
 </script>
 </body>
 </html>

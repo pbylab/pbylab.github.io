@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <title>PBY Artificial Intelligence Laboratory</title>
+  <link rel="icon" type="image/png" href="img/pby_logo_01.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f8f6;
+      --light: #f2f1ef;
+      --muted: #e8e6e2;
+      --border: #d4d0c8;
+      --text-primary: #0e0e0c;
+      --text-secondary: #4a4a44;
+      --text-muted: #8a8a80;
+      --accent: #1a1a18;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #059669;
+      --amber: #d97706;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 64px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-primary); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-brand-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.03em;
+      color: var(--text-secondary); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      padding: 8px 20px; background: var(--text-primary); color: white !important;
+      border-radius: 6px; font-size: 0.82rem !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.8; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: var(--white);
+      padding-top: 64px;
+    }
+    .hero-canvas {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridShift 20s linear infinite;
+    }
+    @keyframes gridShift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(60px); }
+    }
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: glowPulse 6s ease-in-out infinite alternate;
+    }
+    .hero-glow-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
+      top: 10%; left: 5%;
+    }
+    .hero-glow-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(5,150,105,0.06) 0%, transparent 70%);
+      bottom: 10%; right: 5%;
+      animation-delay: -3s;
+    }
+    @keyframes glowPulse {
+      0% { transform: scale(1) translate(0,0); opacity: 0.7; }
+      100% { transform: scale(1.15) translate(20px,-20px); opacity: 1; }
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 900px; margin: 0 auto;
+      padding: 0 32px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue);
+      background: var(--blue-light); border: 1px solid rgba(37,99,235,0.15);
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--blue); border-radius: 50%;
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800; line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.8s 0.35s ease forwards;
+    }
+    .hero-title span { color: var(--blue); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 620px; margin: 0 auto 48px;
+      font-weight: 300;
+      opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.65s ease forwards;
+    }
+    .btn-primary {
+      padding: 14px 32px;
+      background: var(--text-primary); color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      border-radius: 8px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .btn-secondary {
+      padding: 14px 32px;
+      background: transparent; color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      border-radius: 8px; text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--text-primary); background: var(--off-white); }
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center;
+      margin-top: 80px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.8s ease forwards;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--text-primary); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem; color: var(--text-muted);
+      letter-spacing: 0.05em; margin-top: 4px;
+    }
+    .stat-divider {
+      width: 1px; background: var(--border);
+      height: 40px; align-self: center;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 48px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; line-height: 1.15;
+      color: var(--text-primary); margin-bottom: 20px;
+    }
+    .section-body {
+      font-size: 1.05rem; color: var(--text-secondary);
+      line-height: 1.75; max-width: 680px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--off-white); border-top: 1px solid var(--muted); border-bottom: 1px solid var(--muted); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-pillars {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
+    }
+    .pillar {
+      background: var(--white); border: 1px solid var(--muted);
+      border-radius: 12px; padding: 20px;
+      transition: box-shadow 0.2s;
+    }
+    .pillar:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .pillar-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .pillar-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 4px;
+    }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+    .about-visual {
+      position: relative; display: flex; justify-content: center; align-items: center;
+    }
+    .about-ring {
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 1px solid var(--muted);
+      position: relative;
+      animation: rotateSlow 20s linear infinite;
+    }
+    .about-ring::before {
+      content: '';
+      position: absolute; inset: 20px; border-radius: 50%;
+      border: 1px dashed var(--border);
+    }
+    .about-ring-node {
+      position: absolute; width: 10px; height: 10px;
+      background: var(--blue); border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .about-ring-node:nth-child(1) { top: -5px; left: 50%; transform: translateX(-50%); }
+    .about-ring-node:nth-child(2) { right: -5px; top: 50%; transform: translateY(-50%); }
+    .about-ring-node:nth-child(3) { bottom: -5px; left: 50%; transform: translateX(-50%); }
+    .about-ring-node:nth-child(4) { left: -5px; top: 50%; transform: translateY(-50%); }
+    @keyframes rotateSlow { to { transform: rotate(360deg); } }
+    .about-ring-center {
+      position: absolute; inset: 40px;
+      border-radius: 50%;
+      background: white;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; border: 1px solid var(--muted);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+    .about-ring-center h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--text-primary); line-height: 1.2;
+    }
+    .about-ring-center p { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ── RESEARCH ── */
+    .research-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;
+    }
+    .research-card {
+      border: 1px solid var(--muted); border-radius: 16px;
+      padding: 32px; background: var(--white);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .research-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--blue); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .research-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .research-card:hover::before { transform: scaleX(1); }
+    .research-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--text-muted); margin-bottom: 20px;
+    }
+    .research-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .research-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 10px;
+    }
+    .research-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ── PEOPLE ── */
+    .people { background: var(--off-white); border-top: 1px solid var(--muted); border-bottom: 1px solid var(--muted); }
+    .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; margin-top: 48px; }
+    .person-card {
+      background: var(--white); border: 1px solid var(--muted);
+      border-radius: 16px; padding: 32px; text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .person-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .person-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%; margin: 0 auto 16px;
+      object-fit: cover;
+      border: 2px solid var(--muted);
+    }
+    .person-avatar-placeholder {
+      width: 80px; height: 80px;
+      border-radius: 50%; margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--blue-light), var(--muted));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800;
+      color: var(--blue); border: 2px solid var(--muted);
+    }
+    .person-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 4px;
+    }
+    .person-role { font-size: 0.8rem; color: var(--blue); font-weight: 500; margin-bottom: 8px; }
+    .person-affil { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+    .person-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 16px; font-size: 0.78rem; font-weight: 500;
+      color: var(--text-secondary); text-decoration: none;
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 6px 14px; transition: border-color 0.2s, color 0.2s;
+    }
+    .person-link:hover { border-color: var(--text-primary); color: var(--text-primary); }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+    .pub-item {
+      border: 1px solid var(--muted); border-radius: 12px;
+      padding: 24px 28px; background: var(--white);
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: box-shadow 0.2s;
+    }
+    .pub-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .pub-badge {
+      flex-shrink: 0;
+      font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+      background: var(--blue-light); color: var(--blue);
+      margin-top: 2px;
+    }
+    .pub-badge.conf { background: #f0fdf4; color: var(--green); }
+    .pub-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 6px; line-height: 1.4;
+    }
+    .pub-meta { font-size: 0.8rem; color: var(--text-muted); }
+    .pub-authors { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 4px; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--text-primary); color: white; text-align: center; }
+    .contact .section-label { color: rgba(255,255,255,0.5); }
+    .contact .section-title { color: white; }
+    .contact-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; margin: 0 auto 40px; }
+    .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .contact-link {
+      padding: 12px 24px; border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; text-decoration: none; color: white;
+      font-size: 0.85rem; font-weight: 500;
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+    .contact-link.primary { background: white; color: var(--text-primary); border-color: white; }
+    .contact-link.primary:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080806; color: rgba(255,255,255,0.4);
+      text-align: center; padding: 28px 48px;
+      font-size: 0.78rem; letter-spacing: 0.03em;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+    /* ── FLOATING PARTICLES ── */
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+      animation: floatParticle linear infinite;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.5; }
+      100% { transform: translateY(-20px) scale(1.2); opacity: 0; }
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { display: none; }
+      .research-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .stat-divider { display: none; }
+      .hero-title { font-size: 2.2rem; }
+    }
+    @media (max-width: 480px) {
+      .about-pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Particles -->
+<div id="particles"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    PBYAIL
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#people">People</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-canvas">
+    <div class="hero-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Chulalongkorn University · Bangkok, Thailand</div>
+    <h1 class="hero-title">
+      PBY Artificial<br><span>Intelligence</span> Laboratory
+    </h1>
+    <p class="hero-sub">
+      Ethical AI research at global scale — leveraging Earth‑observation data
+      and responsible AI to protect our planet.
+    </p>
+    <div class="hero-actions">
+      <a href="#research" class="btn-primary">
+        Explore Research
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#people" class="btn-secondary">Meet the Team</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">C2F</div>
+        <div class="stat-label">PostDoc Fellow</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">GYSS</div>
+        <div class="stat-label">2025 Awardee</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">IEEE</div>
+        <div class="stat-label">Published</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label reveal">About the Lab</div>
+        <h2 class="section-title reveal">Where Geospatial Data<br>Meets Deep Intelligence</h2>
+        <p class="section-body reveal">
+          PBYAIL is a research group at Chulalongkorn University dedicated to advancing AI methods
+          for Earth observation, cadastral systems, and geospatial intelligence. We build systems
+          that are autonomy-driven, interpretable, and designed for real-world impact at national scale.
+        </p>
+        <div class="about-pillars reveal">
+          <div class="pillar">
+            <div class="pillar-icon">🛰️</div>
+            <div class="pillar-name">Earth Observation</div>
+            <div class="pillar-desc">Satellite & aerial imagery analysis for spatial decision-making</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🧠</div>
+            <div class="pillar-name">Deep Learning</div>
+            <div class="pillar-desc">Novel architectures for vision and segmentation tasks</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🗺️</div>
+            <div class="pillar-name">Geo-AI</div>
+            <div class="pillar-desc">AI-powered land administration & cadastral digitization</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚖️</div>
+            <div class="pillar-name">Responsible AI</div>
+            <div class="pillar-desc">Ethical, interpretable systems with societal benefit</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-ring">
+          <div class="about-ring-node"></div>
+          <div class="about-ring-node"></div>
+          <div class="about-ring-node"></div>
+          <div class="about-ring-node"></div>
+          <div class="about-ring-center">
+            <h3>PBY<br>AI Lab</h3>
+            <p>Est. Chulalongkorn<br>University</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUN FACT SECTION -->
+<style>
+  .funfact-section { background: var(--off-white); padding: 80px 48px; border-top: 1px solid var(--muted); border-bottom: 1px solid var(--muted); }
+  .funfact-cards { display: flex; gap: 16px; justify-content: center; margin-bottom: 36px; }
+  .funfact-card {
+    flex: 1; max-width: 200px;
+    background: var(--white);
+    border: 1px solid var(--muted);
+    border-radius: 20px;
+    padding: 28px 20px 22px;
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .funfact-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(37,99,235,0.10); }
+  .funfact-letter {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    font-weight: 800; line-height: 1;
+    color: var(--blue); letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .funfact-word {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(0.68rem, 1.5vw, 0.85rem);
+    font-weight: 700; color: var(--text-primary);
+    letter-spacing: 0.01em; margin-bottom: 8px;
+    text-align: center; line-height: 1.4;
+  }
+  .funfact-word .hl { color: var(--blue); border-bottom: 2px solid var(--blue); padding-bottom: 1px; }
+  .funfact-thai {
+    font-size: 1rem; font-weight: 600;
+    color: var(--text-secondary); letter-spacing: 0.03em;
+  }
+  @media (max-width: 480px) {
+    .funfact-section { padding: 56px 20px; }
+    .funfact-cards { gap: 10px; }
+    .funfact-card { padding: 22px 12px 18px; border-radius: 16px; }
+  }
+</style>
+
+<section class="funfact-section">
+  <div class="section-inner">
+    <div style="max-width:680px; margin:0 auto; text-align:center;" class="reveal">
+
+      <div style="
+        display:inline-flex; align-items:center; gap:8px;
+        font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700;
+        letter-spacing:0.18em; text-transform:uppercase;
+        color:var(--blue); margin-bottom:28px;
+      ">💡 Fun Fact</div>
+
+      <!-- 3 Cards -->
+      <div class="funfact-cards">
+        <div class="funfact-card">
+          <div class="funfact-letter">P</div>
+          <div class="funfact-word"><span class="hl">Pan</span>boonyuen</div>
+          <div class="funfact-thai">ปาน</div>
+        </div>
+        <div class="funfact-card">
+          <div class="funfact-letter">B</div>
+          <div class="funfact-word">Pan<span class="hl">boon</span>yuen</div>
+          <div class="funfact-thai">บุญ</div>
+        </div>
+        <div class="funfact-card">
+          <div class="funfact-letter">Y</div>
+          <div class="funfact-word">Panboon<span class="hl">yuen</span></div>
+          <div class="funfact-thai">ยืน</div>
+        </div>
+      </div>
+
+      <p style="font-size:clamp(0.88rem,2vw,1rem); color:var(--text-secondary); line-height:1.75; margin-bottom:8px;">
+        The lab name honors the family name of its founder —
+        <strong style="color:var(--text-primary);">Dr. Teerapong Panboonyuen</strong>.
+      </p>
+      <p style="font-size:clamp(0.8rem,1.8vw,0.88rem); color:var(--text-muted); line-height:1.7;">
+        ชื่อย่อ <strong style="color:var(--text-primary); font-family:'Syne',sans-serif;">PBY</strong>
+        ย่อมาจากนามสกุล <strong style="color:var(--text-primary);">ปานบุญยืน</strong>
+        ของผู้ก่อตั้งห้องปฏิบัติการ ดร.ธีรพงศ์ ปานบุญยืน
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label reveal">Research Areas</div>
+    <h2 class="section-title reveal">Our Focus Domains</h2>
+    <div class="research-grid">
+      <div class="research-card reveal">
+        <div class="research-num">01</div>
+        <div class="research-icon">🛰️</div>
+        <div class="research-name">AI for Earth Observation</div>
+        <div class="research-desc">Developing deep learning systems for satellite and aerial image interpretation at national scale, enabling precise land-use mapping and environmental monitoring.</div>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-num">02</div>
+        <div class="research-icon">🔀</div>
+        <div class="research-name">Multimodal Machine Learning</div>
+        <div class="research-desc">Fusing heterogeneous data sources — imagery, text, geospatial signals — into unified representations that power richer environmental understanding.</div>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-num">03</div>
+        <div class="research-icon">🌊</div>
+        <div class="research-name">Diffusion Models</div>
+        <div class="research-desc">Applying generative diffusion models to remote sensing synthesis, data augmentation, and uncertainty-guided segmentation for high-stakes applications.</div>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-num">04</div>
+        <div class="research-icon">📍</div>
+        <div class="research-name">Geospatial Intelligence</div>
+        <div class="research-desc">Converting raw geographic data into actionable intelligence for land administration, urban planning, and infrastructure decision-making.</div>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-num">05</div>
+        <div class="research-icon">⚖️</div>
+        <div class="research-name">Responsible & Ethical AI</div>
+        <div class="research-desc">Ensuring AI systems deployed in government and civic contexts are fair, transparent, and aligned with human values — AI for Social Good.</div>
+      </div>
+      <div class="research-card reveal">
+        <div class="research-num">06</div>
+        <div class="research-icon">🤝</div>
+        <div class="research-name">Human–AI Interaction</div>
+        <div class="research-desc">Building interfaces and models that enable natural, intuitive collaboration between humans and intelligent systems in professional workflows.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section class="people" id="people">
+  <div class="section-inner">
+    <div class="section-label reveal">The Team</div>
+    <h2 class="section-title reveal">People</h2>
+    <div class="people-grid">
+      <!-- Founder -->
+      <div class="person-card reveal">
+        <img
+          src="img/teerapong-panboonyuen-ธีรพงศ์-ปานบุญยืน-PROFILE-PIC-V2.png"
+          alt="Teerapong Panboonyuen"
+          class="person-avatar"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="person-avatar-placeholder" style="display:none;">TP</div>
+        <div class="person-name">Teerapong Panboonyuen</div>
+        <div class="person-role">Founder & Lead Researcher</div>
+        <div class="person-affil">Senior Research Scientist (Head of AI)<br>PBYAIL</div>
+        <a href="members/teerapong-panboonyuen/" class="person-link">
+          View Profile
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <!-- Placeholder for future members -->
+      <div class="person-card reveal" style="border-style: dashed; background: var(--off-white); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 260px;">
+        <div style="font-size: 2rem; margin-bottom: 12px; opacity: 0.3;">+</div>
+        <div class="person-name" style="opacity: 0.4;">Join Our Lab</div>
+        <div class="person-affil" style="margin-top: 8px;">We are looking for passionate<br>researchers and students</div>
+        <a href="#contact" class="person-link" style="margin-top: 16px;">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-label reveal">Selected Works</div>
+    <h2 class="section-title reveal">Publications</h2>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-badge" style="width:100px; flex-shrink:0; text-align:center;">IEEE TGRS</div>
+        <div>
+          <div class="pub-title">KAO: Kernel-Adaptive Optimization in Diffusion for Satellite Image</div>
+          <div class="pub-authors">Teerapong Panboonyuen</div>
+          <div class="pub-meta">IEEE Transactions on Geoscience and Remote Sensing · 2025 · <a href="https://doi.org/10.1109/TGRS.2025.3621738" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:none;">DOI 10.1109/TGRS.2025.3621738</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-badge" style="width:100px; flex-shrink:0; text-align:center; background:#fdf4ff;color:#7c3aed;border:1px solid rgba(124,58,237,0.15);">arXiv</div>
+        <div>
+          <div class="pub-title">Foundations and Architectures of Artificial Intelligence for Motor Insurance</div>
+          <div class="pub-authors">Teerapong Panboonyuen</div>
+          <div class="pub-meta">arXiv:2603.18508 · 2026 · 173 pages · <a href="https://doi.org/10.48550/arXiv.2603.18508" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:none;">DOI 10.48550/arXiv.2603.18508</a></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-badge conf" style="width:100px; flex-shrink:0; text-align:center;">EJRS</div>
+        <div>
+          <div class="pub-title">GuidedBox: A Segmentation-Guided Box Teacher-Student Approach for Weakly Supervised Road Segmentation</div>
+          <div class="pub-authors">Teerapong Panboonyuen</div>
+          <div class="pub-meta">European Journal of Remote Sensing · Vol. 58, No. 1 · 2025 · Taylor &amp; Francis</div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-badge" style="width:100px; flex-shrink:0; text-align:center;">IEEE Access</div>
+        <div>
+          <div class="pub-title">SatDiff: A Stable Diffusion Framework for Inpainting Very High-Resolution Satellite Imagery</div>
+          <div class="pub-authors">Teerapong Panboonyuen</div>
+          <div class="pub-meta">IEEE Access · 2025 · IEEE</div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-badge conf" style="width:100px; flex-shrink:0; text-align:center;">Remote Sensing</div>
+        <div>
+          <div class="pub-title">MeViT: A Medium-Resolution Vision Transformer for Semantic Segmentation on Landsat Satellite Imagery for Agriculture in Thailand</div>
+          <div class="pub-authors">Teerapong Panboonyuen</div>
+          <div class="pub-meta">Remote Sensing · Vol. 15, No. 21, p. 5124 · 2023 · MDPI</div>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top: 32px; text-align: center;" class="reveal">
+      <a href="https://kaopanboonyuen.github.io/" target="_blank" class="btn-secondary">
+        View All Publications
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Collaborate With Us</h2>
+    <p class="contact-sub">
+      We welcome collaborations with researchers, institutions, and industry partners
+      working at the intersection of AI and geospatial intelligence.
+    </p>
+    <div class="contact-links">
+      <a href="https://kaopanboonyuen.github.io/" target="_blank" class="contact-link primary">
+        🌐 Personal Website
+      </a>
+      <a href="https://kaopanboonyuen.github.io/MARS/" target="_blank" class="contact-link">
+        🤖 MARSAIL Lab
+      </a>
+      <a href="mailto:teerapong.panboonyuen@gmail.com" class="contact-link">
+        ✉️ Email Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 PBY Artificial Intelligence Laboratory — C2F, Chulalongkorn University, Bangkok, Thailand &nbsp;·&nbsp; <a href="/">PBYAIL</a> &nbsp;·&nbsp; Ethical AI for Earth</p>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Floating particles
+  function spawnParticle() {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 160 + 40;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}vw;
+      animation-duration: ${Math.random() * 20 + 15}s;
+      animation-delay: ${Math.random() * -20}s;
+    `;
+    document.getElementById('particles').appendChild(p);
+    setTimeout(() => p.remove(), 35000);
+  }
+  for (let i = 0; i < 8; i++) spawnParticle();
+  setInterval(spawnParticle, 4000);
+</script>
+</body>
+</html>
