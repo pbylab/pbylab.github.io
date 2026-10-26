@@ -67,6 +67,7 @@ h1 span{display:block}
 .globe .note{position:absolute;right:-6px;bottom:-4px;font-size:1.5rem;transform:rotate(-4deg)}
 .cap{position:absolute;left:0;bottom:-34px}
 .orbit{position:absolute;inset:-10%;width:120%;height:120%;pointer-events:none;overflow:visible}
+.orbit.back{z-index:0}.orbit.front{z-index:2}.globe canvas,.globe .fb{position:relative;z-index:1}.globe .hud,.globe .note{z-index:3}
 .hud{position:absolute;left:0;top:-6px;background:var(--hl);color:var(--ink);padding:1px 8px;border:1px solid var(--ink)}
 
 /* ABOUT */
@@ -234,9 +235,10 @@ html.js .mk{transition:background-size .7s .15s ease-out}
     </div>
   </div>
   <div class="globe in g" role="img" aria-label="Rotating globe centered on Thailand">
+    <svg class="orbit back" viewBox="0 0 120 120" aria-hidden="true"><g transform="rotate(-24 60 60)"><ellipse cx="60" cy="60" rx="58" ry="17" fill="none" stroke="#2340ff" stroke-width=".5" stroke-dasharray="2 2.5" opacity=".55"/><g id="sat-b" visibility="hidden" opacity=".8"><rect x="-2.6" y="-1.8" width="5.2" height="3.6" fill="#2340ff" stroke="#000" stroke-width=".5"/><rect x="-8.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/><rect x="3.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/></g></g></svg>
     <canvas id="globe" width="640" height="640"></canvas>
     <img class="fb" src="img/geo/earth.jpg" alt="Satellite view of Earth" hidden />
-    <svg class="orbit" id="orbit" viewBox="0 0 120 120" aria-hidden="true"><g transform="rotate(-24 60 60)"><ellipse cx="60" cy="60" rx="58" ry="17" fill="none" stroke="#2340ff" stroke-width=".5" stroke-dasharray="2 2.5"/><g><rect x="-2.6" y="-1.8" width="5.2" height="3.6" fill="#2340ff" stroke="#000" stroke-width=".5"/><rect x="-8.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/><rect x="3.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/><animateMotion dur="16s" repeatCount="indefinite" path="M2,60 a58,17 0 1,0 116,0 a58,17 0 1,0 -116,0"/></g></g></svg>
+    <svg class="orbit front" viewBox="0 0 120 120" aria-hidden="true"><g transform="rotate(-24 60 60)"><path d="M2,60 A58,17 0 0,0 118,60" fill="none" stroke="#2340ff" stroke-width=".5" stroke-dasharray="2 2.5"/><g id="sat-f"><rect x="-2.6" y="-1.8" width="5.2" height="3.6" fill="#2340ff" stroke="#000" stroke-width=".5"/><rect x="-8.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/><rect x="3.6" y="-.9" width="5" height="1.8" fill="#ffe45c" stroke="#000" stroke-width=".4"/></g></g></svg>
     <span class="hud mono" id="hud"></span>
     <span class="note hand">drag to spin the Earth</span>
     <span class="cap mono">Fig. 0. NASA Blue Marble. Drag the globe.</span>
@@ -422,8 +424,16 @@ html.js .mk{transition:background-size .7s .15s ease-out}
   document.documentElement.classList.add('js');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});
   document.querySelectorAll('.mk').forEach(function(el){io.observe(el)});
-  var orb=document.getElementById('orbit');
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches&&orb&&orb.pauseAnimations)orb.pauseAnimations();
+  /* Satellite: near half of the orbit passes in front of the Earth, far half behind it */
+  var sb=document.getElementById('sat-b'),sf=document.getElementById('sat-f');
+  function sat(t,ang){
+    var a=ang!==undefined?ang:t/16000*2*Math.PI,s=Math.sin(a),front=s>0;
+    var g=front?sf:sb,tr='translate('+(60+58*Math.cos(a)).toFixed(2)+' '+(60+17*s).toFixed(2)+') scale('+(front?1.15:.8)+')';
+    g.setAttribute('transform',tr);
+    sf.setAttribute('visibility',front?'visible':'hidden');sb.setAttribute('visibility',front?'hidden':'visible');
+  }
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){sat(0,.9)}
+  else{(function ol(t){requestAnimationFrame(ol);if(visible)sat(t)})(0)}
 
   /* Mobile menu */
   var nv=document.querySelector('nav'),mb=document.getElementById('menu');

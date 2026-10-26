@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="../../img/pby_logo_01.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Caveat:wght@500;700&family=Noto+Sans+Thai:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Caveat:wght@500;700&family=Mali:wght@500;700&family=Noto+Sans+Thai:wght@400;600&display=swap" rel="stylesheet" />
 <style>
 :root{--accent:#2340ff;--hl:#ffe45c;--grid:#dde4ff;--ink:#000;--paper:#fff;--g1:#f5f5f5;--g2:#e4e4e4;--g4:#595959;
   --sans:'Archivo',system-ui,sans-serif;--hand:'Caveat','Bradley Hand',cursive;--thai:'Noto Sans Thai','Thonburi',var(--sans)}
@@ -77,6 +77,42 @@ html.js .bio[hidden]{display:none}
 .ti p{color:var(--g4);margin-top:6px;max-width:64ch}
 .ti a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
 
+
+/* BIOGRAPHY: two-page notebook spread on ruled paper */
+.bio-sec{--lh:32px;background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#eef1ff 31px,#eef1ff 32px)}
+.bio-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:64px}
+.bio-head .note{margin:0 0 6px}
+.spread{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.spread>*{min-width:0}
+.paper{position:relative;background-color:var(--paper);border:1px solid var(--ink);padding:var(--lh) 34px var(--lh) 88px;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--lh) - 6px),#c9d2ff calc(var(--lh) - 6px),#c9d2ff calc(var(--lh) - 5px),transparent calc(var(--lh) - 5px),transparent var(--lh))}
+.paper.en{transform:rotate(-.6deg);box-shadow:9px 9px 0 var(--ink)}
+.paper.th{transform:rotate(.6deg);margin-top:36px;box-shadow:9px 9px 0 var(--accent)}
+.paper::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:30px;background:radial-gradient(circle at 15px 70px,var(--paper) 0 7px,var(--ink) 7px 8px,transparent 8.5px) 0 0/30px 150px repeat-y}
+.paper::after{content:'';position:absolute;left:62px;top:0;bottom:0;width:1px;background:var(--accent);box-shadow:4px 0 0 var(--accent);opacity:.55}
+.tape{position:absolute;top:-15px;left:50%;width:120px;height:30px;margin-left:-60px;background:rgba(255,228,92,.82);border:1px solid rgba(0,0,0,.12);transform:rotate(-3deg);z-index:2}
+.paper.th .tape{transform:rotate(4deg);margin-left:-30px}
+.pg-h{height:calc(var(--lh)*2);display:flex;align-items:flex-end;padding-bottom:3px}
+.pg-h .hand{font-size:2.5rem;line-height:1}
+.tpl{font-family:'Mali','Noto Sans Thai',var(--hand);font-weight:700;font-size:1.9rem;line-height:1.25;padding:0 8px;background:linear-gradient(transparent 58%,var(--hl) 58%)}
+.paper .bio p{font-size:1.02rem;line-height:var(--lh);margin:0 0 var(--lh);max-width:none;color:#1b1b1b}
+.paper .bio[lang=th] p{font-size:.98rem;line-height:var(--lh)}
+.paper .bio p:last-child{margin-bottom:0}
+@media(max-width:900px){
+  .bio-head{margin-bottom:44px}
+  .spread{grid-template-columns:1fr;gap:56px}
+  .paper{padding:var(--lh) 20px var(--lh) 68px}
+  .paper::before{left:8px}.paper::after{left:48px}
+  .paper.en,.paper.th{transform:none;margin-top:0}
+  .paper.en{box-shadow:7px 7px 0 var(--ink)}.paper.th{box-shadow:7px 7px 0 var(--accent)}
+  .tape{width:96px;margin-left:-48px}
+}
+@media(max-width:560px){
+  .paper{padding:var(--lh) 14px var(--lh) 50px}
+  .paper::before{left:4px;background:radial-gradient(circle at 15px 70px,var(--paper) 0 6px,var(--ink) 6px 7px,transparent 7.5px) 0 0/30px 150px repeat-y}
+  .paper::after{left:38px}
+  .pg-h .hand{font-size:2.2rem}
+}
 footer{background:var(--ink);color:#bdbdbd;padding:30px 0 max(30px,env(safe-area-inset-bottom));font-size:.8rem}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{text-decoration:none;color:#fff}
@@ -130,17 +166,16 @@ html.js .mk{transition:background-size .7s .15s ease-out}
   </div>
 </div></header>
 
-<section id="biography"><div class="wrap bio-grid">
-  <div class="bio-side">
+<section id="biography" class="bio-sec"><div class="wrap">
+  <div class="bio-head">
     <h2>Biography</h2>
     <span class="hand note mk">the short version of a long story</span>
-    <div class="tabs" role="group" aria-label="Biography language">
-      <button type="button" data-l="en" aria-pressed="true">English</button>
-      <button type="button" data-l="th" aria-pressed="false">ภาษาไทย</button>
-    </div>
   </div>
-  <div>
-    <div class="bio" lang="en" id="bio-en">
+  <div class="spread">
+    <article class="paper en">
+      <i class="tape"></i>
+      <div class="pg-h"><span class="hand">In English</span></div>
+      <div class="bio" lang="en">
 <p>
         Dr. Teerapong Panboonyuen, widely known as "Dr. Kao," is an Artificial Intelligence researcher
         focused on advancing Learning Representations as the foundation of next-generation AI.
@@ -179,8 +214,12 @@ html.js .mk{transition:background-size .7s .15s ease-out}
         With his profound contributions and visionary approach, Dr. Kao is recognized as a rising figure in the global
         AI research community.
       </p>
-    </div>
-    <div class="bio" lang="th" id="bio-th">
+      </div>
+    </article>
+    <article class="paper th">
+      <i class="tape"></i>
+      <div class="pg-h"><span class="tpl mk">ชีวประวัติ</span></div>
+      <div class="bio" lang="th">
 <p>
         ดร.ธีรพงศ์ ปานบุญยืน ("ดร.เก้า") เป็นนักวิจัยด้านปัญญาประดิษฐ์
         ผู้มุ่งพัฒนา Learning Representations เป็นรากฐานของ AI ยุคถัดไป
@@ -224,7 +263,8 @@ html.js .mk{transition:background-size .7s .15s ease-out}
         ด้วยผลงานเชิงลึกและวิสัยทัศน์ด้าน AI ทำให้ ดร.เก้า
         เป็นหนึ่งในนักวิจัยรุ่นใหม่ที่ได้รับการจับตามองอย่างยิ่งในเวทีวิจัยปัญญาประดิษฐ์ระดับสากล
       </p>
-    </div>
+      </div>
+    </article>
   </div>
 </div></section>
 
@@ -253,14 +293,6 @@ html.js .mk{transition:background-size .7s .15s ease-out}
   document.documentElement.classList.add('js');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.6});
   document.querySelectorAll('.mk').forEach(function(el){io.observe(el)});
-  var tabs=document.querySelectorAll('.tabs button');
-  function show(l){
-    document.getElementById('bio-en').hidden=l!=='en';
-    document.getElementById('bio-th').hidden=l!=='th';
-    tabs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
-  }
-  tabs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.l)})});
-  show('en');
 })();
 </script>
 </body>
